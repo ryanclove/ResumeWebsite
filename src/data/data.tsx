@@ -343,28 +343,28 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  description: 'Email me for inquiries about coaching, private lessons, or any other questions you may have.',
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'ryan.coslove@viennaelite.org',
+      href: 'mailto:ryan.coslove@viennaelite.org',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
+      text: 'DMV, USA',
+      //href: '',
     },
     {
       type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      text: '@coachryantutu',
+      href: 'https://www.instagram.com/coachryantutu/',
     },
-    {
+    /*{
       type: ContactType.Github,
       text: 'tbakerx',
       href: 'https://github.com/tbakerx',
-    },
+    },*/
   ],
 };
 
@@ -375,6 +375,6 @@ export const socialLinks: Social[] = [
   //{label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
   //{label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
   //{label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/coachryantutu/'},
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];
