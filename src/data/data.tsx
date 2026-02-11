@@ -270,17 +270,22 @@ export const portfolioItems: PortfolioItem[] = [
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: 'September 2018 - May 2022',
+    location: 'Rutgers University - the State University of New Jersey',
+    title: 'Bachelor of Science in Computer Science',
+    content: (
+      <p>
+        While completing my Bachelor's Degreee, I played Intramural volleyball as well as played with the Rutgers Men's
+        and Women's Club teams in open gyms, and coached junior girls volleyball at Central Jersey Heat.
+      </p>
+    ),
   },
-  {
+  /*{
     date: 'March 2003',
     location: 'School of Business',
     title: 'What did you study 101',
     content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
-  },
+  },*/
 ];
 
 export const experience: TimelineItem[] = [
