@@ -14,17 +14,17 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 //import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 //import TwitterIcon from '../components/Icon/TwitterIcon';
 import NewTabIcon from '../components/Icon/NewTabIcon';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
-import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
-import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
-import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
-import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
+import porfolioImage1 from '../images/medals/portfolio-1.jpg';
+import porfolioImage2 from '../images/medals/portfolio-2.jpg';
+import porfolioImage3 from '../images/medals/portfolio-3.jpg';
+import porfolioImage4 from '../images/medals/portfolio-4.jpg';
+import porfolioImage5 from '../images/medals/portfolio-5.jpg';
+import porfolioImage6 from '../images/medals/portfolio-6.jpg';
+import porfolioImage7 from '../images/medals/portfolio-7.jpg';
+import porfolioImage8 from '../images/medals/portfolio-8.jpg';
+import porfolioImage9 from '../images/medals/portfolio-9.jpg';
+import porfolioImage10 from '../images/medals/portfolio-10.jpg';
+import porfolioImage11 from '../images/medals/portfolio-11.jpg';
 import profilepic from '../images/profilepic.jpg';
 import teamPhoto from '../images/teamphoto.jpg';
 import testimonialImage from '../images/testimonial.webp';
@@ -34,7 +34,7 @@ import {
   ContactType,
   Hero,
   HomepageMeta,
-  PortfolioItem,
+  MedalsItem,
   //SkillGroup,
   Social,
   TestimonialSection,
@@ -56,7 +56,7 @@ export const SectionId = {
   Hero: 'hero',
   About: 'about',
   Contact: 'contact',
-  Portfolio: 'portfolio',
+  Medals: 'medals',
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
@@ -194,9 +194,9 @@ export const skills: SkillGroup[] = [
 */
 
 /**
- * Portfolio section
+ * Medals section
  */
-export const portfolioItems: PortfolioItem[] = [
+export const medalsItems: MedalsItem[] = [
   {
     title: 'Project title 1',
     description: 'Give a short description of your project here.',
