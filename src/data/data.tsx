@@ -35,7 +35,7 @@ import {
   Hero,
   HomepageMeta,
   PortfolioItem,
-  SkillGroup,
+  //SkillGroup,
   Social,
   TestimonialSection,
   TimelineItem,
@@ -118,8 +118,9 @@ college or personal volleyball goals.`,
 };
 
 /**
+ /**
  * Skills section
- */
+ *
 export const skills: SkillGroup[] = [
   {
     name: 'Spoken languages',
@@ -190,6 +191,7 @@ export const skills: SkillGroup[] = [
     ],
   },
 ];
+*/
 
 /**
  * Portfolio section
