@@ -79,7 +79,7 @@ export interface SkillGroup {
 export interface MedalsItem {
   title: string;
   description: string;
-  url: string;
+  //url: string;
   image: string | StaticImageData; // <- Next.js image imports
 }
 
