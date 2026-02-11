@@ -517,12 +517,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroicons/react@npm:^2.0.18":
-  version: 2.0.18
-  resolution: "@heroicons/react@npm:2.0.18"
+"@heroicons/react@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@heroicons/react@npm:2.2.0"
   peerDependencies:
-    react: ">= 16"
-  checksum: 10c0/3cef7f67c65f8b00dc4f23788e468e661a24bd805f80e3b5514a986d69c91ef05407cf50078691573eced47147db87a9bd00cc165e4fecd2a9657cbaf3eaafb5
+    react: ">= 16 || ^19.0.0-rc"
+  checksum: 10c0/f8d3cf689b56716339c91df3542f3948115042d1e70e6bc940a3f3e347c0bc78b56aa563917fbd7ce097fe2f38ebb21bffb0db39be914cbc545a754bddae9ab4
   languageName: node
   linkType: hard
 
@@ -5372,7 +5372,7 @@ __metadata:
   resolution: "react-resume-template@workspace:."
   dependencies:
     "@headlessui/react": "npm:^1.7.16"
-    "@heroicons/react": "npm:^2.0.18"
+    "@heroicons/react": "npm:^2.2.0"
     "@next/eslint-plugin-next": "npm:^14.0.3"
     "@tailwindcss/forms": "npm:^0.5.4"
     "@tailwindcss/typography": "npm:^0.5.9"

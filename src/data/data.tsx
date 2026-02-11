@@ -1,9 +1,9 @@
 import {
   AcademicCapIcon,
-  ArrowDownTrayIcon,
+  //ArrowDownTrayIcon,
   BuildingOffice2Icon,
   CalendarIcon,
-  FlagIcon,
+  //FlagIcon,
   MapIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';
@@ -13,6 +13,7 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 //import LinkedInIcon from '../components/Icon/LinkedInIcon';
 //import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 //import TwitterIcon from '../components/Icon/TwitterIcon';
+import NewTabIcon from '../components/Icon/NewTabIcon';
 import heroImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
@@ -45,7 +46,7 @@ import {
  */
 export const homePageMeta: HomepageMeta = {
   title: 'Ryan Coslove - Volleyball Coach',
-  description: "Website and resume of Ryan Coslove, Volleyball Coach based in the DMV Area.",
+  description: 'Website and resume of Ryan Coslove, Volleyball Coach based in the DMV Area.',
 };
 
 /**
@@ -73,9 +74,9 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a DMV based <strong className="text-stone-100">Volleyball Coach</strong>, currently working
-        at <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. I am the Head Coach
-        for <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
+        I'm a DMV based <strong className="text-stone-100">Volleyball Coach</strong>, currently working at{' '}
+        <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. I am the Head Coach for{' '}
+        <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Explore my site to learn more about me and my Coaching background and feats.
@@ -84,10 +85,10 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: '/assets/resume.pdf',
+      href: 'https://drive.google.com/file/d/1Ex5G_BaW8MNRxrJy97KHLg5O_4Wnefe-/view',
       text: 'Resume',
       primary: true,
-      Icon: ArrowDownTrayIcon,
+      Icon: NewTabIcon,
     },
     {
       href: `#${SectionId.Contact}`,
