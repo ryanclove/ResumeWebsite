@@ -6,7 +6,7 @@ import {forwardRef, memo} from 'react';
 const NewTabIcon = memo(
   forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((props, ref) => (
     <ArrowTopRightOnSquareIcon {...props} ref={ref as React.Ref<SVGSVGElement>} />
-  ))
+  )),
 );
 
 export default NewTabIcon;

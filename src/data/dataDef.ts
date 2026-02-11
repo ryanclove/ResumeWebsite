@@ -21,7 +21,7 @@ export interface HomepageMeta {
  * Hero section
  */
 export interface Hero {
-  imageSrc: string;
+  imageSrc: string | StaticImageData; // <- can accept Next.js image import
   name: string;
   description: JSX.Element;
   actions: HeroActionItem[];
@@ -38,7 +38,7 @@ interface HeroActionItem {
  * About section
  */
 export interface About {
-  profileImageSrc?: string;
+  profileImageSrc?: string | StaticImageData;
   description: string;
   aboutItems: AboutItem[];
 }
@@ -80,7 +80,7 @@ export interface PortfolioItem {
   title: string;
   description: string;
   url: string;
-  image: string | StaticImageData;
+  image: string | StaticImageData; // <- Next.js image imports
 }
 
 /**
