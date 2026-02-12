@@ -106,7 +106,7 @@ const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) 
         pointer-events-auto>
         <h2 className="text-center font-bold text-white">{title}</h2>
         <p className="text-xs text-white sm:text-sm">{description}</p>
-        <ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+        {/*<ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" /> */}
       </div>
 
       {/* Clickable overlay background (mobile) */}
