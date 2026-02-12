@@ -428,9 +428,17 @@ export const testimonial: TestimonialSection = {
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
-      name: 'Jenn B. (Mother of 16s Player)',
+      name: 'Jennie B. (Mother of 16s Player)',
       text: 'You are incredibly tactical... You\'re a great coach and communicator.',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+    },
+    {
+      name: 'Sherry F. (Mother of 17s Player)',
+      text: 'Thanks for a great season! [redacted player name] says it was her favorite Vienna year!',
+    },
+    {
+      name: 'Dolores B. (Mother of 17s Player)',
+      text: 'Thank you for being such a good coach and human 😀. Vienna Elite is lucky to have you.',
     },
   ],
 };
