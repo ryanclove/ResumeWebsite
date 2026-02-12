@@ -1,6 +1,8 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
 
 @layer utilities {
   /* Chrome, Safari and Opera */
@@ -38,6 +40,12 @@ body {
   color: #444444;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
   //background-color: #fafafa; // no background color, rely on Tailwind
+}
+
+body, html {
+  background: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 td,
