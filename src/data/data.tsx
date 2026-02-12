@@ -74,8 +74,8 @@ export const heroData: Hero = {
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         I'm a DMV based <strong className="text-stone-100">Volleyball Coach</strong>, currently working at{' '}
-        <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. I am the Head Coach for{' '}
-        <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
+        <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. <br></br>
+        I am the Head Coach for{' '} <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Explore my site to learn more about me and my Coaching background and feats.
@@ -481,6 +481,6 @@ export const socialLinks: Social[] = [
   //{label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
   //{label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
   //{label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/coachryantutu/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/coachryantutu/', text: 'Follow me on Instagram - Over 4 Million Views!',}
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];

@@ -147,4 +147,5 @@ export interface Social {
   label: string;
   Icon: FC<IconProps>;
   href: string;
+  text?: string;
 }
