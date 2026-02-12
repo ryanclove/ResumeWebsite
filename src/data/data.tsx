@@ -418,19 +418,19 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'Lora Ann H. (Mother of 16s Player)',
+      text: 'You\'re the best coach [redacted player name] has ever had. She\'s improved more since November than she has in any other full season... You\'ve given her confidence in herself and her abilities, which allows her to try more things on the court- which can lead to mistakes. But, you\'ve given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). I\'ve talked to pretty much every parent and all of us have the same feeling about you and this team. We\'re happy the girls are getting along, happy that you have a better understanding of teenagers than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.',
+      //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: 'Stacie B. (Mother of 16s Player)',
+      text: ' I\'ve seen such a positive change in [redacted player name] in just a short time...  [You\'ve shown] a deep level of self awareness and maturity beyond your years. One team one fight!',
+      //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: 'Jenn B. (Mother of 16s Player)',
+      text: 'You are incredibly tactical... You\'re a great coach and communicator.',
+      //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
   ],
 };
