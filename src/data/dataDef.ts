@@ -1,5 +1,5 @@
 import {StaticImageData} from 'next/image';
-import {FC, ForwardRefExoticComponent, SVGProps} from 'react';
+import {FC, ForwardRefExoticComponent, ReactNode, SVGProps} from 'react';
 
 import {IconProps} from '../components/Icon/Icon';
 
@@ -89,8 +89,8 @@ export interface MedalsItem {
 export interface TimelineItem {
   date: string;
   location: string;
-  title: string;
-  content: JSX.Element;
+  title: ReactNode;
+  content: ReactNode;
 }
 
 /**
