@@ -14,19 +14,18 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 //import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 //import TwitterIcon from '../components/Icon/TwitterIcon';
 import NewTabIcon from '../components/Icon/NewTabIcon';
+import headerPhoto from '../images/headerphoto.png';
+import clashincarolina from '../images/medals/Clash in Carolina.jpg';
+import dcminiaasilver from '../images/medals/DC Mini AA Silver.jpg';
+import maymadnessgoldrunner from '../images/medals/May Madness Silver.jpg';
 import mdjrsgold from '../images/medals/MDJRS gold.jpg';
-import porfolioImage2 from '../images/medals/portfolio-2.jpg';
-import porfolioImage3 from '../images/medals/portfolio-3.jpg';
-import porfolioImage4 from '../images/medals/portfolio-4.jpg';
-import porfolioImage5 from '../images/medals/portfolio-5.jpg';
-import porfolioImage6 from '../images/medals/portfolio-6.jpg';
-import porfolioImage7 from '../images/medals/portfolio-7.jpg';
-import porfolioImage8 from '../images/medals/portfolio-8.jpg';
-import porfolioImage9 from '../images/medals/portfolio-9.jpg';
-import porfolioImage10 from '../images/medals/portfolio-10.jpg';
-import porfolioImage11 from '../images/medals/portfolio-11.jpg';
+import mvsagoldrunner from '../images/medals/MVSA Gold 2nd.jpg';
+import nikeharborbronze from '../images/medals/Nike harbor bronze.jpg';
+import nvpl1 from '../images/medals/NVPL 1.jpg';
+import nvpl2 from '../images/medals/NVPL 2.jpg';
+import prezdaysilver from '../images/medals/Prez Day Silver.jpg';
+import volleyjamesbronze from '../images/medals/Volley by the James.jpg';
 import profilepic from '../images/profilepic.jpg';
-import teamPhoto from '../images/teamphoto.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
   About,
@@ -69,7 +68,7 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  * Hero section
  */
 export const heroData: Hero = {
-  imageSrc: teamPhoto,
+  imageSrc: headerPhoto,
   name: `Coach Ryan Coslove`,
   description: (
     <>
@@ -199,58 +198,53 @@ export const skills: SkillGroup[] = [
 export const medalsItems: MedalsItem[] = [
   {
     title: '17 Club Gold Medal',
-    description: 'MDJRS 17 Club division \n Gold Medalists (1st) \n April 2025',
+    description: 'MDJRS 17 Club division \n Gold Medalists (1st OVR) \n April 2025',
     image: mdjrsgold,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage2,
+    title: 'NVPL 16s Gold Medal',
+    description: 'NVPL 16s division \n Gold Medalists (1st OVR) \n January 2023',
+    image: nvpl1,
   },
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage3,
+    title: 'NVPL 16s Gold Medal',
+    description: 'NVPL 16s division \n Gold Medalists (1st OVR) \n February 2023',
+    image: nvpl2,
   },
   {
-    title: 'Project title 4',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage4,
+    title: 'MVSA Gold Runner-Up',
+    description: 'MVSA 17 Club division \n Silver Medalists (2nd OVR) \n March 2024',
+    image: mvsagoldrunner,
   },
   {
-    title: 'Project title 5',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage5,
+    title: 'May Madness Gold Runner-Up',
+    description: 'May Madness 17 Club division \n Silver Medalists (2nd OVR) \n May 2025',
+    image: maymadnessgoldrunner,
   },
   {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage6,
+    title: 'Clash in Carolina Gold Runner-Up',
+    description: 'Clash in Carolina 16 Club division \n Silver Medalists (2nd OVR) \n February 2023',
+    image: clashincarolina,
   },
   {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage7,
+    title: 'Prez Day Invitational Silver',
+    description: 'Prez Day Invitational 17 Club division \n Silver Bracket Champs (5th OVR) \n February 2025',
+    image: prezdaysilver,
   },
   {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage8,
+    title: 'Volley by the James Bronze',
+    description: 'Volley by the James 17 Club division \n Bronze Medalists (9th OVR) \n January 2024',
+    image: volleyjamesbronze,
   },
   {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage9,
+    title: 'Nike National Harbor Bronze',
+    description: 'Nike National Harbor 16 USA division \n Bronze Medalists (9th OVR) \n January 2026',
+    image: nikeharborbronze,
   },
   {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    image: porfolioImage11,
+    title: 'DC Mini AA Silver',
+    description: 'DC Mini AA (Adult Women) division \n Silver Medalists (5th OVR) \n July 2024',
+    image: dcminiaasilver,
   },
 ];
 

@@ -33,17 +33,9 @@ const Medals: FC = memo(() => {
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div
-            className="relative max-h-[90vh] max-w-[90vw]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              alt="Expanded medal"
-              className="rounded-lg object-contain"
-              src={selectedImage}
-            />
+          onClick={() => setSelectedImage(null)}>
+          <div className="relative max-h-[90vh] max-w-[90vw]" onClick={e => e.stopPropagation()}>
+            <Image alt="Expanded medal" className="rounded-lg object-contain" src={selectedImage} />
           </div>
         </div>
       )}
@@ -82,7 +74,7 @@ const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
 });
 
 // ------------------- ItemOverlay Component -------------------
-const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}) => {
+const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLDivElement>(null);
@@ -100,7 +92,7 @@ const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}
         setShowOverlay(!showOverlay);
       }
     },
-    [mobile, showOverlay]
+    [mobile, showOverlay],
   );
 
   return (
@@ -109,10 +101,9 @@ const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}
       <div
         className={classNames(
           'absolute inset-0 flex flex-col gap-y-2 p-4 overflow-y-auto overscroll-contain bg-gray-900 transition-opacity duration-300',
-          !mobile ? 'opacity-0 hover:opacity-80' : showOverlay ? 'opacity-80' : 'opacity-0'
+          !mobile ? 'opacity-0 hover:opacity-80' : showOverlay ? 'opacity-80' : 'opacity-0',
         )}
-        pointer-events-auto
-      >
+        pointer-events-auto>
         <h2 className="text-center font-bold text-white">{title}</h2>
         <p className="text-xs text-white sm:text-sm">{description}</p>
         <ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
@@ -121,10 +112,7 @@ const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}
       {/* Clickable overlay background (mobile) */}
       {mobile && (
         <div
-          className={classNames(
-            'absolute inset-0',
-            showOverlay ? 'pointer-events-auto' : 'pointer-events-none'
-          )}
+          className={classNames('absolute inset-0', showOverlay ? 'pointer-events-auto' : 'pointer-events-none')}
           onClick={handleOverlayClick}
           ref={linkRef}
         />
