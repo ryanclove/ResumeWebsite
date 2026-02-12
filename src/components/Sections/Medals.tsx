@@ -74,7 +74,7 @@ const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
 });
 
 // ------------------- ItemOverlay Component -------------------
-const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) => {
+const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLDivElement>(null);
@@ -105,7 +105,15 @@ const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) 
         )}
         pointer-events-auto>
         <h2 className="text-center font-bold text-white">{title}</h2>
-        <p className="text-xs text-white sm:text-sm">{description}</p>
+        <p className="text-center text-xs text-white sm:text-sm">
+          {description.split('\n').map((line, idx) => (
+            <span key={idx}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </p>
+
         {/*<ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" /> */}
       </div>
 
