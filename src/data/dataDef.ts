@@ -32,6 +32,7 @@ interface HeroActionItem {
   text: string;
   primary?: boolean;
   Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
+  external?: boolean;
 }
 
 /**
@@ -148,4 +149,5 @@ export interface Social {
   Icon: FC<IconProps>;
   href: string;
   text?: string;
+  external?: boolean;
 }

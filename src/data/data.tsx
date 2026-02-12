@@ -88,6 +88,7 @@ export const heroData: Hero = {
       text: 'Resume',
       primary: true,
       Icon: NewTabIcon,
+      external: true,
     },
     {
       href: `#${SectionId.Contact}`,
@@ -275,7 +276,7 @@ export const experience: TimelineItem[] = [
   {
     date: 'September 2023 - Present',
     location: 'Vienna Elite Volleyball Club',
-    title: <span className="text-blue-700"> Head Volleyball Coach (16 National, 17 National) </span>,
+    title: <span className="text-blue-300"> Head Volleyball Coach (16 National, 17 National) </span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -283,6 +284,18 @@ export const experience: TimelineItem[] = [
           high school.
         </p>
         <ul className="list-disc pl-5 space-y-1">
+          <li>
+            For the 2025-2026 club season, I am the Head Coach for{' '}
+            <a
+              className="text-blue-300 underline hover:text-purple-300"
+              href="https://www.viennaelite.org/team/158529"
+              rel="noopener noreferrer"
+              target="_blank">
+              Vienna Elite 16 Black
+            </a>{' '}
+            (National) team
+          </li>
+
           <li>Work with coaching staff to run practices and oversee middle and high school athletes (ages 13–18).</li>
           <li>Devise drills and training plans to optimize fundamentals, teamwork, communication, and game IQ.</li>
           <li>Evaluate individual strengths and assign positions to maximize team performance.</li>
@@ -295,7 +308,7 @@ export const experience: TimelineItem[] = [
   {
     date: 'June 2024 - Present',
     location: 'Washington DC Thunder 9man VBC',
-    title: <span className="text-blue-900">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
+    title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -447,6 +460,7 @@ export const socialLinks: Social[] = [
     Icon: InstagramIcon,
     href: 'https://www.instagram.com/coachryantutu/',
     text: 'Follow me on Instagram - Over 4 Million Views!',
+    external: true,
   },
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];
