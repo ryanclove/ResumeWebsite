@@ -10,7 +10,7 @@ const Resume: FC = memo(() => {
   return (
     <Section
       bgClassName="bg-gray-800 dark:bg-gray-900"
-      paddingClassName="pt-4 pb-0 md:pt-12 md:pb-16"
+      paddingClassName="pt-0 pb-0 md:pt-12 md:pb-16"
       sectionId={SectionId.Resume} // slimmer top and bottom padding
     >
       <div className="flex flex-col divide-y-2 divide-neutral-300">

@@ -8,7 +8,7 @@ interface ResumeSectionProps {
 }
 
 const ResumeSection: FC<PropsWithChildren<ResumeSectionProps>> = memo(
-  ({title, children, className, pt = 'py-16', pb = 'pb-16'}) => {
+  ({title, children, className, pt = 'py-8', pb = 'pb-8'}) => {
     return (
       <div className={`w-full bg-gray-800 dark:bg-gray-900 ${className}`}>
         {/* Inner container for content and padding */}
