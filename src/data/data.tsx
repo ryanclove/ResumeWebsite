@@ -74,8 +74,8 @@ export const heroData: Hero = {
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         I'm a DMV based <strong className="text-stone-100">Volleyball Coach</strong>, currently working at{' '}
-        <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. <br></br>
-        I am the Head Coach for{' '} <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
+        <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. <br></br>I am the Head Coach for{' '}
+        <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Explore my site to learn more about me and my Coaching background and feats.
@@ -275,29 +275,19 @@ export const experience: TimelineItem[] = [
   {
     date: 'September 2023 - Present',
     location: 'Vienna Elite Volleyball Club',
-    title: ( <span className="text-blue-700"> Head Volleyball Coach (16 National, 17 National) </span>),
+    title: <span className="text-blue-700"> Head Volleyball Coach (16 National, 17 National) </span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
-          Vienna Elite is a girls travel volleyball club focusing on the development of volleyball players in
-          middle and high school.
+          Vienna Elite is a girls travel volleyball club focusing on the development of volleyball players in middle and
+          high school.
         </p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>
-            Work with coaching staff to run practices and oversee middle and high school athletes (ages 13–18).
-          </li>
-          <li>
-            Devise drills and training plans to optimize fundamentals, teamwork, communication, and game IQ.
-          </li>
-          <li>
-            Evaluate individual strengths and assign positions to maximize team performance.
-          </li>
-          <li>
-            Manage tournament lineups and make in-game adjustments to improve execution and results.
-          </li>
-          <li>
-            Medals are in section below!
-          </li>
+          <li>Work with coaching staff to run practices and oversee middle and high school athletes (ages 13–18).</li>
+          <li>Devise drills and training plans to optimize fundamentals, teamwork, communication, and game IQ.</li>
+          <li>Evaluate individual strengths and assign positions to maximize team performance.</li>
+          <li>Manage tournament lineups and make in-game adjustments to improve execution and results.</li>
+          <li>Medals are in section below!</li>
         </ul>
       </div>
     ),
@@ -305,41 +295,27 @@ export const experience: TimelineItem[] = [
   {
     date: 'June 2024 - Present',
     location: 'Washington DC Thunder 9man VBC',
-    title: ( <span className="text-blue-900">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>),
+    title: <span className="text-blue-900">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
-          Washington DC Thunder is a 9man travel club focusing on the development of adult men's
-          players in 9man and adult women's players in women's 6s
+          Washington DC Thunder is a 9man travel club focusing on the development of adult men's players in 9man and
+          adult women's players in women's 6s
         </p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>
-            Entrusted with the lone responsibility to lead the adult women's program at DC Thunder.
-          </li>
-          <li>
-            Devising practices to optimize their fundamentals, teamwork, communication, and more.
-          </li>
-          <li>
-            Managing 2 rosters on 1 practice court without sacrificing quality or quantity of reps.
-          </li>
-          <li>
-            Follow the guidelines of 9man and its Chinese & Asian-ethnicity requirements.
-          </li>
-          <li>
-            Head coach for the women's B team at tournaments; make rosters, adjustments, etc.
-          </li>
+          <li>Entrusted with the lone responsibility to lead the adult women's program at DC Thunder.</li>
+          <li>Devising practices to optimize their fundamentals, teamwork, communication, and more.</li>
+          <li>Managing 2 rosters on 1 practice court without sacrificing quality or quantity of reps.</li>
+          <li>Follow the guidelines of 9man and its Chinese & Asian-ethnicity requirements.</li>
+          <li>Head coach for the women's B team at tournaments; make rosters, adjustments, etc.</li>
           <li>
             Tournament Finishes 2024
             <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
+              <li>New York Mini (45 teams) – Women's A: 15th Overall / Women's B: 25th Overall</li>
+              <li>DC Mini (12 teams) – Women's A AA Silver Champions</li>
               <li>
-                New York Mini (45 teams) – Women's A: 15th Overall / Women's B: 25th Overall
-              </li>
-              <li>
-                DC Mini (12 teams) – Women's A AA Silver Champions
-              </li>
-              <li>
-                North American Chinese Invitational Volleyball Tournament Nationals (83 teams) –
-                Women's A: 41st Overall / Women's B: 60th Overall
+                North American Chinese Invitational Volleyball Tournament Nationals (83 teams) – Women's A: 41st Overall
+                / Women's B: 60th Overall
               </li>
             </ul>
           </li>
@@ -350,30 +326,23 @@ export const experience: TimelineItem[] = [
   {
     date: 'November 2022 - July 2023',
     location: 'Dynamix Volleyball Club',
-    title: (<span className="text-amber-500">Head Volleyball Coach (16 National)</span>),
+    title: <span className="text-amber-500">Head Volleyball Coach (16 National)</span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
-          Dynamix is a girls travel volleyball club focusing on the development of volleyball players in
-          middle and high school.
+          Dynamix is a girls travel volleyball club focusing on the development of volleyball players in middle and high
+          school.
         </p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>
-            Same responsibilities as listed in Vienna Elite experience above with the following modifications:
-          </li>
+          <li>Same responsibilities as listed in Vienna Elite experience above with the following modifications:</li>
           <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
+            <li>Placed in charge of a National 16s that faced high levels of competition.</li>
             <li>
-              Placed in charge of a National 16s that faced high levels of competition.
-            </li>
-            <li>
-              Executed game plans that resulted in 2, 1st place finishes and a 2nd place finish in Gold at
-              respective tournaments. Respectable finishes at regional qualifier tournaments and AAU
-              Nationals.
+              Executed game plans that resulted in 2, 1st place finishes and a 2nd place finish in Gold at respective
+              tournaments. Respectable finishes at regional qualifier tournaments and AAU Nationals.
             </li>
           </ul>
-          <li>
-            Medals are in section below!
-          </li>
+          <li>Medals are in section below!</li>
         </ul>
       </div>
     ),
@@ -381,28 +350,20 @@ export const experience: TimelineItem[] = [
   {
     date: 'August 2021 - September 2022',
     location: 'Central Jersey Heat Volleyball Club',
-    title: (<span className="text-red-600">Head Volleyball Coach (15 Regional)</span>),
+    title: <span className="text-red-600">Head Volleyball Coach (15 Regional)</span>,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
-          CJ Heat is a girls travel volleyball club focusing on the development of volleyball players in high
-          school.
+          CJ Heat is a girls travel volleyball club focusing on the development of volleyball players in high school.
         </p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>
-            Same responsibilities as listed in Vienna Elite experience above with the following modifications:
-          </li>
+          <li>Same responsibilities as listed in Vienna Elite experience above with the following modifications:</li>
           <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
+            <li>Worked with young women ages 14-18</li>
+            <li>Placed in charge of a developmental 15s team</li>
             <li>
-              Worked with young women ages 14-18
-            </li>
-            <li>
-              Placed in charge of a developmental 15s team
-            </li>
-            <li>
-              Players new to the sport in need of learning basic fundamentals, techniques, game rules,
-              team and system execution. Played against lower levels of competition to allow paced
-              individual & team growth.
+              Players new to the sport in need of learning basic fundamentals, techniques, game rules, team and system
+              execution. Played against lower levels of competition to allow paced individual & team growth.
             </li>
           </ul>
         </ul>
@@ -419,17 +380,17 @@ export const testimonial: TestimonialSection = {
   testimonials: [
     {
       name: 'Lora Ann H. (Mother of 16s Player)',
-      text: 'You\'re the best coach [redacted player name] has ever had. She\'s improved more since November than she has in any other full season... You\'ve given her confidence in herself and her abilities, which allows her to try more things on the court- which can lead to mistakes. But, you\'ve given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). I\'ve talked to pretty much every parent and all of us have the same feeling about you and this team. We\'re happy the girls are getting along, happy that you have a better understanding of teenagers than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.',
+      text: "You're the best coach [redacted player name] has ever had. She's improved more since November than she has in any other full season... You've given her confidence in herself and her abilities, which allows her to try more things on the court- which can lead to mistakes. But, you've given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). I've talked to pretty much every parent and all of us have the same feeling about you and this team. We're happy the girls are getting along, happy that you have a better understanding of teenagers than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.",
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
     },
     {
       name: 'Stacie B. (Mother of 16s Player)',
-      text: ' I\'ve seen such a positive change in [redacted player name] in just a short time...  [You\'ve shown] a deep level of self awareness and maturity beyond your years. One team one fight!',
+      text: " I've seen such a positive change in [redacted player name] in just a short time...  [You've shown] a deep level of self awareness and maturity beyond your years. One team one fight!",
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
       name: 'Jennie B. (Mother of 16s Player)',
-      text: 'You are incredibly tactical... You\'re a great coach and communicator.',
+      text: "You are incredibly tactical... You're a great coach and communicator.",
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
     {
@@ -481,6 +442,11 @@ export const socialLinks: Social[] = [
   //{label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
   //{label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
   //{label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/coachryantutu/', text: 'Follow me on Instagram - Over 4 Million Views!',}
+  {
+    label: 'Instagram',
+    Icon: InstagramIcon,
+    href: 'https://www.instagram.com/coachryantutu/',
+    text: 'Follow me on Instagram - Over 4 Million Views!',
+  },
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];

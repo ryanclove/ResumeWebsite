@@ -74,7 +74,7 @@ const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
 });
 
 // ------------------- ItemOverlay Component -------------------
-const ItemOverlay: FC<{ item: MedalsItem }> = memo(({item: {title, description}}) => {
+const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLDivElement>(null);
