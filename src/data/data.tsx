@@ -29,7 +29,7 @@ import nvpl2 from '../images/medals/NVPL 2.jpg';
 import prezdaysilver from '../images/medals/Prez Day Silver.jpg';
 import volleyjamesbronze from '../images/medals/Volley by the James.jpg';
 import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
+import testimonialImage from '../images/testimonialsbackground.jpg';
 import viennalogo from '../images/viennalogo.png';
 import {
   About,

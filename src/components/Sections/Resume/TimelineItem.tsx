@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-spacing */
-import Image, { StaticImageData } from 'next/image';
-import { FC, memo, ReactNode } from 'react';
+import Image from 'next/image';
+import { FC, memo } from 'react';
 
 import type { TimelineItem as TimelineItemType } from '../../../data/dataDef';
 
