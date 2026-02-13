@@ -96,6 +96,17 @@ export interface TimelineItem {
 }
 
 /**
+ * College commitments section
+ */
+export interface CollegeItem {
+  title: string | number | ReactNode;
+  date: string;
+  location: string;
+  content: ReactNode;
+  image?: string | StaticImageData; // add this line
+}
+
+/**
  * Testimonial section
  */
 export interface TestimonialSection {

@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable simple-import-sort/imports */
+/* eslint-disable object-curly-spacing */
 import {
   AcademicCapIcon,
   //ArrowDownTrayIcon,
@@ -29,10 +32,12 @@ import nvpl2 from '../images/medals/NVPL 2.jpg';
 import prezdaysilver from '../images/medals/Prez Day Silver.jpg';
 import volleyjamesbronze from '../images/medals/Volley by the James.jpg';
 import profilepic from '../images/profilepic.jpg';
+import alexprofile from '../images/alexprofile.jpg';
 import testimonialImage from '../images/testimonialsbackground.jpg';
 import viennalogo from '../images/viennalogo.png';
 import {
   About,
+  CollegeItem,
   ContactSection,
   ContactType,
   Hero,
@@ -58,6 +63,7 @@ export const homePageMeta: HomepageMeta = {
 export const SectionId = {
   Hero: 'hero',
   About: 'about',
+  College: 'college',
   Contact: 'contact',
   Medals: 'medals',
   Resume: 'resume',
@@ -113,11 +119,11 @@ personalized instruction, focusing on technique, decision-making, and overall pe
 while keeping the game enjoyable. Available for private lessons and support in achieving
 college or personal volleyball goals.`,
   aboutItems: [
-    {label: 'Location', text: 'DMV, USA', Icon: MapIcon},
-    {label: 'Age', text: '25', Icon: CalendarIcon},
-    {label: 'Interests', text: 'Volleyball, Philly Sports, Technology', Icon: SparklesIcon},
-    {label: 'Study', text: 'Rutgers University', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Vienna Elite VBC | Peraton, Inc.', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'DMV, USA', Icon: MapIcon },
+    { label: 'Age', text: '25', Icon: CalendarIcon },
+    { label: 'Interests', text: 'Volleyball, Philly Sports, Technology', Icon: SparklesIcon },
+    { label: 'Study', text: 'Rutgers University', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'Vienna Elite VBC | Peraton, Inc.', Icon: BuildingOffice2Icon },
   ],
 };
 
@@ -471,4 +477,51 @@ export const socialLinks: Social[] = [
     external: true,
   },
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+];
+
+/**
+ * College section
+ */
+export const college: CollegeItem[] = [
+  {
+    date: 'Vienna 17 Blue (National) - 2025',
+    image: alexprofile,
+    location: 'Westminster College - New Wilmington, PA',
+    title: 'Alex Boda - Westminster College (DIII)',
+    content: (
+      <div>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            Alex (Class of 2026) is committed to Westminster College to play Division III volleyball starting in the
+            Fall of 2026.
+          </li>
+          <li>
+            Committed as an <strong className="text-stone-100">OH/RS</strong>
+          </li>
+          <li>Alex played RS/OH for Coach Ryan for Vienna Elite 17 Blue in the 2024-2025 Club season</li>
+          <li>
+            As voted by her peers, Alex was voted:
+            <ul className="list-disc pl-8 mt-2 space-y-1 italic">
+              <li>Most Likely to Get a Kill When We Need It Most</li>
+              <li>Most Improved Player</li>
+              <li>Best Front Row Player</li>
+              <li>Best Sense of Humor</li>
+            </ul>
+          </li>
+          <li>
+            <span>Follow Alex on Instagram: {' '}</span>
+            <a
+              className="inline-flex items-center gap-1 text-blue-500 hover:underline"
+              href="https://www.instagram.com/alexbodavball2026/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon className="h-5 w-5" />
+              @alexbodavball2026
+            </a>
+          </li>
+        </ul>
+      </div>
+    ),
+  },
 ];
