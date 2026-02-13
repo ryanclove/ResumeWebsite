@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-spacing */
 import {FC, memo, useCallback, useMemo, useState} from 'react';
 
 interface FormData {
@@ -29,16 +30,33 @@ const ContactForm: FC = memo(() => {
     [data],
   );
 
-  const handleSendMessage = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      /**
-       * This is a good starting point to wire up your form submission logic
-       * */
-      console.log('Data to send: ', data);
-    },
-    [data],
-  );
+ const handleSendMessage = useCallback(
+  async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setData(defaultData); // reset form
+      } else {
+        alert("Failed to send message: " + result.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred while sending the message.");
+    }
+  },
+  [data, defaultData]
+);
+
+
 
   const inputClasses =
     'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
