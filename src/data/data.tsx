@@ -493,7 +493,7 @@ export const socialLinks: Social[] = [
     label: 'Instagram',
     Icon: InstagramIcon,
     href: 'https://www.instagram.com/coachryantutu/?utm_source=link',
-    text: 'Follow me on Instagram - Over 4 Million Views!',
+    text: 'Follow me @coachryantutu Instagram - Over 4 Million Views!',
     external: true,
   },
   //{label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
