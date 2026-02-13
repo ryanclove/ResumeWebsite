@@ -492,7 +492,7 @@ export const socialLinks: Social[] = [
   {
     label: 'Instagram',
     Icon: InstagramIcon,
-    href: 'https://www.instagram.com/coachryantutu/',
+    href: 'https://www.instagram.com/coachryantutu/?utm_source=link',
     text: 'Follow me on Instagram - Over 4 Million Views!',
     external: true,
   },
