@@ -3,7 +3,7 @@ import {FC, memo} from 'react';
 
 import Page from '../components/Layout/Page';
 import About from '../components/Sections/About';
-import Contact from '../components/Sections/Contact';
+//import Contact from '../components/Sections/Contact';
 import Footer from '../components/Sections/Footer';
 import Hero from '../components/Sections/Hero';
 import Medals from '../components/Sections/Medals';
@@ -24,7 +24,7 @@ const Home: FC = memo(() => {
       <Resume />
       <Medals />
       <Testimonials />
-      <Contact />
+      {/*<Contact />*/}
       <Footer />
     </Page>
   );
