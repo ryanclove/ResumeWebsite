@@ -21,7 +21,7 @@ const Medals: FC = memo(() => {
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Medals}>
       <div className="flex flex-col gap-y-8">
-        <h2 className="self-center text-xl font-bold text-white">Medals Won</h2>
+        <h2 className="self-center text-2xl font-bold text-white">Medals Won</h2>
         <div className="w-full columns-2 md:columns-3 lg:columns-4">
           {medalsItems.map((item, index) => (
             <MedalImage item={item} key={`${item.title}-${index}`} onClick={handleImageClick} />

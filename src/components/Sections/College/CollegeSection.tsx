@@ -18,10 +18,10 @@ interface CollegeSectionProps {
 const CollegeSection: FC<PropsWithChildren<CollegeSectionProps>> = memo(
   ({title, items, className = '', pt = 'py-8', pb = 'pb-8', imageWidth = 128, imageHeight = 128}) => {
     return (
-      <div className={`w-full bg-gray-800 dark:bg-gray-900 ${className}`}>
+      <div className={`w-full bg-blue-900 dark:bg-gray-900 ${className}`}>
         <div className={`max-w-screen-lg mx-auto px-4 ${pt} ${pb} md:px-8 md:pt-12 md:pb-24`}>
           {/* Section Title */}
-          <h2 className="text-xl font-bold uppercase text-white dark:text-white relative mb-6">
+          <h2 className="text-2xl font-bold uppercase text-white dark:text-white text-center relative mb-6">
             {title}
             <span className="absolute inset-x-0 -bottom-1 border-b-2 border-orange-400" />
           </h2>

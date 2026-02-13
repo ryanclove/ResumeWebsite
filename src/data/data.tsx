@@ -511,7 +511,7 @@ export const college: CollegeItem[] = [
           <li>
             <span>Follow Alex on Instagram: {' '}</span>
             <a
-              className="inline-flex items-center gap-1 text-blue-500 hover:underline"
+              className="inline-flex items-center gap-1 text-purple-300 hover:underline"
               href="https://www.instagram.com/alexbodavball2026/"
               target="_blank"
               rel="noopener noreferrer"
