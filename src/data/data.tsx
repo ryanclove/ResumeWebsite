@@ -100,11 +100,11 @@ export const heroData: Hero = {
       Icon: NewTabIcon,
       external: true,
     },
-    {
+    /*{
       href: `#${SectionId.Contact}`,
       text: 'Contact',
       primary: false,
-    },
+    },*/
   ],
 };
 
