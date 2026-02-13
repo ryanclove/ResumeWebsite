@@ -1,23 +1,30 @@
-import {FC, memo} from 'react';
+/* eslint-disable object-curly-spacing */
+/* eslint-disable react/jsx-sort-props */
+import { FC, memo } from 'react';
 
-import {socialLinks} from '../data/data';
+import { socialLinks } from '../data/data';
 
 const Socials: FC = memo(() => {
   return (
-    <>
-      {socialLinks.map(({label, Icon, href, text, external}) => (
+    <div className="flex flex-wrap justify-center gap-4">
+      {socialLinks.map(({ label, Icon, href, text, external }) => (
         <a
-          aria-label={label}
-          className="-m-1.5 flex items-center gap-2 rounded-md p-1.5 transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 sm:-m-3 sm:p-3"
-          href={href}
           key={label}
+          aria-label={label}
+          href={href}
+          target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
-          target={external ? '_blank' : undefined}>
-          <Icon className="h-5 w-5 align-baseline sm:h-6 sm:w-6" />
-          {text && <span className="hidden sm:inline">{text}</span>}
+          className="-m-1.5 flex flex-col items-center gap-1 rounded-md p-1.5 transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 sm:flex-row sm:gap-2 sm:-m-3 sm:p-3"
+        >
+          <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+          {text && (
+            <span className="text-xs text-center sm:text-base sm:inline-block">
+              {text}
+            </span>
+          )}
         </a>
       ))}
-    </>
+    </div>
   );
 });
 
