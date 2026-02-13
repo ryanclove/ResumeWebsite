@@ -27,6 +27,7 @@ import prezdaysilver from '../images/medals/Prez Day Silver.jpg';
 import volleyjamesbronze from '../images/medals/Volley by the James.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
+//import viennalogo from '../images/viennalogo.png';
 import {
   About,
   ContactSection,
@@ -275,6 +276,7 @@ export const education: TimelineItem[] = [
 export const experience: TimelineItem[] = [
   {
     date: 'September 2023 - Present',
+    //imageSrc: viennalogo,
     location: 'Vienna Elite Volleyball Club',
     title: <span className="text-blue-300"> Head Volleyball Coach (16 National, 17 National) </span>,
     content: (

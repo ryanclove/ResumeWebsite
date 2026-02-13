@@ -1,4 +1,4 @@
-import {StaticImageData} from 'next/image';
+import type {StaticImageData} from 'next/image';
 import {FC, ForwardRefExoticComponent, ReactNode, SVGProps} from 'react';
 
 import {IconProps} from '../components/Icon/Icon';
@@ -92,6 +92,7 @@ export interface TimelineItem {
   location: string;
   title: ReactNode;
   content: ReactNode;
+  //imageSrc?: string | StaticImageData;
 }
 
 /**

@@ -1,9 +1,10 @@
 import {FC, memo} from 'react';
 
-import type {TimelineItem} from '../../../data/dataDef';
+import type {TimelineItem as TimelineItemType} from '../../../data/dataDef';
 
-const TimelineItem: FC<{item: TimelineItem}> = memo(({item}) => {
+const TimelineItem: FC<{item: TimelineItemType}> = memo(({item}) => {
   const {title, date, location, content} = item;
+
   return (
     <div className="flex flex-col pb-8 text-center last:pb-0 md:text-left">
       <div className="flex flex-col pb-4">
@@ -14,7 +15,7 @@ const TimelineItem: FC<{item: TimelineItem}> = memo(({item}) => {
           <span className="flex-1 text-sm sm:flex-none">{date}</span>
         </div>
       </div>
-      {content}
+      <div className="text-sm sm:text-base">{content}</div>
     </div>
   );
 });
