@@ -401,12 +401,12 @@ export const testimonial: TestimonialSection = {
   testimonials: [
     {
       name: 'Lora Ann H. (Mother of 16s Player)',
-      text: "You're the best coach [redacted player name] has ever had. She's improved more since November than she has in any other full season... You've given her confidence in herself and her abilities, which allows her to try more things on the court- which can lead to mistakes. But, you've given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). I've talked to pretty much every parent and all of us have the same feeling about you and this team. We're happy the girls are getting along, happy that you have a better understanding of teenagers than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.",
+      text: "You're the best coach [player name] has ever had. She's improved more since November than she has in any other full season... You've given her confidence in herself and her abilities, which allows her to try more things on the court- which can lead to mistakes. But, you've given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). I've talked to pretty much every parent and all of us have the same feeling about you and this team. We're happy the girls are getting along, happy that you have a better understanding of teenagers than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.",
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
     },
     {
       name: 'Stacie B. (Mother of 16s Player)',
-      text: " I've seen such a positive change in [redacted player name] in just a short time...  [You've shown] a deep level of self awareness and maturity beyond your years. One team one fight!",
+      text: " I've seen such a positive change in [player name] in just a short time...  [You've shown] a deep level of self awareness and maturity beyond your years. One team one fight!",
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
@@ -416,7 +416,7 @@ export const testimonial: TestimonialSection = {
     },
     {
       name: 'Sherry F. (Mother of 17s Player)',
-      text: 'Thanks for a great season! [redacted player name] says it was her favorite Vienna year!',
+      text: 'Thanks for a great season! [player name] says it was her favorite Vienna year!',
     },
     {
       name: 'Dolores B. (Mother of 17s Player)',
