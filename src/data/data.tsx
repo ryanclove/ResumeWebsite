@@ -14,6 +14,7 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 //import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 //import TwitterIcon from '../components/Icon/TwitterIcon';
 import NewTabIcon from '../components/Icon/NewTabIcon';
+import dcthunderlogo from '../images/dcthunder.png';
 import headerPhoto from '../images/headerphoto.png';
 import clashincarolina from '../images/medals/Clash in Carolina.jpg';
 import dcminiaasilver from '../images/medals/DC Mini AA Silver.jpg';
@@ -27,7 +28,7 @@ import prezdaysilver from '../images/medals/Prez Day Silver.jpg';
 import volleyjamesbronze from '../images/medals/Volley by the James.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
-//import viennalogo from '../images/viennalogo.png';
+import viennalogo from '../images/viennalogo.png';
 import {
   About,
   ContactSection,
@@ -276,7 +277,7 @@ export const education: TimelineItem[] = [
 export const experience: TimelineItem[] = [
   {
     date: 'September 2023 - Present',
-    //imageSrc: viennalogo,
+    image: viennalogo,
     location: 'Vienna Elite Volleyball Club',
     title: <span className="text-blue-300"> Head Volleyball Coach (16 National, 17 National) </span>,
     content: (
@@ -309,6 +310,7 @@ export const experience: TimelineItem[] = [
   },
   {
     date: 'June 2024 - Present',
+    image: dcthunderlogo,
     location: 'Washington DC Thunder 9man VBC',
     title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
     content: (

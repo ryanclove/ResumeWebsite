@@ -88,11 +88,11 @@ export interface MedalsItem {
  * Resume section
  */
 export interface TimelineItem {
+  title: string | number | ReactNode;
   date: string;
   location: string;
-  title: ReactNode;
   content: ReactNode;
-  //imageSrc?: string | StaticImageData;
+  image?: string | StaticImageData; // add this line
 }
 
 /**
