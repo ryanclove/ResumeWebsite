@@ -14,7 +14,9 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 //import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 //import TwitterIcon from '../components/Icon/TwitterIcon';
 import NewTabIcon from '../components/Icon/NewTabIcon';
+import cjheatlogo from '../images/cjheatlogo.png';
 import dcthunderlogo from '../images/dcthunder.png';
+import dynamixlogo from '../images/dynamixlogo.png';
 import headerPhoto from '../images/headerphoto.png';
 import clashincarolina from '../images/medals/Clash in Carolina.jpg';
 import dcminiaasilver from '../images/medals/DC Mini AA Silver.jpg';
@@ -342,6 +344,7 @@ export const experience: TimelineItem[] = [
   },
   {
     date: 'November 2022 - July 2023',
+    image: dynamixlogo,
     location: 'Dynamix Volleyball Club',
     title: <span className="text-amber-500">Head Volleyball Coach (16 National)</span>,
     content: (
@@ -366,6 +369,7 @@ export const experience: TimelineItem[] = [
   },
   {
     date: 'August 2021 - September 2022',
+    image: cjheatlogo,
     location: 'Central Jersey Heat Volleyball Club',
     title: <span className="text-red-600">Head Volleyball Coach (15 Regional)</span>,
     content: (
