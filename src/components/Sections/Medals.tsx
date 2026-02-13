@@ -1,11 +1,12 @@
+/* eslint-disable object-curly-spacing */
 //import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
+import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
-import {isMobile} from '../../config';
-import {medalsItems, SectionId} from '../../data/data';
-import {MedalsItem} from '../../data/dataDef';
+import { isMobile } from '../../config';
+import { medalsItems, SectionId } from '../../data/data';
+import { MedalsItem } from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 
@@ -52,7 +53,7 @@ interface MedalImageProps {
   onClick: (img: MedalsItem['image']) => void;
 }
 
-const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
+const MedalImage: FC<MedalImageProps> = memo(({ item, onClick }) => {
   const handleClick = useCallback(() => {
     onClick(item.image);
   }, [item.image, onClick]);
@@ -65,7 +66,7 @@ const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
           className="h-full w-full cursor-pointer transition hover:scale-[1.02]"
           onClick={handleClick}
           placeholder="blur"
-          src={item.image}
+          src={item.image || "/placeholder.png"}
         />
         <ItemOverlay item={item} />
       </div>
@@ -74,7 +75,7 @@ const MedalImage: FC<MedalImageProps> = memo(({item, onClick}) => {
 });
 
 // ------------------- ItemOverlay Component -------------------
-const ItemOverlay: FC<{item: MedalsItem}> = memo(({item: {title, description}}) => {
+const ItemOverlay: FC<{ item: MedalsItem }> = memo(({ item: { title, description } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLDivElement>(null);
