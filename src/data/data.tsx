@@ -456,7 +456,7 @@ export const testimonial: TestimonialSection = {
  */
 
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
+  headerText: 'Get in touch!',
   description: 'Email me for inquiries about coaching, private lessons, or any other questions you may have.',
   items: [
     {
@@ -531,12 +531,12 @@ export const college: CollegeItem[] = [
           <li>
             <span>Follow Alex on Instagram: {' '}</span>
             <a
-              className="inline-flex items-center gap-1 text-purple-300 hover:underline"
+              className="inline-flex items-center gap-1 text-blue-500 hover:text-purple-500 hover:underline underline-offset-4 transition-colors duration-200"
               href="https://www.instagram.com/alexbodavball2026/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <InstagramIcon className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5 text-current" />
               @alexbodavball2026
             </a>
           </li>
