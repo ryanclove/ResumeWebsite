@@ -273,6 +273,7 @@ export const education: TimelineItem[] = [
     image: diploma,
     location: 'Rutgers University - the State University of New Jersey',
     title: 'Bachelor of Science in Computer Science',
+    alwaysOpen: true,
     content: (
       <p>
         While completing my Bachelor's Degreee, I played Intramural volleyball as well as played with the Rutgers Men's
