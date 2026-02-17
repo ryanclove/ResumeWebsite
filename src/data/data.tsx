@@ -35,6 +35,11 @@ import profilepic from '../images/profilepic.jpg';
 import alexprofile from '../images/alexprofile.jpg';
 import testimonialImage from '../images/testimonialsbackground.jpg';
 import viennalogo from '../images/viennalogo.png';
+import cinnaphoto from '../images/cinnaphoto.jpg';
+import quandophoto from '../images/quandophoto.jpg';
+import rutgersphoto from '../images/rutgersphoto.jpg';
+import playersedgephoto from '../images/playersedge.jpg';
+import diploma from '../images/diploma.jpg';
 import {
   About,
   CollegeItem,
@@ -265,6 +270,7 @@ export const medalsItems: MedalsItem[] = [
 export const education: TimelineItem[] = [
   {
     date: 'September 2018 - May 2022',
+    image: diploma,
     location: 'Rutgers University - the State University of New Jersey',
     title: 'Bachelor of Science in Computer Science',
     content: (
@@ -398,6 +404,84 @@ export const experience: TimelineItem[] = [
     ),
   },
 ];
+
+export const playing: TimelineItem[] = [
+  {
+    date: 'Rutgers University Edge 2018 - 2022',
+    image: rutgersphoto,
+    location: 'New Brunswick, NJ',
+    title: <span className="text-red-600"> Setter, OH/RS </span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">Rutgers University Intramurals and Open Gyms with Club Teams</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Played with the Rutgers Men's & Women's club travel teams (2021-2022) in open gyms</li>
+          <li>Rutgers CoRec Intramural Volleyball (2019-2021)
+            <ul className="list-disc pl-8 mt-2 space-y-1">
+              <li>Elected Captain of Intramural Teams (2019-2021)</li>
+              <li>Setter or Outside Hitter based on team's needs and opponent</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'Quandomania Player\'s Edge 2015 - 2019',
+    image: playersedgephoto,
+    location: 'Mt. Laurel, NJ',
+    title: <span className="text-amber-200"> Sand/Beach Player </span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Quandomania Player's Edge Sand/Beach volleyball program
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>I played for 4 summer seasons. Practicing twice a week and competing in tournaments along the Jersey shore on weekends.</li>
+          <li>Played either defender or split back with my partner.</li>
+          <li>I credit Sand/Beach volleyball as the largest contributor to improving my setting, defense, hitting, and volleyball IQ.</li>
+          <li>I played alongside and was coached by AVP Rookie of the Year: Eric Zaun (R.I.P)</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'High School 2015 - 2018',
+    image: cinnaphoto,
+    location: 'Cinnaminson High School, NJ',
+    title: <span className="text-red-300"> Setter </span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Cinnaminson High School boys volleyball program
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Varsity: I was the varsity Setter for Cinnaminson High School for 3 years - sophomore year 2016 to senior year 2018 - starting all 3 years. I was a captain my senior year.</li>
+          <li>West Jersey Interscholastic Volleyball League 2018 All-Conference 2nd-Team.</li>
+          <li>New Jersey State Boys Volleyball All-Star selections: 2017, 2018</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'Quandomania VBC 2015 - 2018',
+    image: quandophoto,
+    location: 'Washington Township, NJ',
+    title: <span className="text-orange-400"> Libero, Setter </span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Quandomania Volleyball Club boys volleyball program
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>I played for 3 club seasions, alternating between Libero and Setter.</li>
+          <li>Played up in age all 3 seasons - U16, U17, U18</li>
+          <li>Occasionally filled in as an Outside Hitter or Right Side Hitter</li>
+        </ul>
+      </div>
+    ),
+  },
+]
 
 /**
  * Testimonial section

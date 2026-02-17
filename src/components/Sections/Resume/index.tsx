@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-spacing */
 import React, {FC, memo} from 'react';
 
-import {education, experience, SectionId} from '../../../data/data';
+import {education, experience, playing, SectionId} from '../../../data/data';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
 
@@ -18,6 +18,14 @@ const Resume: FC = memo(() => {
           imageWidth={128}
           items={experience} // each item can have its own `image`
           title="Coaching Experience"
+        />
+
+        {/* Playing Experience */}
+        <ResumeSection
+          imageHeight={128}
+          imageWidth={128}
+          items={playing} // each item can have its own `image`
+          title="Playing Experience"
         />
 
         {/* Education */}
