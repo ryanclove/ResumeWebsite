@@ -438,7 +438,7 @@ export const testimonial: TestimonialSection = {
     },
     {
       name: 'Clara A. (Former 16s Player)',
-      text: 'Thank you for making this season fun and full of surprises and helping us all get better! This season was the best and I don\'t know what we will do with a different coach. THank you for making everything a celebration, spending time and money on us. I\'ve learned so much this season',
+      text: 'Thank you for making this season fun and full of surprises and helping us all get better! This season was the best and I don\'t know what we will do with a different coach. Thank you for making everything a celebration, spending time and money on us. I\'ve learned so much this season',
     },
     {
       name: 'Dolores B. (Mother of 17s Player)',
