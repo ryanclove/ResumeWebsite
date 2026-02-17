@@ -294,6 +294,7 @@ export const experience: TimelineItem[] = [
     image: viennalogo,
     location: 'Vienna Elite Volleyball Club',
     title: <span className="text-blue-300"> Head Volleyball Coach (16 National, 17 National) </span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -327,6 +328,7 @@ export const experience: TimelineItem[] = [
     image: dcthunderlogo,
     location: 'Washington DC Thunder 9man VBC',
     title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -411,6 +413,7 @@ export const playing: TimelineItem[] = [
     image: rutgersphoto,
     location: 'New Brunswick, NJ',
     title: <span className="text-red-600"> Setter, OH/RS </span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">Rutgers University Intramurals and Open Gyms with Club Teams</p>
@@ -431,6 +434,7 @@ export const playing: TimelineItem[] = [
     image: playersedgephoto,
     location: 'Mt. Laurel, NJ',
     title: <span className="text-amber-200"> Sand/Beach Player </span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -450,6 +454,7 @@ export const playing: TimelineItem[] = [
     image: cinnaphoto,
     location: 'Cinnaminson High School, NJ',
     title: <span className="text-red-300"> Setter </span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -468,6 +473,7 @@ export const playing: TimelineItem[] = [
     image: quandophoto,
     location: 'Washington Township, NJ',
     title: <span className="text-orange-400"> Libero, Setter </span>,
+    alwaysOpen: true,
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">

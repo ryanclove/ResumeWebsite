@@ -92,7 +92,8 @@ export interface TimelineItem {
   date: string;
   location: string;
   content: ReactNode;
-  image?: string | StaticImageData; // add this line
+  image?: string | StaticImageData;
+  alwaysOpen?: boolean;
 }
 
 /**
