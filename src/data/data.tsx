@@ -40,6 +40,7 @@ import quandophoto from '../images/quandophoto.jpg';
 import rutgersphoto from '../images/rutgersphoto.jpg';
 import playersedgephoto from '../images/playersedge.jpg';
 import diploma from '../images/diploma.jpg';
+import stjamesgrandprix from '../images/medals/St James Grand Prix.jpg';
 import {
   About,
   CollegeItem,
@@ -226,6 +227,11 @@ export const medalsItems: MedalsItem[] = [
     title: 'NVPL 16s Gold Medal',
     description: 'NVPL 16s division \n Gold Medalists (1st OVR) \n February 2023',
     image: nvpl2,
+  },
+  {
+    title: 'St. James AAU Grand Prix Gold Runner-Up',
+    description: 'St. James AAU Grand Prix 16 Club division \n Silver Medalists (2nd OVR) \n February 2026',
+    image: stjamesgrandprix,
   },
   {
     title: 'MVSA Gold Runner-Up',
