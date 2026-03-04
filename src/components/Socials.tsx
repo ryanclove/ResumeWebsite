@@ -16,11 +16,14 @@ const Socials: FC = memo(() => {
           rel={external ? 'noopener noreferrer' : undefined}
           className="
             group
-            -m-1.5 flex flex-col items-center gap-1 
-            rounded-md p-1.5 
+            text-blue-400
+            sm:text-blue-500
+            -m-1.5 flex flex-col items-center gap-1
+            rounded-md p-1.5
             transition-all duration-300
-            hover:text-blue-500
-            focus:outline-none focus:ring-2 focus:ring-blue-500
+            hover:text-blue-300
+            sm:hover:text-blue-400
+            focus:outline-none focus:ring-2 focus:ring-blue-400
             sm:flex-row sm:gap-2 sm:-m-3 sm:p-3
           "
         >
