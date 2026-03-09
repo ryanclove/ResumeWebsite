@@ -44,6 +44,8 @@ const Footer: FC = memo(() => {
         <span className="text-sm text-neutral-700">© Copyright {currentYear} Tim Baker | © Copyright {currentYear} Ryan Coslove</span>
       </div>
 
+     <br/>
+
       {/* Visitor Counter Badge */}
       {visitors !== null && (
         <div className="absolute bottom-4 right-4 group">
