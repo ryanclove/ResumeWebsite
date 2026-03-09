@@ -1,7 +1,7 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable react/jsx-sort-props */
 /* eslint-disable object-curly-spacing */
-import React, { FC, memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 import { education, experience, playing, SectionId } from '../../../data/data';

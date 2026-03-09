@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-spacing */
-import React, {FC, memo} from 'react';
+import {FC, memo} from 'react';
 
 import {college, SectionId} from '../../../data/data';
 import Section from '../../Layout/Section';
