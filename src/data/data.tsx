@@ -41,6 +41,7 @@ import rutgersphoto from '../images/rutgersphoto.jpg';
 import playersedgephoto from '../images/playersedge.jpg';
 import diploma from '../images/diploma.jpg';
 import stjamesgrandprix from '../images/medals/St James Grand Prix.jpg';
+import vienna16smixed from '../images/medals/Vienna 16s Mixed.jpg';
 import {
   About,
   CollegeItem,
@@ -234,11 +235,6 @@ export const medalsItems: MedalsItem[] = [
     image: stjamesgrandprix,
   },
   {
-    title: 'MVSA Gold Runner-Up',
-    description: 'MVSA 17 Club division \n Silver Medalists (2nd OVR) \n March 2024',
-    image: mvsagoldrunner,
-  },
-  {
     title: 'May Madness Gold Runner-Up',
     description: 'May Madness 17 Club division \n Silver Medalists (2nd OVR) \n May 2025',
     image: maymadnessgoldrunner,
@@ -247,6 +243,16 @@ export const medalsItems: MedalsItem[] = [
     title: 'Clash in Carolina Gold Runner-Up',
     description: 'Clash in Carolina 16 Club division \n Silver Medalists (2nd OVR) \n February 2023',
     image: clashincarolina,
+  },
+  {
+    title: 'Vienna Elite 16s Mixed Gold Runner-Up',
+    description: 'Vienna Elite 16s Mixed division \n Silver Medalists (2nd OVR) \n March 2026',
+    image: vienna16smixed,
+  },
+  {
+    title: 'MVSA Gold Runner-Up',
+    description: 'MVSA 17 Club division \n Silver Medalists (2nd OVR) \n March 2024',
+    image: mvsagoldrunner,
   },
   {
     title: 'Prez Day Invitational Silver',
