@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-spacing */
 import {FC, memo} from 'react';
 
-import {college, SectionId} from '../../../data/data';
+import {college, SectionId} from '../../../data/index';
 import Section from '../../Layout/Section';
 import CollegeSection from './CollegeSection';
 

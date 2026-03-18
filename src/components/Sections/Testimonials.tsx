@@ -1,10 +1,11 @@
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-sort-props */
 import classNames from 'classnames';
 import { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { isApple, isMobile } from '../../config';
-import { SectionId, testimonial } from '../../data/data';
+import { SectionId, testimonial } from '../../data/index';
 import type { Testimonial } from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';

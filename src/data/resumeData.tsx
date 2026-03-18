@@ -1,0 +1,191 @@
+/* eslint-disable object-curly-spacing */
+/* eslint-disable simple-import-sort/imports */
+
+import { TimelineItem } from './dataDef';
+import diploma from '../images/diploma.jpg';
+import viennalogo from '../images/viennalogo.png';
+import dcthunderlogo from '../images/dcthunder.png';
+import dynamixlogo from '../images/dynamixlogo.png';
+import cjheatlogo from '../images/cjheatlogo.png';
+import rutgersphoto from '../images/rutgersphoto.jpg';
+import playersedgephoto from '../images/playersedge.jpg';
+import cinnaphoto from '../images/cinnaphoto.jpg';
+import quandophoto from '../images/quandophoto.jpg';
+
+
+
+/**
+ * Education timeline
+ */
+export const education: TimelineItem[] = [
+  {
+    date: 'September 2018 - May 2022',
+    image: diploma,
+    location: 'Rutgers University - the State University of New Jersey',
+    title: 'Bachelor of Science in Computer Science',
+    alwaysOpen: true,
+    content: (
+      <p>
+        While completing my Bachelor's Degreee, I played Intramural volleyball as well as played with the Rutgers Men's
+        and Women's Club teams in open gyms, and coached junior girls volleyball at Central Jersey Heat.
+      </p>
+    ),
+  },
+];
+
+/**
+ * Coaching experience timeline
+ */
+export const experience: TimelineItem[] = [
+  {
+    date: 'September 2023 - Present',
+    image: viennalogo,
+    location: 'Vienna Elite Volleyball Club',
+    title: <span className="text-blue-300">Head Volleyball Coach (16 National, 17 National)</span>,
+    alwaysOpen: true,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Vienna Elite is a girls travel volleyball club focusing on the development of volleyball players in middle and high school.
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            For the 2025-2026 club season, I am the Head Coach for{' '}
+            <a
+              className="text-blue-300 underline hover:text-purple-300"
+              href="https://www.viennaelite.org/team/158529"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Vienna Elite 16 Black
+            </a>{' '}
+            (National) team
+          </li>
+          <li>Work with coaching staff to run practices and oversee middle and high school athletes (ages 13–18).</li>
+          <li>Devise drills and training plans to optimize fundamentals, teamwork, communication, and game IQ.</li>
+          <li>Evaluate individual strengths and assign positions to maximize team performance.</li>
+          <li>Manage tournament lineups and make in-game adjustments to improve execution and results.</li>
+          <li>Medals are in section below!</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'June 2024 - Present',
+    image: dcthunderlogo,
+    location: 'Washington DC Thunder 9man VBC',
+    title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
+    alwaysOpen: true,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Washington DC Thunder is a 9man travel club focusing on the development of adult men's players in 9man and adult women's players in women's 6s.
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Entrusted with the lone responsibility to lead the adult women's program at DC Thunder.</li>
+          <li>Devising practices to optimize their fundamentals, teamwork, communication, and more.</li>
+          <li>Managing 2 rosters on 1 practice court without sacrificing quality or quantity of reps.</li>
+          <li>Follow the guidelines of 9man and its Chinese & Asian-ethnicity requirements.</li>
+          <li>Head coach for the women's B team at tournaments; make rosters, adjustments, etc.</li>
+          <li>
+            Tournament Finishes 2024
+            <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
+              <li>New York Mini (45 teams) – Women's A: 15th Overall / Women's B: 25th Overall</li>
+              <li>DC Mini (12 teams) – Women's A AA Silver Champions</li>
+              <li>North American Chinese Invitational Volleyball Tournament Nationals (83 teams) – Women's A: 41st Overall / Women's B: 60th Overall</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'November 2022 - July 2023',
+    image: dynamixlogo,
+    location: 'Dynamix Volleyball Club',
+    title: <span className="text-amber-500">Head Volleyball Coach (16 National)</span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          Dynamix is a girls travel volleyball club focusing on the development of volleyball players in middle and high school.
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Placed in charge of a National 16s that faced high levels of competition.</li>
+          <li>Executed game plans that resulted in 2, 1st place finishes and a 2nd place finish in Gold at respective tournaments.</li>
+          <li>Medals are in section below!</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    date: 'August 2021 - September 2022',
+    image: cjheatlogo,
+    location: 'Central Jersey Heat Volleyball Club',
+    title: <span className="text-red-600">Head Volleyball Coach (15 Regional)</span>,
+    content: (
+      <div>
+        <p className="mb-2 text-sm italic text-neutral-400">
+          CJ Heat is a girls travel volleyball club focusing on the development of volleyball players in high school.
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Worked with young women ages 14-18</li>
+          <li>Placed in charge of a developmental 15s team</li>
+        </ul>
+      </div>
+    ),
+  },
+];
+
+/**
+ * Playing timeline
+ */
+export const playing: TimelineItem[] = [
+  {
+    date: 'Rutgers University Edge 2018 - 2022',
+    image: rutgersphoto,
+    location: 'New Brunswick, NJ',
+    title: <span className="text-red-600">Setter, OH/RS</span>,
+    alwaysOpen: true,
+    content: (
+      <p>
+        Rutgers University Intramurals and Open Gyms with Club Teams
+      </p>
+    ),
+  },
+  {
+    date: "Quandomania Player's Edge 2015 - 2019",
+    image: playersedgephoto,
+    location: 'Mt. Laurel, NJ',
+    title: <span className="text-amber-200">Sand/Beach Player</span>,
+    alwaysOpen: true,
+    content: (
+      <p>
+        I played for 4 summer seasons, practicing twice a week and competing in tournaments along the Jersey shore on weekends. Played either defender or split back with my partner.
+      </p>
+    ),
+  },
+  {
+    date: 'High School 2015 - 2018',
+    image: cinnaphoto,
+    location: 'Cinnaminson High School, NJ',
+    title: <span className="text-red-300">Setter</span>,
+    alwaysOpen: true,
+    content: (
+      <p>
+        Varsity Setter for 3 years. Captain senior year. West Jersey Interscholastic Volleyball League 2018 All-Conference 2nd-Team.
+      </p>
+    ),
+  },
+  {
+    date: 'Quandomania VBC 2015 - 2018',
+    image: quandophoto,
+    location: 'Washington Township, NJ',
+    title: <span className="text-orange-400">Libero, Setter</span>,
+    alwaysOpen: true,
+    content: (
+      <p>
+        Played for 3 club seasons, alternating between Libero and Setter. Occasionally filled in as an Outside Hitter or Right Side Hitter.
+      </p>
+    ),
+  },
+];

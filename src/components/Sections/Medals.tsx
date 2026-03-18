@@ -1,10 +1,11 @@
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 import { isMobile } from '../../config';
-import { medalsItems, SectionId } from '../../data/data';
+import { medalsItems, SectionId } from '../../data/index';
 import { MedalsItem } from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';

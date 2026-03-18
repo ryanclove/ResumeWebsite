@@ -4,7 +4,7 @@
 import { FC, memo, useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
-import { education, experience, playing, SectionId } from '../../../data/data';
+import { education, experience, playing, SectionId } from '../../../data/index';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
 

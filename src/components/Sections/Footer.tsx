@@ -2,7 +2,7 @@
 /* eslint-disable object-curly-spacing */
 import { BoltIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { FC, memo, useEffect, useState } from 'react';
-import { SectionId } from '../../data/data';
+import { SectionId } from '../../data/index';
 
 const currentYear = new Date().getFullYear();
 

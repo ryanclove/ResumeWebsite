@@ -2,7 +2,7 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-sort-props */
 import { FC, memo } from 'react';
-import { socialLinks } from '../data/data';
+import { socialLinks } from '../data/socialData';
 
 const Socials: FC = memo(() => {
   return (

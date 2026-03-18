@@ -5,7 +5,7 @@ import { FC, memo } from 'react';
 import { DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
-import { contact, SectionId } from '../../../data/data';
+import { contact, SectionId } from '../../../data/index';
 import { ContactType, ContactValue } from '../../../data/dataDef';
 import FacebookIcon from '../../Icon/FacebookIcon';
 import GithubIcon from '../../Icon/GithubIcon';

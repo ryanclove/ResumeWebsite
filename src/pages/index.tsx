@@ -10,7 +10,7 @@ import Hero from '../components/Sections/Hero';
 import Medals from '../components/Sections/Medals';
 import Resume from '../components/Sections/Resume';
 import Testimonials from '../components/Sections/Testimonials';
-import {homePageMeta} from '../data/data';
+import {homePageMeta} from '../data/index';
 
 // eslint-disable-next-line react-memo/require-memo
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
