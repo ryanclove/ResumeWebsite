@@ -20,9 +20,11 @@ const Medals: FC = memo(() => {
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Medals}>
-      <div className="flex flex-col gap-y-8">
+      <div className="flex flex-col gap-y-6 sm:gap-y-8">
         <h2 className="self-center text-2xl font-bold text-white">Medals Won</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+        {/* UPDATED GRID */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
           {medalsItems.map((item, index) => (
             <MedalImage item={item} key={`${item.title}-${index}`} onClick={handleImageClick} />
           ))}
@@ -33,7 +35,8 @@ const Medals: FC = memo(() => {
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 overflow-auto"
-          onClick={() => setSelectedImage(null)}>
+          onClick={() => setSelectedImage(null)}
+        >
           <div className="relative max-h-[90vh] max-w-[90vw]" onClick={e => e.stopPropagation()}>
             <Image
               alt="Expanded medal"
@@ -62,11 +65,11 @@ const MedalImage: FC<MedalImageProps> = memo(({ item, onClick }) => {
   }, [item.image, onClick]);
 
   return (
-    <div className="pb-4">
+    <div className="pb-2 sm:pb-4">
       <div className="relative w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl">
         <Image
           alt={item.title}
-          className="w-full max-h-64 sm:max-h-80 cursor-pointer transition hover:scale-[1.02] object-contain"
+          className="w-full max-h-40 sm:max-h-64 md:max-h-80 cursor-pointer transition hover:scale-[1.02] object-contain"
           onClick={handleClick}
           placeholder="blur"
           src={item.image || '/placeholder.png'}
@@ -101,19 +104,21 @@ const ItemOverlay: FC<{ item: MedalsItem }> = memo(({ item: { title, description
 
   return (
     <div className="absolute inset-0">
-      {/* Hover overlay content (desktop) */}
+      {/* Hover / Tap overlay */}
       <div
         className={classNames(
-          'absolute inset-0 flex flex-col gap-y-2 p-4 bg-gray-900 transition-opacity duration-300',
+          'absolute inset-0 flex flex-col gap-y-2 p-3 sm:p-4 bg-gray-900 transition-opacity duration-300',
           !mobile
-            ? 'opacity-0 hover:opacity-80 overflow-y-auto' // desktop: hover only changes opacity
+            ? 'opacity-0 hover:opacity-80 overflow-y-auto'
             : showOverlay
-              ? 'opacity-80 pointer-events-auto overflow-y-auto' // mobile: interactive
-              : 'opacity-0 pointer-events-none', // mobile hidden
+            ? 'opacity-80 pointer-events-auto overflow-y-auto'
+            : 'opacity-0 pointer-events-none',
         )}
       >
-        <h2 className="text-center font-bold text-white">{title}</h2>
-        <p className="text-center text-xs text-white sm:text-sm">
+        <h2 className="text-center font-bold text-white text-sm sm:text-base">{title}</h2>
+
+        {/* CLAMPED TEXT */}
+        <p className="text-center text-[10px] sm:text-xs text-white line-clamp-3 sm:line-clamp-none">
           {description.split('\n').map((line, idx) => (
             <span key={idx}>
               {line}
@@ -123,7 +128,7 @@ const ItemOverlay: FC<{ item: MedalsItem }> = memo(({ item: { title, description
         </p>
       </div>
 
-      {/* Clickable overlay background (mobile) */}
+      {/* Clickable overlay (mobile) */}
       {mobile && (
         <div
           className={classNames(
