@@ -81,6 +81,7 @@ export interface MedalsItem {
   title: string;
   description: string;
   //url: string;
+  medalType: 'gold' | 'goldrunnerup' |'silver' | 'bronze';
   image?: string | StaticImageData; // <- Next.js image imports
 }
 
