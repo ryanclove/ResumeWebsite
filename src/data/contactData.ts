@@ -12,7 +12,7 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Location,
-      text: 'DMV, USA',
+      text: 'DM(V), USA',
     },
     {
       type: ContactType.Instagram,
