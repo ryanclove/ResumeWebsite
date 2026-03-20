@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable simple-import-sort/imports */
 
@@ -141,15 +142,22 @@ export const experience: TimelineItem[] = [
  */
 export const playing: TimelineItem[] = [
   {
-    date: 'Rutgers University Edge 2018 - 2022',
+    date: 'Rutgers University 2018 - 2022',
     image: rutgersphoto,
     location: 'New Brunswick, NJ',
     title: <span className="text-red-600">Setter, OH/RS</span>,
     alwaysOpen: true,
     content: (
-      <p>
-        Rutgers University Intramurals and Open Gyms with Club Teams
-      </p>
+      <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+        <li>
+          Rutgers University Intramurals
+          <ul style={{ listStyleType: 'circle', paddingLeft: '20px' }}>
+            <li>Finished 2nd Place in Spring 2022</li>
+            <li>Made Playoffs every season</li>
+          </ul>
+        </li>
+        <li>Open Gyms with Men's/Women's Club Teams</li>
+      </ul>
     ),
   },
   {
@@ -160,7 +168,12 @@ export const playing: TimelineItem[] = [
     alwaysOpen: true,
     content: (
       <p>
-        I played for 4 summer seasons, practicing twice a week and competing in tournaments along the Jersey shore on weekends. Played either defender or split back with my partner.
+        <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+          <li>Played for 4 summer seasons</li>
+          <li>Practicing twice a week</li>
+          <li>Competing in tournaments along the Jersey shore on weekends</li>
+          <li>Played either defender or split back with my partner</li>
+        </ul>
       </p>
     ),
   },
@@ -171,9 +184,34 @@ export const playing: TimelineItem[] = [
     title: <span className="text-red-300">Setter</span>,
     alwaysOpen: true,
     content: (
-      <p>
-        Varsity Setter for 3 years. Captain senior year. West Jersey Interscholastic Volleyball League 2018 All-Conference 2nd-Team.
-      </p>
+      <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+        <li>Varsity Setter for 3 years</li>
+        <li>Captain - Senior Year 2018</li>
+        <li>West Jersey Interscholastic Volleyball League 2018 All-Conference 2nd-Team</li>
+        <li>NJ State Boys All-Star Selections: 2017, 2018</li>
+        <li>
+          <a
+            href="https://www.nj.com/highschoolsports/article/vote-who-is-the-top-boys-volleyball-junior-assist-leader/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1a73e8', textDecoration: 'underline' }}
+          >
+            Voted
+          </a>{' '}
+          4th-Best Junior Setter in New Jersey in 2017
+        </li>
+        <li>
+          Career Stats:{' '}
+          <a
+            href="https://highschoolsports.nj.com/player/ryan-coslove/boysvolleyball/season/2017-2018"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1a73e8', textDecoration: 'underline' }}
+          >
+            Kills: 7 | Digs: 130 | Assists: 825 | Service Aces: 55
+          </a>
+        </li>
+      </ul>
     ),
   },
   {
@@ -184,7 +222,11 @@ export const playing: TimelineItem[] = [
     alwaysOpen: true,
     content: (
       <p>
-        Played for 3 club seasons, alternating between Libero and Setter. Occasionally filled in as an Outside Hitter or Right Side Hitter.
+        <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+          <li>Played for 3 club seasons</li>
+          <li>Alternating between Libero and Setter. </li>
+          <li>Occasionally filled in as an Outside Hitter or Right Side Hitter.</li>
+        </ul>
       </p>
     ),
   },
