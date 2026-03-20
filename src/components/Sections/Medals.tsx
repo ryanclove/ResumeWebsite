@@ -96,7 +96,7 @@ const Medals: FC = memo(() => {
             className={`text-center font-semibold text-lg sm:text-xl transition-transform duration-300 ${count === medalsItems.length ? 'scale-110' : 'scale-100'
               }`}
           >
-            🏅 {count} Total Medals 🏅
+            🏅 {count} Total Medals and Counting! 🏅
           </p>
 
           <div className="flex justify-center gap-4 text-sm sm:text-base font-medium">
