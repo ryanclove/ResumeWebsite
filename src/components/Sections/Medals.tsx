@@ -50,7 +50,7 @@ const Medals: FC = memo(() => {
           setHasAnimated(true);
 
           let current = 0;
-          const duration = 2800; // total animation duration ms
+          const duration = 3600; // total animation duration ms
           const interval = 20; // update frequency
           const step = Math.ceil(total / (duration / interval));
 
@@ -74,8 +74,8 @@ const Medals: FC = memo(() => {
         }
       },
       {
-        threshold: 0.6,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
       }
     );
 
