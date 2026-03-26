@@ -62,7 +62,7 @@ const About: FC = memo(() => {
   const { profileImageSrc, description, aboutItems } = aboutData;
 
   return (
-    <Section sectionId={SectionId.About} className="py-32 overflow-hidden">
+    <Section sectionId={SectionId.About} className="py-32 overflow-hidden bg-surface-container-low">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
 
