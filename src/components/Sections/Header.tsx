@@ -54,7 +54,6 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
       >
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
 
-          {/* Logo / Name */}
           <Link
             href="#hero"
             className="text-2xl font-black tracking-tighter text-white font-headline uppercase hover:text-blue-500"
@@ -62,7 +61,6 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
             Coach Ryan
           </Link>
 
-          {/* Nav Links */}
           <div className="flex items-center space-x-8 font-label uppercase tracking-widest text-xs">
             {navSections.map(section => (
               <NavItem
@@ -74,7 +72,6 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
               />
             ))}
 
-            {/* CTA Button */}
             <Link
               href={`/#${SectionId.Contact}`}
               className="bg-primary text-on-primary px-6 py-2 rounded-md font-bold tracking-normal hover:bg-primary-fixed transition-all active:scale-95 duration-200"
@@ -89,7 +86,7 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
 );
 
 //
-// ✅ MOBILE NAV
+// ✅ MOBILE NAV (FIXED)
 //
 const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null }> = memo(
   ({ navSections, currentSection }) => {
@@ -97,6 +94,10 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
 
     const toggleOpen = useCallback(() => {
       setIsOpen(prev => !prev);
+    }, []);
+
+    const closeMenu = useCallback(() => {
+      setIsOpen(false);
     }, []);
 
     return (
@@ -111,9 +112,13 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
         </button>
 
         <Transition.Root show={isOpen} as={Fragment}>
-          <Dialog as="div" className="fixed inset-0 z-[9999] md:hidden" onClose={toggleOpen}>
+          <Dialog
+            as="div"
+            className="fixed inset-0 z-[9999] md:hidden"
+            onClose={closeMenu}
+          >
 
-            {/* Overlay */}
+            {/* Overlay (LOWER z-index) */}
             <Transition.Child
               as={Fragment}
               enter="transition-opacity duration-300"
@@ -123,43 +128,43 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black/70" />
+              <div className="fixed inset-0 bg-black/70 z-40" />
             </Transition.Child>
 
-            {/* Panel */}
+            {/* Panel (HIGHER z-index) */}
             <Transition.Child
               as={Fragment}
               enter="transition transform duration-300"
               enterFrom="translate-x-full"
               enterTo="translate-x-0"
+              leave="transition transform duration-300"
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <div className="ml-auto w-3/4 max-w-sm bg-slate-950 p-6 h-full flex flex-col">
+              <Dialog.Panel className="ml-auto w-3/4 max-w-sm bg-slate-950 p-6 h-full flex flex-col relative z-50">
 
-                {/* Logo / Name */}
                 <Link
                   href="#hero"
-                  onClick={toggleOpen}
+                  onClick={closeMenu}
                   className="text-xl font-bold text-white mb-6 text-right hover:text-blue-500"
                 >
                   Coach Ryan
                 </Link>
 
-                {/* Nav Links */}
                 <nav className="flex flex-col gap-4 items-end text-right">
                   {navSections.map(section => (
                     <NavItem
                       key={section}
                       section={section}
                       current={section === currentSection}
-                      onClick={toggleOpen}
+                      onClick={closeMenu}
                       activeClass="text-white font-bold"
                       inactiveClass="text-slate-300"
                     />
                   ))}
                 </nav>
-              </div>
+
+              </Dialog.Panel>
             </Transition.Child>
           </Dialog>
         </Transition.Root>
