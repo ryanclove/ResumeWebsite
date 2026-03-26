@@ -2,7 +2,7 @@
 /* eslint-disable simple-import-sort/imports */
 import { Hero } from './dataDef';
 import NewTabIcon from '../components/Icon/NewTabIcon';
-import headerPhoto from '../images/headerphoto.png';
+import headerPhoto from '../images/headerphoto.jpg';
 
 export const heroData: Hero = {
   imageSrc: headerPhoto,
