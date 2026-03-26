@@ -8,7 +8,7 @@ import CollegeSection from './CollegeSection';
 
 const CollegeCommit: FC = memo(() => {
   // If only one player, make it 'large' so it spans multiple columns
-  const updatedCollege = college.map((player, idx) => ({
+  const updatedCollege = college.map((player) => ({
     ...player,
     //large: college.length === 1, // large if only 1 player
     highlightNumber: player.highlightNumber || undefined, // optional
