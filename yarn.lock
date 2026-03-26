@@ -6847,6 +6847,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.5.7"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-swipeable: "npm:^7.0.2"
     resend: "npm:^6.9.2"
     sass: "npm:^1.64.2"
     sharp: "npm:^0.34.5"
@@ -6860,6 +6861,15 @@ __metadata:
     typescript: "npm:5.3.2"
   languageName: unknown
   linkType: soft
+
+"react-swipeable@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "react-swipeable@npm:7.0.2"
+  peerDependencies:
+    react: ^16.8.3 || ^17 || ^18 || ^19.0.0 || ^19.0.0-rc
+  checksum: 10c0/cca3ec9e6321f73d187a8ac4beece2ad8cce1f4efa0215de93e2635492e7c514ccbc30311bb0e88bafb79d302916550603cdcd44ac81054a8c0f6679b18eb04d
+  languageName: node
+  linkType: hard
 
 "react@npm:^18.2.0":
   version: 18.3.1

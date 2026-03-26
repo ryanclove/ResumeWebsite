@@ -1,36 +1,127 @@
-import classNames from 'classnames';
+/* eslint-disable object-curly-spacing */
+/* eslint-disable react/jsx-sort-props */
 import Image from 'next/image';
-import {FC, memo} from 'react';
+import { FC, memo, useEffect, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
-import {aboutData, SectionId} from '../../data/index';
+import { aboutData, SectionId } from '../../data/index';
 import Section from '../Layout/Section';
 
-const About: FC = memo(() => {
-  const {profileImageSrc, description, aboutItems} = aboutData;
+const quotes = [
+  "Me and my homies hate free balls",
+  "Screw the ball, watch people.",
+];
+
+const QuoteSlideshow: FC = memo(() => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setCurrentIndex((prev) => (prev + 1) % quotes.length),
+    onSwipedRight: () =>
+      setCurrentIndex((prev) => (prev - 1 + quotes.length) % quotes.length),
+    trackMouse: true,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.About}>
-      <div className={classNames('grid grid-cols-1 gap-y-4', {'md:grid-cols-4': !!profileImageSrc})}>
-        {!!profileImageSrc && (
-          <div className="col-span-1 flex justify-center md:justify-start">
-            <div className="relative h-24 w-24 overflow-hidden rounded-xl md:h-32 md:w-32">
-              <Image alt="about-me-image" className="h-full w-full object-cover" src={profileImageSrc} />
+    <div
+      {...handlers}
+      className="absolute -bottom-8 -right-8 bg-surface-container-highest p-4 sm:p-6 border-t border-outline-variant/20 shadow-2xl max-w-xs h-24"
+    >
+      {quotes.map((quote, idx) => (
+        <p
+          key={idx}
+          className={`text-sm sm:text-base italic text-on-surface-variant transition-opacity duration-500 ${
+            idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute'
+          }`}
+        >
+          "{quote}"
+        </p>
+      ))}
+      <div className="flex justify-center mt-2 gap-1">
+        {quotes.map((_, idx) => (
+          <span
+            key={idx}
+            className={`h-1 w-2 rounded-full transition-all ${
+              idx === currentIndex ? 'bg-primary' : 'bg-outline-variant'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+});
+
+const About: FC = memo(() => {
+  const { profileImageSrc, description, aboutItems } = aboutData;
+
+  return (
+    <Section sectionId={SectionId.About} className="py-32 overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+
+          {/* LEFT: Image + Quotes */}
+          <div className="w-full lg:w-1/2 relative">
+
+            {/* Glow */}
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+
+            {/* Image */}
+            {profileImageSrc && (
+              <div className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+                <Image
+                  src={typeof profileImageSrc === 'string' ? profileImageSrc : profileImageSrc.src}
+                  alt="Ryan Coaching"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            )}
+
+            {/* Quotes Slideshow */}
+            <QuoteSlideshow />
+          </div>
+
+          {/* RIGHT: Content */}
+          <div className="w-full lg:w-1/2">
+
+            {/* Title */}
+            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
+              Teaching{' '}
+              <span className="text-tertiary">
+                Volleyball Excellence.
+              </span>
+            </h2>
+
+            {/* Description */}
+            <div className="space-y-4 sm:space-y-6 text-on-surface-variant text-lg leading-relaxed mb-8">
+              <p>{description}</p>
             </div>
+
+            {/* Data-driven info grid (wider fixed boxes) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl">
+              {aboutItems.map(({ label, text, Icon }, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 bg-surface-container-high p-4 rounded-lg border border-outline-variant/10 w-full min-h-[80px]"
+                >
+                  {Icon && <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" />}
+                  <div className="text-sm">
+                    <div className="font-bold text-white">{label}</div>
+                    <div className="text-on-surface-variant">{text}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
-        )}
-        <div className={classNames('col-span-1 flex flex-col gap-y-6', {'md:col-span-3': !!profileImageSrc})}>
-          <div className="flex flex-col gap-y-2">
-            <h2 className="text-2xl font-bold text-white">About me</h2>
-            <p className="prose prose-sm text-gray-300 sm:prose-base">{description}</p>
-          </div>
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {aboutItems.map(({label, text, Icon}, idx) => (
-              <li className="col-span-1 flex  items-start gap-x-2" key={idx}>
-                {Icon && <Icon className="h-5 w-5 text-white" />}
-                <span className="text-sm font-bold text-white">{label}:</span>
-                <span className=" text-sm text-gray-300">{text}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </Section>
