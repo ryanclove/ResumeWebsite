@@ -15,7 +15,7 @@ export const heroData: Hero = {
         I am the Head Coach for <strong className="text-stone-100">Vienna Elite 16 Black</strong> in the 2025-2026 Season.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Explore my site to learn more about me and my Coaching background and feats.
+        Explore my site to learn more about me, my coaching background, and feats.
       </p>
     </>
   ),
