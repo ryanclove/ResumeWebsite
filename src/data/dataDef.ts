@@ -105,7 +105,9 @@ export interface CollegeItem {
   date: string;
   location: string;
   content: ReactNode;
-  image?: string | StaticImageData; // add this line
+  image?: string | StaticImageData;
+  highlightNumber?: number; // optional number for things like "12 SEC Commits"
+  large?: boolean; // optional boolean to make the card bigger in the grid
 }
 
 /**
