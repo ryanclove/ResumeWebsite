@@ -104,14 +104,14 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
         {/* Hamburger */}
         <button
           aria-label="Menu Button"
-          className="fixed right-4 top-4 z-50 rounded-md bg-slate-900 p-2 text-white md:hidden"
+          className="fixed right-4 top-4 z-[9999] rounded-md bg-slate-900 p-2 text-white md:hidden"
           onClick={toggleOpen}
         >
           <Bars3BottomRightIcon className="h-8 w-8" />
         </button>
 
         <Transition.Root show={isOpen} as={Fragment}>
-          <Dialog as="div" className="fixed inset-0 z-50 md:hidden" onClose={toggleOpen}>
+          <Dialog as="div" className="fixed inset-0 z-[9999] md:hidden" onClose={toggleOpen}>
 
             {/* Overlay */}
             <Transition.Child
