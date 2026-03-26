@@ -43,7 +43,7 @@ const Header: FC = memo(() => {
 });
 
 //
-// ✅ DESKTOP NAV (Styled like your HTML)
+// ✅ DESKTOP NAV
 //
 const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null }> = memo(
   ({ navSections, currentSection }) => {
@@ -54,10 +54,13 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
       >
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
 
-          {/* Logo */}
-          <div className="text-2xl font-black tracking-tighter text-white font-headline uppercase">
+          {/* Logo / Name */}
+          <Link
+            href="#hero"
+            className="text-2xl font-black tracking-tighter text-white font-headline uppercase hover:text-blue-500"
+          >
             Coach Ryan
-          </div>
+          </Link>
 
           {/* Nav Links */}
           <div className="flex items-center space-x-8 font-label uppercase tracking-widest text-xs">
@@ -86,7 +89,7 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
 );
 
 //
-// ✅ MOBILE NAV (Styled version)
+// ✅ MOBILE NAV
 //
 const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null }> = memo(
   ({ navSections, currentSection }) => {
@@ -132,12 +135,18 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <div className="ml-auto w-3/4 max-w-sm bg-slate-950 p-6 h-full">
+              <div className="ml-auto w-3/4 max-w-sm bg-slate-950 p-6 h-full flex flex-col">
 
-                <div className="text-xl font-bold text-white mb-6 text-right">
+                {/* Logo / Name */}
+                <Link
+                  href="#hero"
+                  onClick={toggleOpen}
+                  className="text-xl font-bold text-white mb-6 text-right hover:text-blue-500"
+                >
                   Coach Ryan
-                </div>
+                </Link>
 
+                {/* Nav Links */}
                 <nav className="flex flex-col gap-4 items-end text-right">
                   {navSections.map(section => (
                     <NavItem
@@ -160,7 +169,7 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
 );
 
 //
-// ✅ NAV ITEM (Reusable)
+// ✅ NAV ITEM
 //
 const NavItem: FC<{
   section: string;
