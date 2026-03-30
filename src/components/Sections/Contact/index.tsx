@@ -7,7 +7,7 @@ import { SectionId, contact } from '../../../data/index';
 import ContactForm from './ContactForm';
 
 const Contact: FC = memo(() => {
-  const { headerText, description, items } = contact;
+  const { description, items } = contact;
 
   return (
     <Section className="bg-surface-container-lowest py-32" sectionId={SectionId.Contact}>
