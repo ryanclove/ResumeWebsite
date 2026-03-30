@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-spacing */
-import {FC, memo, useCallback, useMemo, useState} from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
 interface FormData {
   name: string;
@@ -21,22 +21,20 @@ const ContactForm: FC = memo(() => {
 
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const {name, value} = event.target;
-
-      const fieldData: Partial<FormData> = {[name]: value};
-
-      setData({...data, ...fieldData});
+      const { name, value } = event.target;
+      setData(prev => ({ ...prev, [name]: value }));
     },
-    [data],
+    [],
   );
 
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+
       try {
         const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
 
@@ -44,7 +42,7 @@ const ContactForm: FC = memo(() => {
 
         if (response.ok) {
           alert('Message sent successfully!');
-          setData(defaultData); // reset form
+          setData(defaultData);
         } else {
           alert('Failed to send message: ' + result.message);
         }
@@ -57,34 +55,65 @@ const ContactForm: FC = memo(() => {
   );
 
   const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+    'w-full bg-surface-container-low border-none border-b-2 border-outline-variant focus:border-secondary focus:ring-0 transition-all p-4 text-on-surface placeholder:text-on-surface-variant';
 
   return (
-    <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-      <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
-      <input
-        autoComplete="email"
-        className={inputClasses}
-        name="email"
-        onChange={onChange}
-        placeholder="Email"
-        required
-        type="email"
-      />
-      <textarea
-        className={inputClasses}
-        maxLength={250}
-        name="message"
-        onChange={onChange}
-        placeholder="Message"
-        required
-        rows={6}
-      />
+    <form className="space-y-6" method="POST" onSubmit={handleSendMessage}>
+
+      {/* Name */}
+      <div>
+        <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2 block">
+          Full Name
+        </label>
+        <input
+          className={inputClasses}
+          name="name"
+          value={data.name}
+          onChange={onChange}
+          placeholder="First name Last name"
+          required
+          type="text"
+        />
+      </div>
+
+      {/* Email */}
+      <div>
+        <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2 block">
+          Email Address
+        </label>
+        <input
+          className={inputClasses}
+          name="email"
+          value={data.email}
+          onChange={onChange}
+          placeholder="email@example.com"
+          required
+          type="email"
+        />
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2 block">
+          Message
+        </label>
+        <textarea
+          className={inputClasses}
+          name="message"
+          value={data.message}
+          onChange={onChange}
+          placeholder="Describe your athletic goals..."
+          required
+          rows={4}
+        />
+      </div>
+
+      {/* Submit */}
       <button
-        aria-label="Submit contact form"
-        className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
-        type="submit">
-        Send Message
+        type="submit"
+        className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-xl"
+      >
+        Send Inquiry
       </button>
     </form>
   );
