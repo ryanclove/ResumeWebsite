@@ -17,10 +17,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     await resend.emails.send({
-      from: 'Website Contact <onboarding@resend.dev>', // temporary sender
+      from: 'Coach Ryan Tutu Contact Form <onboarding@resend.dev>', // temporary sender
       to: 'ryancoslove@gmail.com', // change to viennaelite.org later
-      subject: `New message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      subject: `New message from: ${name}`,
+      text: `Name: ${name}\n\nEmail: ${email}\n\nMessage: \n${message}`,
     });
 
     res.status(200).json({message: 'Message sent successfully!'});

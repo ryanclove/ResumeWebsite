@@ -1,25 +1,30 @@
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
-import {FC, memo} from 'react';
-
-import {college, SectionId} from '../../../data/index';
+import { FC, memo } from 'react';
+import { college, SectionId } from '../../../data/index';
 import Section from '../../Layout/Section';
 import CollegeSection from './CollegeSection';
 
 const CollegeCommit: FC = memo(() => {
+  // If only one player, make it 'large' so it spans multiple columns
+  const updatedCollege = college.map((player) => ({
+    ...player,
+    //large: college.length === 1, // large if only 1 player
+    highlightNumber: player.highlightNumber || undefined, // optional
+  }));
+
   return (
     <Section
-      bgClassName="bg-blue-900 dark:bg-gray-900"
-      paddingClassName="pt-0 pb-0 md:pt-12 md:pb-16"
-      sectionId={SectionId.College}>
-      <div className="flex flex-col divide-y-2 divide-neutral-300">
-        {/* College Commitments */}
-        <CollegeSection
-          imageHeight={128}
-          imageWidth={128}
-          items={college} // each item can have its own `image`
-          title="Players I have Coached with College Commitments"
-        />
-      </div>
+      bgClassName="bg-surface-container-medium"
+      paddingClassName="pt-16 pb-16 md:pt-20 md:pb-20"
+      sectionId={SectionId.College}
+    >
+      <CollegeSection
+        items={updatedCollege}
+        title="My College Players."
+        className=""
+      />
     </Section>
   );
 });
