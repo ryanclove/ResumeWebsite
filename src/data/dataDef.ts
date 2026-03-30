@@ -21,7 +21,7 @@ export interface HomepageMeta {
  * Hero section
  */
 export interface Hero {
-  imageSrc: string | StaticImageData; // <- can accept Next.js image import
+  images: (StaticImageData | string)[]; // <- can accept Next.js image import
   name: string;
   description: JSX.Element;
   actions: HeroActionItem[];

@@ -2,32 +2,50 @@
 /* eslint-disable react/jsx-sort-props */
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import { FC, memo } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 
 import { heroData, SectionId } from '../../data/index';
 import Section from '../Layout/Section';
 import Socials from '../Socials';
 
 const Hero: FC = memo(() => {
-  const { imageSrc, name, description } = heroData;
+  const { images, name, description } = heroData;
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // 🔁 Auto slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage(prev => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
-      <div className="relative min-h-screen flex items-end pt-32 pb-24 overflow-hidden">
+      <div className="relative min-h-screen flex items-end pt-32 pb-24 overflow-hidden isolate">
 
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            alt={`${name}-image`}
-            src={imageSrc}
-            fill
-            priority
-            className="object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        {/* 🔥 Background */}
+        <div className="absolute inset-0 -z-10">
+          {images.map((img, index) => (
+            <Image
+              key={index}
+              src={img}
+              alt="Hero background"
+              fill
+              priority={index === 0}
+              className={`object-cover transition-all duration-[4000ms] ${index === currentImage
+                  ? 'opacity-90 scale-105'
+                  : 'opacity-0 scale-100'
+                }`}
+            />
+          ))}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         </div>
 
-        {/* Content */}
+        {/* ✅ CONTENT MUST BE INSIDE */}
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
 
@@ -37,7 +55,9 @@ const Hero: FC = memo(() => {
 
             <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none mb-8 text-on-surface">
               COACH <br />
-              <span className="text-primary">{name.split(' ').slice(1).join(' ')}</span>
+              <span className="text-primary">
+                {name.split(' ').slice(1).join(' ')}
+              </span>
             </h1>
 
             <div className="text-lg md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light">
@@ -67,7 +87,7 @@ const Hero: FC = memo(() => {
           </div>
         </div>
 
-        {/* Scroll Down Button */}
+        {/* Scroll Button */}
         <div className="absolute inset-x-0 bottom-6 flex justify-center z-10">
           <a
             className="rounded-full bg-surface p-2 ring-1 ring-outline hover:scale-110 transition"
