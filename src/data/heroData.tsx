@@ -1,12 +1,19 @@
-/* eslint-disable object-curly-spacing */
-/* eslint-disable simple-import-sort/imports */
 import { Hero } from './dataDef';
 import NewTabIcon from '../components/Icon/NewTabIcon';
-import headerPhoto from '../images/headerphoto.png';
+
+// import multiple images
+import hero1 from '../images/hero/legkick.jpg';
+import hero2 from '../images/hero/sfjump.jpg';
+import hero3 from '../images/hero/neqbunny.jpg';
+import hero4 from '../images/hero/sfjwong.jpg';
+import hero5 from '../images/hero/neqrocky.jpg';
+import hero6 from '../images/hero/dvcbumble.jpg';
 
 export const heroData: Hero = {
-  imageSrc: headerPhoto,
+  images: [hero1, hero2, hero3, hero4, hero5, hero6,], 
+
   name: `Coach Ryan Coslove`,
+
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
@@ -19,6 +26,7 @@ export const heroData: Hero = {
       </p>
     </>
   ),
+
   actions: [
     {
       href: 'https://drive.google.com/file/d/1Ex5G_BaW8MNRxrJy97KHLg5O_4Wnefe-/view',

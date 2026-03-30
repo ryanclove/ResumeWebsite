@@ -21,7 +21,7 @@ export interface HomepageMeta {
  * Hero section
  */
 export interface Hero {
-  imageSrc: string | StaticImageData; // <- can accept Next.js image import
+  images: (StaticImageData | string)[]; // <- can accept Next.js image import
   name: string;
   description: JSX.Element;
   actions: HeroActionItem[];
@@ -105,7 +105,9 @@ export interface CollegeItem {
   date: string;
   location: string;
   content: ReactNode;
-  image?: string | StaticImageData; // add this line
+  image?: string | StaticImageData;
+  highlightNumber?: number; // optional number for things like "12 SEC Commits"
+  large?: boolean; // optional boolean to make the card bigger in the grid
 }
 
 /**

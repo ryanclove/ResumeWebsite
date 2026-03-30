@@ -85,10 +85,17 @@ const Medals: FC = memo(() => {
   }, [hasAnimated]);
 
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Medals}>
-      <div ref={sectionRef} className="flex flex-col gap-y-6 sm:gap-y-8">
-        <h2 className="self-center text-2xl font-bold text-white">Medals Won</h2>
+    <Section className="bg-surface-container-low" sectionId={SectionId.Medals}>
+       <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-12">
+        <div className="text-center mb-12">
+          <span className="font-label text-secondary uppercase tracking-[0.5em] text-sm">
+            The Gold Standard
+          </span>
+          <h2 className="font-headline text-6xl font-black mt-4">Medal Wall</h2>
+        </div>
+        </div>
 
+      <div ref={sectionRef} className="flex flex-col gap-y-6 sm:gap-y-8">
         {/* TOTAL COUNT */}
         {/* Wrap total + per-type counts in a flex-col with smaller gap */}
         <div className="flex flex-col gap-y-1 sm:gap-y-2">
