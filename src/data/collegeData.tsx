@@ -21,7 +21,7 @@ export const college: CollegeItem[] = [
             Committed as an <strong className="text-stone-100">OH/RS</strong>
           </li>
           <li>
-            Alex played RS/OH for Coach Ryan for Vienna Elite 17 Blue in the 2024-2025 Club season
+            Alex played RS/OH for Coach Ryan on Vienna Elite 17 Blue in the 2024-2025 Club season
           </li>
           <li>
             As voted by her peers, Alex was voted:
