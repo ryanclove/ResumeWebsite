@@ -26,7 +26,7 @@ const Hero: FC = memo(() => {
     <Section noPadding sectionId={SectionId.Hero}>
       <div className="relative min-h-screen flex items-end pt-32 pb-24 overflow-hidden isolate">
 
-        {/* 🔥 Background */}
+        {/* 🔥 Background Images */}
         <div className="absolute inset-0 -z-10">
           {images.map((img, index) => (
             <Image
@@ -35,32 +35,32 @@ const Hero: FC = memo(() => {
               alt="Hero background"
               fill
               priority={index === 0}
-              className={`object-cover transition-all duration-[4000ms] ${index === currentImage
-                  ? 'opacity-90 scale-105'
-                  : 'opacity-0 scale-100'
+              className={`object-cover transition-all duration-[4000ms] ${index === currentImage ? 'opacity-90 scale-105' : 'opacity-0 scale-100'
                 }`}
             />
           ))}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+          {/* ✅ Subtle gradient overlay for depth (keeps images vibrant) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-background/30 to-transparent" />
         </div>
 
-        {/* ✅ CONTENT MUST BE INSIDE */}
+        {/* ✅ Content */}
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
 
-            <span className="font-label text-secondary uppercase tracking-[0.4em] mb-4 block">
+            {/* Text background for readability */}
+            <span className="font-label text-secondary uppercase tracking-[0.4em] mb-4 block drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
               Elite Coaching Performance
             </span>
 
-            <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none mb-8 text-on-surface">
+            <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none mb-8 text-on-surface drop-shadow-[0_6px_20px_rgba(0,0,0,0.7)]">
               COACH <br />
               <span className="text-primary">
                 {name.split(' ').slice(1).join(' ')}
               </span>
             </h1>
 
-            <div className="text-lg md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light">
+            <div className="text-lg md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
               {description}
             </div>
 
@@ -87,7 +87,7 @@ const Hero: FC = memo(() => {
           </div>
         </div>
 
-        {/* Scroll Button */}
+        {/* Scroll Down Button */}
         <div className="absolute inset-x-0 bottom-6 flex justify-center z-10">
           <a
             className="rounded-full bg-surface p-2 ring-1 ring-outline hover:scale-110 transition"
