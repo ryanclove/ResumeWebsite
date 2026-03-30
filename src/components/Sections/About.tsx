@@ -10,6 +10,7 @@ import Section from '../Layout/Section';
 const quotes = [
   "Me and my homies hate free balls",
   "Screw the ball, watch people.",
+  "Volleyball wasn't built in a day",
 ];
 
 const QuoteSlideshow: FC = memo(() => {
