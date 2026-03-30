@@ -70,7 +70,7 @@ const ContactForm: FC = memo(() => {
           name="name"
           value={data.name}
           onChange={onChange}
-          placeholder="First name Last name"
+          placeholder="First and Last name"
           required
           type="text"
         />
