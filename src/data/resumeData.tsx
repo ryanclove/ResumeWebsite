@@ -73,7 +73,7 @@ export const experience: TimelineItem[] = [
     date: 'June 2024 - Present',
     image: dcthunderlogo,
     location: 'Washington DC Thunder 9man VBC',
-    title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
+    title: <span className="text-blue-200">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
     alwaysOpen: true,
     size: 'wide',
     content: (

@@ -29,7 +29,7 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
             <span className="ml-2">{isOpen ? '▲' : '▼'}</span>
           </h2>
 
-          {/* Collapsible Content with animation */}
+          {/* Animated Collapsible Content */}
           <AnimatePresence initial={false}>
             {isOpen && (
               <motion.div
@@ -40,27 +40,34 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
-                <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-4 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 auto-rows-[150px] md:auto-rows-[250px]">
                   {items.map((item, index) => {
                     let size: 'large' | 'wide' | 'normal' = 'normal';
 
-                    // Only coaching gets special layout
+                    // Featured layout for coaching
                     if (variant === 'featured') {
                       if (index === 0) size = 'large';
                       else if (index === 1) size = 'wide';
                     }
 
-                    // Special case: Education with only 1 item
-                    if (title === 'Education' && items.length === 1) {
-                      size = 'wide';
-                    }
+                    // Single education item → wide
+                    if (title === 'Education' && items.length === 1) size = 'wide';
+
+                    // Map sizes to Tailwind col/row spans
+                    let spanClasses = '';
+                    if (size === 'large') spanClasses = 'md:col-span-2 md:row-span-2';
+                    else if (size === 'wide') spanClasses = 'md:col-span-2';
 
                     return (
-                      <ResumeItem
+                      <div
                         key={index}
-                        item={{ ...item, size }}
-                        onClick={() => setSelectedItem(item)}
-                      />
+                        className={`relative ${spanClasses} h-[180px] md:h-auto`}
+                      >
+                        <ResumeItem
+                          item={{ ...item, size }}
+                          onClick={() => setSelectedItem(item)}
+                        />
+                      </div>
                     );
                   })}
                 </div>
@@ -69,7 +76,10 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
           </AnimatePresence>
 
           {/* Modal */}
-          <ResumeModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+          <ResumeModal
+            item={selectedItem}
+            onClose={() => setSelectedItem(null)}
+          />
         </div>
       </section>
     );
