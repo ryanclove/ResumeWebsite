@@ -1,10 +1,12 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable simple-import-sort/imports */
 import { TestimonialSection } from './dataDef';
-import testimonialImage from '../images/testimonialsbackground.jpg';
+import testimonial1 from '../images/testimonials/neqrocky.jpg';
+import testimonial2 from '../images/testimonials/sfjump.jpg';
+import testimonial3 from '../images/testimonials/sfjwong.jpg';
 
 export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
+  images: [testimonial1, testimonial2, testimonial3], // 🔁 slideshow images
   testimonials: [
     {
       name: 'Claudia A. (Former 16s Player)',

@@ -3,14 +3,13 @@ import NewTabIcon from '../components/Icon/NewTabIcon';
 
 // import multiple images
 import hero1 from '../images/hero/legkick.jpg';
-import hero2 from '../images/hero/sfjump.jpg';
-import hero3 from '../images/hero/neqbunny.jpg';
-import hero4 from '../images/hero/sfjwong.jpg';
-import hero5 from '../images/hero/neqrocky.jpg';
-import hero6 from '../images/hero/dvcbumble.jpg';
+import hero2 from '../images/hero/neqbunny.jpg';
+import hero3 from '../images/hero/dvcbumble.jpg';
+import hero4 from '../images/hero/jwong.jpg';
+import hero5 from '../images/hero/orangetutu.jpg';
 
 export const heroData: Hero = {
-  images: [hero1, hero2, hero3, hero4, hero5, hero6,], 
+  images: [hero1, hero2, hero3, hero4, hero5,], // 🔁 slideshow images
 
   name: `Coach Ryan Coslove`,
 
