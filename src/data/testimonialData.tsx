@@ -4,9 +4,14 @@ import { TestimonialSection } from './dataDef';
 import testimonial1 from '../images/testimonials/neqrocky.jpg';
 import testimonial2 from '../images/testimonials/sfjump.jpg';
 import testimonial3 from '../images/testimonials/sfjwong.jpg';
+import testimonial4 from '../images/testimonials/neqsign.jpg';
+import testimonial5 from '../images/testimonials/patriotscuplunch.jpg';
+import testimonial6 from '../images/testimonials/eccroof.jpg';
+import testimonial7 from '../images/testimonials/sharkteam.jpg';
+import testimonial8 from '../images/testimonials/dvcsquad.jpg';
 
 export const testimonial: TestimonialSection = {
-  images: [testimonial1, testimonial2, testimonial3], // 🔁 slideshow images
+  images: [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6, testimonial7, testimonial8], // 🔁 slideshow images
   testimonials: [
     {
       name: 'Claudia A. (Former 16s Player)',
