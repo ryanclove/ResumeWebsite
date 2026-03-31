@@ -73,8 +73,7 @@ const Hero: FC = memo(() => {
             <div className="mt-12 flex flex-wrap gap-6 items-center">
               <a
                 href={`/#${SectionId.Contact}`}
-                className="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-md font-bold text-lg shadow-xl hover:shadow-primary/20 transition-all active:scale-95"
-              >
+                className="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-md font-bold text-lg shadow-xl hover:shadow-primary/20 transition-all active:scale-95">
                 Contact Me
               </a>
 
