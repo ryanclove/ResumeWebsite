@@ -46,7 +46,7 @@ const TimelineItem: FC<TimelineItemProps> = React.memo(
           </button>
 
           {/* Location & Date */}
-          <div className="flex items-center justify-center gap-x-2 md:justify-start mt-1 text-sm text-neutral-400">
+          <div className="flex items-center justify-center gap-x-2 md:justify-start mt-1 text-sm text-secondary">
             <span className="flex-1 sm:flex-none italic">{location}</span>
             <span>•</span>
             <span className="flex-1 sm:flex-none">{date}</span>
