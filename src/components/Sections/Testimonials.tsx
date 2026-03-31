@@ -4,7 +4,6 @@
 import classNames from 'classnames';
 import { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { isApple, isMobile } from '../../config';
 import { SectionId, testimonial } from '../../data/index';
 import type { Testimonial } from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
@@ -14,28 +13,34 @@ import Section from '../Layout/Section';
 
 const Testimonials: FC = memo(() => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [parallaxEnabled, setParallaxEnabled] = useState(false);
+  const [bgIndex, setBgIndex] = useState<number>(0);
 
   const itemWidth = useRef(0);
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const { width } = useWindow();
-  const { imageSrc, testimonials } = testimonial;
+  const { images = [], testimonials } = testimonial;
 
-  const resolveSrc = useMemo(() => {
-    if (!imageSrc) return undefined;
-    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
-  }, [imageSrc]);
-
-  useEffect(() => {
-    setParallaxEnabled(!(isMobile && isApple));
-  }, []);
+  const resolvedImages = useMemo(() => {
+    return images.map(img => (typeof img === 'string' ? img : img.src));
+  }, [images]);
 
   useEffect(() => {
     itemWidth.current = scrollContainer.current
       ? scrollContainer.current.offsetWidth
       : 0;
   }, [width]);
+
+  // 🔁 Background slideshow (independent)
+  useEffect(() => {
+    if (!resolvedImages.length) return;
+
+    const interval = setInterval(() => {
+      setBgIndex(prev => (prev + 1) % resolvedImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [resolvedImages.length]);
 
   const goToIndex = useCallback(
     (index: number) => {
@@ -66,24 +71,39 @@ const Testimonials: FC = memo(() => {
 
   return (
     <Section noPadding sectionId={SectionId.Testimonials}>
-      <div
-        className={classNames(
-          'flex w-full items-center justify-center bg-cover bg-center px-4 py-16 md:py-24 lg:px-8',
-          parallaxEnabled && 'bg-fixed',
-          { 'bg-neutral-700': !imageSrc },
-        )}
-        style={imageSrc ? { backgroundImage: `url(${resolveSrc})` } : undefined}>
+      <div className="relative flex w-full items-center justify-center px-4 py-16 md:py-24 lg:px-8 overflow-hidden isolate">
+
+        {/* 🔥 Background Slideshow */}
+        <div className="absolute inset-0 -z-10">
+          {resolvedImages.map((img, index) => (
+            <div
+              key={index}
+              className={classNames(
+                'absolute inset-0 bg-cover bg-center transition-all duration-[4000ms]',
+                index === bgIndex
+                  ? 'opacity-70 scale-105'
+                  : 'opacity-0 scale-100'
+              )}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
+
+          {/* Overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+        </div>
+
+        {/* Content */}
         <div className="z-10 w-full max-w-screen-md px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-900/70 p-6 shadow-lg">
 
-            {/* Slide Container */}
+            {/* Slides */}
             <div
               ref={scrollContainer}
               className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth">
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonialItem, index) => (
                 <Testimonial
-                  key={`${testimonial.name}-${index}`}
-                  testimonial={testimonial}
+                  key={`${testimonialItem.name}-${index}`}
+                  testimonial={testimonialItem}
                 />
               ))}
             </div>
@@ -129,7 +149,7 @@ const Testimonial: FC<{ testimonial: Testimonial }> = memo(
       )}
 
       <div className="flex flex-col gap-y-4">
-        <p className="prose prose-sm font-medium italic text-white sm:prose-base">
+        <p className="prose prose-sm font-medium italic text-white drop-shadow-md sm:prose-base">
           {text}
         </p>
         <p className="text-xs italic text-white sm:text-sm md:text-base lg:text-lg">
@@ -140,4 +160,5 @@ const Testimonial: FC<{ testimonial: Testimonial }> = memo(
   ),
 );
 
+Testimonials.displayName = 'Testimonials';
 export default Testimonials;

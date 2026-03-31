@@ -114,7 +114,7 @@ export interface CollegeItem {
  * Testimonial section
  */
 export interface TestimonialSection {
-  imageSrc?: string | StaticImageData;
+  images: (StaticImageData | string)[];
   testimonials: Testimonial[];
 }
 
