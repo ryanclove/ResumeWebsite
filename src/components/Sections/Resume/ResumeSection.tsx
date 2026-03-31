@@ -29,28 +29,31 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
             <span className="ml-2">{isOpen ? '▲' : '▼'}</span>
           </h2>
 
-          {/* Collapsible Content */}
+          {/* Collapsible Content with animation */}
           <AnimatePresence initial={false}>
             {isOpen && (
               <motion.div
-                initial={{ scaleY: 0, opacity: 0 }}
-                animate={{ scaleY: 1, opacity: 1 }}
-                exit={{ scaleY: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                style={{ transformOrigin: 'top' }}
+                key="content"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                className="overflow-hidden"
               >
                 <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-4 mt-4">
                   {items.map((item, index) => {
                     let size: 'large' | 'wide' | 'normal' = 'normal';
 
-                    // Coaching featured layout
+                    // Only coaching gets special layout
                     if (variant === 'featured') {
                       if (index === 0) size = 'large';
                       else if (index === 1) size = 'wide';
                     }
 
-                    // Education single item → wide
-                    if (title === 'Education' && items.length === 1) size = 'wide';
+                    // Special case: Education with only 1 item
+                    if (title === 'Education' && items.length === 1) {
+                      size = 'wide';
+                    }
 
                     return (
                       <ResumeItem

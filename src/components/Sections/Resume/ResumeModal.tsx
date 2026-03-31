@@ -28,7 +28,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ item, onClose }) => {
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 text-white text-xl"
+              className="absolute top-3 right-3 text-white text-xl z-50"
             >
               ✕
             </button>
