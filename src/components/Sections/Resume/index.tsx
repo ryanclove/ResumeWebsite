@@ -1,106 +1,37 @@
-/* eslint-disable simple-import-sort/imports */
-/* eslint-disable react/jsx-sort-props */
 /* eslint-disable object-curly-spacing */
-import { FC, memo, useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { FC, memo } from 'react';
 
 import { education, experience, playing, SectionId } from '../../../data/index';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
 
 const Resume: FC = memo(() => {
-  const [openSections, setOpenSections] = useState({
-    coaching: true,
-    playing: false,
-    education: false,
-  });
-
-  const toggleSection = (key: keyof typeof openSections) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
-
   return (
     <Section
-      bgClassName="bg-gray-800 dark:bg-gray-900"
-      paddingClassName="pt-0 pb-0 md:pt-12 md:pb-16"
+      bgClassName="bg-surface-container-medium"
+      paddingClassName="pt-16 pb-16"
       sectionId={SectionId.Resume}
     >
-      <div className="flex flex-col divide-y-2 divide-neutral-700">
-        {/* Coaching Experience */}
-        <div className="py-6">
-          <button
-            onClick={() => toggleSection('coaching')}
-            className="flex w-full items-center justify-between text-left hover:text-orange-400 transition-colors duration-300"
-          >
-            <h2 className="text-2xl font-bold text-white">Coaching Experience</h2>
-            {openSections.coaching ? (
-              <ChevronUpIcon className="h-6 w-6 text-white" />
-            ) : (
-              <ChevronDownIcon className="h-6 w-6 text-white" />
-            )}
-          </button>
+      <ResumeSection
+        title="Coaching Experience"
+        items={experience}
+        variant="featured"
+        defaultOpen={true} // open by default
+      />
 
-          {openSections.coaching && (
-            <ResumeSection
-              imageHeight={128}
-              imageWidth={128}
-              items={experience}
-              title=""
-            />
-          )}
-        </div>
+      <ResumeSection
+        title="Playing Experience"
+        items={playing}
+        variant="grid"
+        defaultOpen={false} // closed by default
+      />
 
-        {/* Playing Experience */}
-        <div className="py-6">
-          <button
-            onClick={() => toggleSection('playing')}
-            className="flex w-full items-center justify-between text-left hover:text-orange-400 transition-colors duration-300"
-          >
-            <h2 className="text-2xl font-bold text-white">Playing Experience</h2>
-            {openSections.playing ? (
-              <ChevronUpIcon className="h-6 w-6 text-white" />
-            ) : (
-              <ChevronDownIcon className="h-6 w-6 text-white" />
-            )}
-          </button>
-
-          {openSections.playing && (
-            <ResumeSection
-              imageHeight={128}
-              imageWidth={128}
-              items={playing}
-              title=""
-            />
-          )}
-        </div>
-
-        {/* Education */}
-        <div className="py-6">
-          <button
-            onClick={() => toggleSection('education')}
-            className="flex w-full items-center justify-between text-left hover:text-orange-400 transition-colors duration-300"
-          >
-            <h2 className="text-2xl font-bold text-white">Education</h2>
-            {openSections.education ? (
-              <ChevronUpIcon className="h-6 w-6 text-white" />
-            ) : (
-              <ChevronDownIcon className="h-6 w-6 text-white" />
-            )}
-          </button>
-
-          {openSections.education && (
-            <ResumeSection
-              imageHeight={128}
-              imageWidth={128}
-              items={education}
-              title=""
-            />
-          )}
-        </div>
-      </div>
+      <ResumeSection
+        title="Education"
+        items={education}
+        variant="grid"
+        defaultOpen={false} // closed by default
+      />
     </Section>
   );
 });

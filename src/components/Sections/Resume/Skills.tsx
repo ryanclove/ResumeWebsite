@@ -1,3 +1,4 @@
+// file is currently not used, but it is a good candidate for future use when we want to add more skills to the resume section. 
 import {FC, memo, PropsWithChildren, useMemo} from 'react';
 
 import {Skill as SkillType, SkillGroup as SkillGroupType} from '../../../data/dataDef';

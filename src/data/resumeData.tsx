@@ -25,6 +25,7 @@ export const education: TimelineItem[] = [
     location: 'Rutgers University - the State University of New Jersey',
     title: 'Bachelor of Science in Computer Science',
     alwaysOpen: true,
+    size: 'wide',
     content: (
       <p>
         While completing my Bachelor's Degreee, I played Intramural volleyball as well as played with the Rutgers Men's
@@ -44,6 +45,7 @@ export const experience: TimelineItem[] = [
     location: 'Vienna Elite Volleyball Club',
     title: <span className="text-blue-300">Head Volleyball Coach (16 National, 17 National)</span>,
     alwaysOpen: true,
+    size: 'large', // BIGGEST
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -77,6 +79,7 @@ export const experience: TimelineItem[] = [
     location: 'Washington DC Thunder 9man VBC',
     title: <span className="text-blue-600">Women's Program Lead & Head Volleyball Coach (Women's 6s)</span>,
     alwaysOpen: true,
+    size: 'wide', // SECOND BIGGEST
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -105,6 +108,7 @@ export const experience: TimelineItem[] = [
     image: dynamixlogo,
     location: 'Dynamix Volleyball Club',
     title: <span className="text-amber-500">Head Volleyball Coach (16 National)</span>,
+    size: 'normal',
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">
@@ -123,6 +127,7 @@ export const experience: TimelineItem[] = [
     image: cjheatlogo,
     location: 'Central Jersey Heat Volleyball Club',
     title: <span className="text-red-600">Head Volleyball Coach (15 Regional)</span>,
+    size: 'normal',
     content: (
       <div>
         <p className="mb-2 text-sm italic text-neutral-400">

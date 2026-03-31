@@ -95,6 +95,7 @@ export interface TimelineItem {
   content: ReactNode;
   image?: string | StaticImageData;
   alwaysOpen?: boolean;
+  size?: 'large' | 'wide' | 'normal';
 }
 
 /**

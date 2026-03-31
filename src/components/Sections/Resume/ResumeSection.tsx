@@ -1,53 +1,74 @@
-/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
-/* eslint-disable react/jsx-sort-props */
-import { FC, memo, PropsWithChildren } from 'react';
-import type { TimelineItem as TimelineItemType } from '../../../data/dataDef';
-import TimelineItem from './TimelineItem';
+import { FC, memo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import type { TimelineItem as ResumeItemType } from '../../../data/dataDef';
+import ResumeItem from './ResumeItem';
+import ResumeModal from './ResumeModal';
 
 interface ResumeSectionProps {
   title: string;
-  items: TimelineItemType[];
-  className?: string;
-  pt?: string;
-  pb?: string;
-  imageWidth?: number;
-  imageHeight?: number;
+  items: ResumeItemType[];
+  variant?: 'featured' | 'grid';
+  defaultOpen?: boolean;
 }
 
-const ResumeSection: FC<PropsWithChildren<ResumeSectionProps>> = memo(
-  ({
-    title,
-    items,
-    className = '',
-    pt = 'py-8',
-    pb = 'pb-8',
-    imageWidth = 128,
-    imageHeight = 128,
-  }) => {
-    return (
-      <div className={`w-full bg-gray-800 dark:bg-gray-900 ${className}`}>
-        <div className={`max-w-screen-lg mx-auto px-4 ${pt} ${pb} md:px-8 md:pt-12 md:pb-24`}>
-          {title && (
-            <h2 className="text-2xl font-bold uppercase text-white text-center mb-6 relative">
-              {title}
-              <span className="absolute inset-x-0 -bottom-1 border-b-2 border-orange-400" />
-            </h2>
-          )}
+const ResumeSection: FC<ResumeSectionProps> = memo(
+  ({ title, items, variant = 'grid', defaultOpen = false }) => {
+    const [selectedItem, setSelectedItem] = useState<ResumeItemType | null>(null);
+    const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
 
-          {/* Timeline items */}
-          <div className="flex flex-col gap-y-6">
-            {items.map((item, index) => (
-              <TimelineItem
-                key={index}
-                item={item}
-                imageWidth={imageWidth}
-                imageHeight={imageHeight}
-              />
-            ))}
-          </div>
+    return (
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          {/* Header */}
+          <h2
+            className="font-headline text-4xl md:text-5xl font-bold mb-6 cursor-pointer flex items-center justify-between"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {title}
+            <span className="ml-2">{isOpen ? '▲' : '▼'}</span>
+          </h2>
+
+          {/* Collapsible Content */}
+          <AnimatePresence initial={false}>
+            {isOpen && (
+              <motion.div
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: 1 }}
+                exit={{ scaleY: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                style={{ transformOrigin: 'top' }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-4 mt-4">
+                  {items.map((item, index) => {
+                    let size: 'large' | 'wide' | 'normal' = 'normal';
+
+                    // Coaching featured layout
+                    if (variant === 'featured') {
+                      if (index === 0) size = 'large';
+                      else if (index === 1) size = 'wide';
+                    }
+
+                    // Education single item → wide
+                    if (title === 'Education' && items.length === 1) size = 'wide';
+
+                    return (
+                      <ResumeItem
+                        key={index}
+                        item={{ ...item, size }}
+                        onClick={() => setSelectedItem(item)}
+                      />
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Modal */}
+          <ResumeModal item={selectedItem} onClose={() => setSelectedItem(null)} />
         </div>
-      </div>
+      </section>
     );
   }
 );
