@@ -25,6 +25,9 @@ const CollegeSection: FC<CollegeSectionProps> = memo(({ title, items, className 
             NCAA Division Placements
           </div>
         </div>
+        <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-4">
+          Click on a Card for More Details
+        </h3>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-auto gap-4">

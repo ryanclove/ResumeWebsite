@@ -40,6 +40,9 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
+                <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-4">
+                  Click on a Card for More Details
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 auto-rows-[150px] md:auto-rows-[250px]">
                   {items.map((item, index) => {
                     let size: 'large' | 'wide' | 'normal' = 'normal';

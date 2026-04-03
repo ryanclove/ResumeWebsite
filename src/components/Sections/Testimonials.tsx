@@ -25,22 +25,40 @@ const Testimonials: FC = memo(() => {
     return images.map(img => (typeof img === 'string' ? img : img.src));
   }, [images]);
 
+  // ✅ Fully shuffled images
+  const [shuffledImages, setShuffledImages] = useState<string[]>(resolvedImages);
+
+  // 🔀 Shuffle ALL images on mount
+  useEffect(() => {
+    if (!resolvedImages.length) return;
+
+    const shuffled = [...resolvedImages];
+
+    // Fisher-Yates shuffle
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    setShuffledImages(shuffled);
+  }, [resolvedImages]);
+
   useEffect(() => {
     itemWidth.current = scrollContainer.current
       ? scrollContainer.current.offsetWidth
       : 0;
   }, [width]);
 
-  // 🔁 Background slideshow (independent)
+  // 🔁 Background slideshow (uses shuffled images)
   useEffect(() => {
-    if (!resolvedImages.length) return;
+    if (!shuffledImages.length) return;
 
     const interval = setInterval(() => {
-      setBgIndex(prev => (prev + 1) % resolvedImages.length);
+      setBgIndex(prev => (prev + 1) % shuffledImages.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [resolvedImages.length]);
+  }, [shuffledImages]);
 
   const goToIndex = useCallback(
     (index: number) => {
@@ -75,7 +93,7 @@ const Testimonials: FC = memo(() => {
 
         {/* 🔥 Background Slideshow */}
         <div className="absolute inset-0 -z-10">
-          {resolvedImages.map((img, index) => (
+          {shuffledImages.map((img, index) => (
             <div
               key={index}
               className={classNames(
@@ -88,7 +106,7 @@ const Testimonials: FC = memo(() => {
             />
           ))}
 
-          {/* Overlay for readability */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
         </div>
 
