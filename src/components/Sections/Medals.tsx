@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { medalsItems, SectionId } from '../../data/index';
 import { MedalsItem } from '../../data/dataDef';
 import Section from '../Layout/Section';
+import { isMobile } from '../../config';
 
 // COLOR MAP
 const typeColor: Record<'gold' | 'goldrunnerup' | 'silver' | 'bronze', string> = {
@@ -104,6 +105,10 @@ const Medals: FC = memo(() => {
             <span className={typeColor['bronze']}>🥉 {bronzeCount}</span>
           </div>
         </div>
+
+        <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-4 md:hidden">
+          Click on a Medal for More Details
+        </h3>
 
         {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
