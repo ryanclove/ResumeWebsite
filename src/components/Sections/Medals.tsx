@@ -31,6 +31,8 @@ const Medals: FC = memo(() => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const [showHelper, setShowHelper] = useState(false);
+
   const handleImageClick = useCallback((item: MedalsItem) => {
     setSelectedItem(item);
   }, []);
@@ -47,6 +49,7 @@ const Medals: FC = memo(() => {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
+          setShowHelper(true);
 
           let current = 0;
           const duration = 3600;
@@ -81,8 +84,8 @@ const Medals: FC = memo(() => {
 
   return (
     <Section className="bg-surface-container-low" sectionId={SectionId.Medals}>
-      <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-12">
-        <div className="text-center mb-12">
+      <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-6">
+        <div className="text-center mb-6">
           <span className="font-label text-secondary uppercase tracking-[0.5em] text-sm">
             The Gold Standard
           </span>
@@ -104,6 +107,15 @@ const Medals: FC = memo(() => {
             <span className={typeColor['bronze']}>🥉 {bronzeCount}</span>
           </div>
         </div>
+
+        <motion.h3
+          className="text-sm uppercase tracking-wide text-primary text-center mb-2 md:hidden"
+          initial={{ opacity: 0, y: 10 }}
+          animate={showHelper ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          Click on a Medal for More Details
+        </motion.h3>
 
         {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
