@@ -78,7 +78,7 @@ const Hero: FC = memo(() => {
               </a>
 
               <div className="flex items-center gap-4 text-on-surface font-label uppercase tracking-widest text-sm">
-                <span className="w-12 h-[1px] bg-outline-variant"></span>
+                <span className="w-12 h-[1px] bg-primary"></span>
                 Scroll to Explore
               </div>
             </div>
