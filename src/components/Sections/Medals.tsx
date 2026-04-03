@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { medalsItems, SectionId } from '../../data/index';
 import { MedalsItem } from '../../data/dataDef';
 import Section from '../Layout/Section';
-import { isMobile } from '../../config';
 
 // COLOR MAP
 const typeColor: Record<'gold' | 'goldrunnerup' | 'silver' | 'bronze', string> = {
@@ -82,8 +81,8 @@ const Medals: FC = memo(() => {
 
   return (
     <Section className="bg-surface-container-low" sectionId={SectionId.Medals}>
-      <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-12">
-        <div className="text-center mb-12">
+      <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-6">
+        <div className="text-center mb-6">
           <span className="font-label text-secondary uppercase tracking-[0.5em] text-sm">
             The Gold Standard
           </span>
@@ -106,7 +105,7 @@ const Medals: FC = memo(() => {
           </div>
         </div>
 
-        <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-4 md:hidden">
+        <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-2 md:hidden">
           Click on a Medal for More Details
         </h3>
 
