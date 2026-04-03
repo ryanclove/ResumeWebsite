@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { isMobile } from '../../config';
 import { medalsItems, SectionId } from '../../data/index';
 import { MedalsItem } from '../../data/dataDef';
 import Section from '../Layout/Section';
@@ -133,6 +132,14 @@ const Medals: FC = memo(() => {
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-2 right-2 text-white text-2xl font-bold hover:text-gray-300 transition"
+              >
+                ×
+              </button>
+
               <h3
                 className={classNames(
                   'text-lg sm:text-xl font-bold text-center mb-2',
@@ -141,6 +148,7 @@ const Medals: FC = memo(() => {
               >
                 {selectedItem.title}
               </h3>
+
               <p className="text-center text-sm text-white mb-4">
                 {selectedItem.description.split('\n').map((line, idx) => (
                   <span key={idx}>
@@ -149,6 +157,7 @@ const Medals: FC = memo(() => {
                   </span>
                 ))}
               </p>
+
               <Image
                 alt="Expanded medal"
                 className="rounded-lg object-contain w-full h-auto max-h-[90vh]"
