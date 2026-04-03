@@ -11,16 +11,35 @@ import Socials from '../Socials';
 const Hero: FC = memo(() => {
   const { images, name, description } = heroData;
 
+  const [shuffledImages, setShuffledImages] = useState<typeof images>(images);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 🔁 Auto slideshow
+  // 🔀 Shuffle once on mount (keep first image fixed)
   useEffect(() => {
+    if (!images.length) return;
+
+    const first = images[0];
+    const rest = [...images.slice(1)];
+
+    // Fisher-Yates shuffle
+    for (let i = rest.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rest[i], rest[j]] = [rest[j], rest[i]];
+    }
+
+    setShuffledImages([first, ...rest]);
+  }, [images]);
+
+  // 🔁 Slideshow uses shuffled images
+  useEffect(() => {
+    if (!shuffledImages.length) return;
+
     const interval = setInterval(() => {
-      setCurrentImage(prev => (prev + 1) % images.length);
+      setCurrentImage(prev => (prev + 1) % shuffledImages.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [shuffledImages]);
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
@@ -28,27 +47,29 @@ const Hero: FC = memo(() => {
 
         {/* 🔥 Background Images */}
         <div className="absolute inset-0 -z-10">
-          {images.map((img, index) => (
+          {shuffledImages.map((img, index) => (
             <Image
               key={index}
               src={img}
               alt="Hero background"
               fill
               priority={index === 0}
-              className={`object-cover transition-all duration-[4000ms] ${index === currentImage ? 'opacity-90 scale-105' : 'opacity-0 scale-100'
+              sizes="100vw"
+              className={`object-cover transition-all duration-[4000ms] ${index === currentImage
+                  ? 'opacity-90 scale-105'
+                  : 'opacity-0 scale-100'
                 }`}
             />
           ))}
 
-          {/* ✅ Subtle gradient overlay for depth (keeps images vibrant) */}
+          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-background/30 to-transparent" />
         </div>
 
-        {/* ✅ Content */}
+        {/* Content */}
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
 
-            {/* Text background for readability */}
             <span className="font-label text-secondary uppercase tracking-[0.4em] mb-4 block drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
               Elite Coaching Performance
             </span>
@@ -86,7 +107,7 @@ const Hero: FC = memo(() => {
           </div>
         </div>
 
-        {/* Scroll Down Button */}
+        {/* Scroll Down */}
         <div className="absolute inset-x-0 bottom-6 flex justify-center z-10">
           <a
             className="rounded-full bg-surface p-2 ring-1 ring-outline hover:scale-110 transition"
