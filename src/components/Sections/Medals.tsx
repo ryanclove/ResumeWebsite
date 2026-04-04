@@ -83,7 +83,7 @@ const Medals: FC = memo(() => {
   }, [hasAnimated]);
 
   return (
-    <Section className="bg-surface-container-low" sectionId={SectionId.Medals}>
+    <Section className="bg-surface-container-low relative" sectionId={SectionId.Medals}>
       <div ref={sectionRef} className="container mx-auto px-6 flex flex-col gap-y-6">
         <div className="text-center mb-6">
           <span className="font-label text-secondary uppercase tracking-[0.5em] text-sm">
@@ -179,6 +179,8 @@ const Medals: FC = memo(() => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Gradient bleed into College */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-surface-container-medium pointer-events-none" />
     </Section>
   );
 });

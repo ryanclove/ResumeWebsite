@@ -16,10 +16,13 @@ const CollegeCommit: FC = memo(() => {
 
   return (
     <Section
-      bgClassName="bg-surface-container-medium"
+      bgClassName="bg-surface-container-medium relative"
       paddingClassName="pt-16 pb-16 md:pt-20 md:pb-20"
       sectionId={SectionId.College}
     >
+      {/* Gradient bleed from Medals */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-surface-container-low to-transparent pointer-events-none z-10" />
+      
       <CollegeSection
         items={updatedCollege}
         title="My College Players."

@@ -38,9 +38,8 @@ const QuoteSlideshow: FC = memo(() => {
       {quotes.map((quote, idx) => (
         <p
           key={idx}
-          className={`text-sm sm:text-base italic text-on-surface-variant transition-opacity duration-500 ${
-            idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute'
-          }`}
+          className={`text-sm sm:text-base italic text-on-surface-variant transition-opacity duration-500 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute'
+            }`}
         >
           "{quote}"
         </p>
@@ -49,9 +48,8 @@ const QuoteSlideshow: FC = memo(() => {
         {quotes.map((_, idx) => (
           <span
             key={idx}
-            className={`h-1 w-2 rounded-full transition-all ${
-              idx === currentIndex ? 'bg-primary' : 'bg-outline-variant'
-            }`}
+            className={`h-1 w-2 rounded-full transition-all ${idx === currentIndex ? 'bg-primary' : 'bg-outline-variant'
+              }`}
           />
         ))}
       </div>
@@ -63,7 +61,7 @@ const About: FC = memo(() => {
   const { profileImageSrc, description, aboutItems } = aboutData;
 
   return (
-    <Section sectionId={SectionId.About} className="py-32 overflow-hidden bg-surface-container-low">
+    <Section sectionId={SectionId.About} className="py-32 relative bg-surface-container-low">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
 
@@ -125,6 +123,8 @@ const About: FC = memo(() => {
           </div>
         </div>
       </div>
+      {/* Gradient bleed into Resume */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-surface-container-medium pointer-events-none" />
     </Section>
   );
 });
