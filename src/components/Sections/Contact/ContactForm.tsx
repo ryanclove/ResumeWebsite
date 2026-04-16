@@ -1,6 +1,8 @@
 /* eslint-disable object-curly-spacing */
 import { FC, memo, useCallback, useMemo, useState } from 'react';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 interface FormData {
   name: string;
   email: string;
@@ -18,6 +20,8 @@ const ContactForm: FC = memo(() => {
   );
 
   const [data, setData] = useState<FormData>(defaultData);
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
@@ -30,6 +34,8 @@ const ContactForm: FC = memo(() => {
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+      setStatus('loading');
+      setErrorMessage('');
 
       try {
         const response = await fetch('/api/contact', {
@@ -41,21 +47,25 @@ const ContactForm: FC = memo(() => {
         const result = await response.json();
 
         if (response.ok) {
-          alert('Message sent successfully!');
+          setStatus('success');
           setData(defaultData);
         } else {
-          alert('Failed to send message: ' + result.message);
+          setStatus('error');
+          setErrorMessage(result.message ?? 'Something went wrong. Please try again.');
         }
       } catch (err) {
         console.error(err);
-        alert('An error occurred while sending the message.');
+        setStatus('error');
+        setErrorMessage('Network error — please check your connection and try again.');
       }
     },
     [data, defaultData],
   );
 
   const inputClasses =
-    'w-full bg-surface-container-low border-none border-b-2 border-outline-variant focus:border-secondary focus:ring-0 transition-all p-4 text-on-surface placeholder:text-on-surface-variant';
+    'w-full bg-surface-container-low border-none border-b-2 border-outline-variant focus:border-secondary focus:ring-0 transition-all p-4 text-on-surface placeholder:text-on-surface-variant disabled:opacity-50';
+
+  const isLoading = status === 'loading';
 
   return (
     <form className="space-y-6" method="POST" onSubmit={handleSendMessage}>
@@ -67,12 +77,13 @@ const ContactForm: FC = memo(() => {
         </label>
         <input
           className={inputClasses}
+          disabled={isLoading}
           name="name"
-          value={data.name}
           onChange={onChange}
           placeholder="First and Last name"
           required
           type="text"
+          value={data.name}
         />
       </div>
 
@@ -83,12 +94,13 @@ const ContactForm: FC = memo(() => {
         </label>
         <input
           className={inputClasses}
+          disabled={isLoading}
           name="email"
-          value={data.email}
           onChange={onChange}
           placeholder="email@example.com"
           required
           type="email"
+          value={data.email}
         />
       </div>
 
@@ -99,21 +111,43 @@ const ContactForm: FC = memo(() => {
         </label>
         <textarea
           className={inputClasses}
+          disabled={isLoading}
           name="message"
-          value={data.message}
           onChange={onChange}
           placeholder="Describe your athletic goals..."
           required
           rows={4}
+          value={data.message}
         />
       </div>
 
+      {/* Inline status messages */}
+      {status === 'success' && (
+        <p className="text-sm text-green-400 font-medium">
+          ✓ Message sent! I'll get back to you soon.
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-sm text-red-400 font-medium">
+          ✗ {errorMessage}
+        </p>
+      )}
+
       {/* Submit */}
       <button
+        className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-xl disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-2"
+        disabled={isLoading}
         type="submit"
-        className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-xl"
       >
-        Send Inquiry
+        {isLoading ? (
+          <>
+            {/* Simple CSS spinner — no extra dependency needed */}
+            <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-on-primary border-t-transparent" />
+            Sending…
+          </>
+        ) : (
+          'Send Inquiry'
+        )}
       </button>
     </form>
   );

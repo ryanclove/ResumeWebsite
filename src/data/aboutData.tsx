@@ -11,6 +11,10 @@ import {
 import { About } from './dataDef';
 import profilepic from '../images/profilepic.jpg';
 
+// Derive age dynamically
+const BIRTH_YEAR = 2000;
+const currentAge = new Date().getFullYear() - BIRTH_YEAR;
+
 export const aboutData: About = {
   profileImageSrc: profilepic,
   description: `Experienced volleyball coach with a proven record of leading teams to success and developing
@@ -20,7 +24,7 @@ while keeping the game enjoyable. Available for private lessons and support in a
 college or personal volleyball goals.`,
   aboutItems: [
     { label: 'Location', text: 'DMV, USA', Icon: MapIcon },
-    { label: 'Age', text: '25', Icon: CalendarIcon },
+    { label: 'Age', text: String(currentAge), Icon: CalendarIcon },
     { label: 'Interests', text: 'Volleyball, Philly Sports, Technology', Icon: SparklesIcon },
     { label: 'Study', text: 'Rutgers University', Icon: AcademicCapIcon },
     { label: 'Employment', text: 'Vienna Elite VBC | Peraton, Inc.', Icon: BuildingOffice2Icon },

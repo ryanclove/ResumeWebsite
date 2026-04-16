@@ -2,6 +2,7 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-sort-props */
 import classNames from 'classnames';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { SectionId, testimonial } from '../../data/index';
@@ -14,6 +15,8 @@ import Section from '../Layout/Section';
 const Testimonials: FC = memo(() => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [bgIndex, setBgIndex] = useState<number>(0);
+  // Pause auto-advance while user is manually browsing
+  const [isPaused, setIsPaused] = useState(false);
 
   const itemWidth = useRef(0);
   const scrollContainer = useRef<HTMLDivElement>(null);
@@ -25,21 +28,15 @@ const Testimonials: FC = memo(() => {
     return images.map(img => (typeof img === 'string' ? img : img.src));
   }, [images]);
 
-  // ✅ Fully shuffled images
   const [shuffledImages, setShuffledImages] = useState<string[]>(resolvedImages);
 
-  // 🔀 Shuffle ALL images on mount
   useEffect(() => {
     if (!resolvedImages.length) return;
-
     const shuffled = [...resolvedImages];
-
-    // Fisher-Yates shuffle
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-
     setShuffledImages(shuffled);
   }, [resolvedImages]);
 
@@ -49,64 +46,68 @@ const Testimonials: FC = memo(() => {
       : 0;
   }, [width]);
 
-  // 🔁 Background slideshow (uses shuffled images)
   useEffect(() => {
     if (!shuffledImages.length) return;
-
     const interval = setInterval(() => {
       setBgIndex(prev => (prev + 1) % shuffledImages.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, [shuffledImages]);
 
   const goToIndex = useCallback(
     (index: number) => {
       if (!scrollContainer.current) return;
-
       scrollContainer.current.scrollTo({
         left: itemWidth.current * index,
         behavior: 'smooth',
       });
-
       setActiveIndex(index);
     },
     [],
   );
 
   const next = useCallback(() => {
-    const nextIndex =
-      activeIndex + 1 >= testimonials.length ? 0 : activeIndex + 1;
-
+    const nextIndex = activeIndex + 1 >= testimonials.length ? 0 : activeIndex + 1;
     goToIndex(nextIndex);
   }, [activeIndex, testimonials.length, goToIndex]);
 
-  useInterval(next, 8000);
+  const prev = useCallback(() => {
+    const prevIndex = activeIndex - 1 < 0 ? testimonials.length - 1 : activeIndex - 1;
+    goToIndex(prevIndex);
+  }, [activeIndex, testimonials.length, goToIndex]);
 
-  if (!testimonials.length) {
-    return null;
-  }
+  // Manual nav: go to slide and pause auto-advance for 15s
+  const handleManualNav = useCallback(
+    (action: 'prev' | 'next' | number) => {
+      setIsPaused(true);
+      if (action === 'prev') prev();
+      else if (action === 'next') next();
+      else goToIndex(action);
+      setTimeout(() => setIsPaused(false), 15000);
+    },
+    [prev, next, goToIndex],
+  );
+
+  useInterval(next, isPaused ? null : 8000);
+
+  if (!testimonials.length) return null;
 
   return (
     <Section noPadding sectionId={SectionId.Testimonials}>
       <div className="relative flex w-full items-center justify-center px-4 py-16 md:py-24 lg:px-8 overflow-hidden isolate">
 
-        {/* 🔥 Background Slideshow */}
+        {/* Background Slideshow */}
         <div className="absolute inset-0 -z-10">
           {shuffledImages.map((img, index) => (
             <div
               key={index}
               className={classNames(
                 'absolute inset-0 bg-cover bg-center transition-all duration-[4000ms]',
-                index === bgIndex
-                  ? 'opacity-70 scale-105'
-                  : 'opacity-0 scale-100'
+                index === bgIndex ? 'opacity-70 scale-105' : 'opacity-0 scale-100'
               )}
               style={{ backgroundImage: `url(${img})` }}
             />
           ))}
-
-          {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
         </div>
 
@@ -119,28 +120,50 @@ const Testimonials: FC = memo(() => {
               ref={scrollContainer}
               className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth">
               {testimonials.map((testimonialItem, index) => (
-                <Testimonial
+                <TestimonialSlide
                   key={`${testimonialItem.name}-${index}`}
                   testimonial={testimonialItem}
                 />
               ))}
             </div>
 
-            {/* Dots */}
-            <div className="flex gap-x-4">
-              {testimonials.map((_, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <button
-                    key={`select-button-${index}`}
-                    onClick={() => goToIndex(index)}
-                    className={classNames(
-                      'h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 sm:h-4 sm:w-4',
-                      isActive ? 'scale-100 opacity-100' : 'scale-75 opacity-60',
-                    )}
-                  />
-                );
-              })}
+            {/* Controls row: prev | dots | next */}
+            <div className="flex items-center gap-x-4">
+              {/* Prev button */}
+              <button
+                aria-label="Previous testimonial"
+                className="rounded-full p-1.5 text-gray-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40"
+                onClick={() => handleManualNav('prev')}
+              >
+                <ChevronLeftIcon className="h-5 w-5" />
+              </button>
+
+              {/* Dots */}
+              <div className="flex gap-x-3">
+                {testimonials.map((_, index) => {
+                  const isActive = index === activeIndex;
+                  return (
+                    <button
+                      key={`select-button-${index}`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                      onClick={() => handleManualNav(index)}
+                      className={classNames(
+                        'h-3 w-3 rounded-full bg-gray-300 transition-all duration-300 sm:h-4 sm:w-4',
+                        isActive ? 'scale-100 opacity-100' : 'scale-75 opacity-60',
+                      )}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Next button */}
+              <button
+                aria-label="Next testimonial"
+                className="rounded-full p-1.5 text-gray-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/40"
+                onClick={() => handleManualNav('next')}
+              >
+                <ChevronRightIcon className="h-5 w-5" />
+              </button>
             </div>
 
           </div>
@@ -150,7 +173,7 @@ const Testimonials: FC = memo(() => {
   );
 });
 
-const Testimonial: FC<{ testimonial: Testimonial }> = memo(
+const TestimonialSlide: FC<{ testimonial: Testimonial }> = memo(
   ({ testimonial: { text, name, image } }) => (
     <div className="flex w-full shrink-0 snap-start flex-col items-start gap-y-4 p-2 sm:flex-row sm:gap-x-6">
       {image ? (

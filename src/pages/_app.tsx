@@ -17,7 +17,8 @@ declare global {
   }
 }
 
-const sections = ['hero', 'resume', 'medals', 'collegecommit', 'contact'];
+// 'collegecommit' was wrong — the actual section id is 'college' (from SectionId.College)
+const sections = ['hero', 'resume', 'medals', 'college', 'contact'];
 
 const MyApp = memo(({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const MyApp = memo(({ Component, pageProps }: AppProps) => {
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% of section is visible
+      { threshold: 0.5 },
     );
 
     sections.forEach((id) => {

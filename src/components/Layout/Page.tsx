@@ -1,35 +1,39 @@
-import {NextPage} from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
-import {memo, PropsWithChildren} from 'react';
+import { useRouter } from 'next/router';
+import { memo, PropsWithChildren } from 'react';
 
-import {HomepageMeta} from '../../data/dataDef';
+import { HomepageMeta } from '../../data/dataDef';
 
-const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, description}) => {
-  const {asPath: pathname} = useRouter();
+const SITE_URL = 'https://coachryantutu.vercel.app';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({ children, title, description, ogImageUrl }) => {
+  const { asPath: pathname } = useRouter();
+  const canonicalUrl = `${SITE_URL}${pathname}`;
+  const ogImage = ogImageUrl ?? DEFAULT_OG_IMAGE;
 
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta content={description} name="description" />
+        <link href={canonicalUrl} key="canonical" rel="canonical" />
 
-        {/* several domains list the same content, make sure google knows we mean this one. */}
-        <link href={`https://reactresume.com${pathname}`} key="canonical" rel="canonical" />
-
-        <link href="/favicon.ico" rel="icon" sizes="any" />
-        <link href="/icon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
-        <link href="/site.webmanifest" rel="manifest" />
-
-        {/* Open Graph : https://ogp.me/ */}
+        {/* Open Graph */}
         <meta content={title} property="og:title" />
         <meta content={description} property="og:description" />
-        <meta content={`https://reactresume.com${pathname}`} property="og:url" />
+        <meta content={canonicalUrl} property="og:url" />
+        <meta content={ogImage} property="og:image" />
+        <meta content="1200" property="og:image:width" />
+        <meta content="630" property="og:image:height" />
+        <meta content="website" property="og:type" />
 
-        {/* Twitter: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup */}
+        {/* Twitter / X card */}
+        <meta content="summary_large_image" name="twitter:card" />
         <meta content={title} name="twitter:title" />
         <meta content={description} name="twitter:description" />
+        <meta content={ogImage} name="twitter:image" />
       </Head>
       {children}
     </>
