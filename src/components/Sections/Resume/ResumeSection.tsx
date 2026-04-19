@@ -43,7 +43,7 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
                 <h3 className="text-sm uppercase tracking-wide text-primary text-center mb-4">
                   Click on a Card for More Details
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 auto-rows-[150px] md:auto-rows-[250px]">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 auto-rows-[175px] md:auto-rows-[250px]">
                   {items.map((item, index) => {
                     let size: 'large' | 'wide' | 'normal' = 'normal';
 
@@ -62,10 +62,7 @@ const ResumeSection: FC<ResumeSectionProps> = memo(
                     else if (size === 'wide') spanClasses = 'md:col-span-2';
 
                     return (
-                      <div
-                        key={index}
-                        className={`relative ${spanClasses} h-[180px] md:h-auto`}
-                      >
+                      <div key={index} className={`relative ${spanClasses} h-[175px] md:h-auto`}>
                         <ResumeItem
                           item={{ ...item, size }}
                           onClick={() => setSelectedItem(item)}

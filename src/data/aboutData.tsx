@@ -12,8 +12,11 @@ import { About } from './dataDef';
 import profilepic from '../images/profilepic.jpg';
 
 // Derive age dynamically
-const BIRTH_YEAR = 2000;
-const currentAge = new Date().getFullYear() - BIRTH_YEAR;
+const BIRTH_DATE = new Date(2000, 5, 3); // June 3, 2000 (month is 0-indexed)
+const today = new Date();
+const currentAge =
+  today.getFullYear() - BIRTH_DATE.getFullYear() -
+  (today < new Date(today.getFullYear(), BIRTH_DATE.getMonth(), BIRTH_DATE.getDate()) ? 1 : 0);
 
 export const aboutData: About = {
   profileImageSrc: profilepic,
