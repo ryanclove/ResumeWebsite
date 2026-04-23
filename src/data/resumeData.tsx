@@ -60,6 +60,7 @@ export const experience: TimelineItem[] = [
             </a>{' '}
             (National) team
           </li>
+          <li>For the 2023-2024 club season and the 2024-2025 club season I was the head coach for Vienna Elite 17 Blue (National).</li>
           <li>Work with coaching staff to run practices and oversee middle and high school athletes (ages 13–18).</li>
           <li>Devise drills and training plans to optimize fundamentals, teamwork, communication, and game IQ.</li>
           <li>Evaluate individual strengths and assign positions to maximize team performance.</li>
@@ -83,9 +84,9 @@ export const experience: TimelineItem[] = [
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Entrusted with leading the adult women's program at DC Thunder.</li>
-          <li>Devising practices to optimize fundamentals, teamwork, communication, and more.</li>
-          <li>Managing 2 rosters on 1 practice court without sacrificing quality or quantity of reps.</li>
-          <li>Follow the guidelines of 9man and its Chinese & Asian-ethnicity requirements.</li>
+          <li>Devised practices to optimize fundamentals, teamwork, communication, and more.</li>
+          <li>Managed 2 rosters on 1 practice court without sacrificing quality or quantity of reps.</li>
+          <li>Followed the guidelines of 9man and its Chinese & Asian-ethnicity requirements.</li>
           <li>Head coach for the women's B team at tournaments; make rosters, adjustments, etc.</li>
           <li>
             Tournament Finishes 2024
