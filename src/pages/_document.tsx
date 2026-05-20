@@ -7,6 +7,8 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta content="notranslate" name="google" />
         <meta name="google-site-verification" content="FU45Mtwq_G5B8VfzRZVgpTFhqCViCBgKMO7Mn05_T98" />
+        <meta property="og:image" content="https://coachryantutu.vercel.app/previewimage.jpg" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="bg-gray-800 dark:bg-black text-white m-0 p-0">
         <Main />
