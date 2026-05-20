@@ -6,11 +6,12 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <meta content="notranslate" name="google" />
+        <meta name="google-site-verification" content="FU45Mtwq_G5B8VfzRZVgpTFhqCViCBgKMO7Mn05_T98" />
       </Head>
       <body className="bg-gray-800 dark:bg-black text-white m-0 p-0">
         <Main />
         <NextScript />
       </body>
-    </Html>
+    </Html >
   );
 }
