@@ -81,7 +81,7 @@ export interface MedalsItem {
   title: string;
   description: string;
   //url: string;
-  medalType: 'gold' | 'goldrunnerup' |'silver' | 'bronze';
+  medalType: 'gold' | 'goldrunnerup' | 'silver' | 'bronze';
   image?: string | StaticImageData; // <- Next.js image imports
 }
 
@@ -123,6 +123,7 @@ export interface Testimonial {
   image?: string;
   name: string;
   text: string;
+  type: 'player' | 'parent';
 }
 
 /**

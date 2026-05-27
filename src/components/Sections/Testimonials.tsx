@@ -12,22 +12,13 @@ import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
 import Section from '../Layout/Section';
 
-// ─── helpers ────────────────────────────────────────────────────────────────
-
-const PARENT_KEYWORDS = ['mother', 'father', 'parent', 'mom', 'dad'];
-
-function isParent(name: string): boolean {
-  const lower = name.toLowerCase();
-  return PARENT_KEYWORDS.some(kw => lower.includes(kw));
-}
-
 // ─── single carousel ────────────────────────────────────────────────────────
 
 interface CarouselProps {
   label: string;
-  accent: string; // tailwind text color class for the label
+  accent: string;
   items: Testimonial[];
-  autoDelay: number; // ms between auto-advance
+  autoDelay: number;
 }
 
 const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) => {
@@ -71,18 +62,18 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
   if (!items.length) return null;
 
   return (
-    <div className="flex flex-col gap-4 flex-1 min-w-0">
+    <div className="flex flex-col gap-3 flex-1 min-w-0">
       {/* Label */}
       <div className={classNames('font-label text-xs uppercase tracking-[0.25em] font-bold', accent)}>
         {label}
       </div>
 
       {/* Card */}
-      <div className="flex flex-col gap-4 rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1">
-        {/* Slides */}
+      <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1">
+        {/* Slides — fixed height on mobile so long quotes scroll rather than clip */}
         <div
           ref={scrollContainer}
-          className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth flex-1"
+          className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth"
         >
           {items.map((item, index) => (
             <CarouselSlide key={`${item.name}-${index}`} testimonial={item} />
@@ -90,7 +81,7 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-x-3 mt-auto pt-2 border-t border-white/10">
+        <div className="flex items-center justify-center gap-x-3 pt-3 mt-3 border-t border-white/10">
           <button
             aria-label="Previous"
             className="rounded-full p-1 text-gray-400 hover:bg-white/10 hover:text-white transition focus:outline-none"
@@ -133,7 +124,8 @@ Carousel.displayName = 'Carousel';
 // ─── single slide ────────────────────────────────────────────────────────────
 
 const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image } }) => (
-  <div className="flex w-full shrink-0 snap-start flex-col gap-y-4 p-1">
+  <div className="flex w-full shrink-0 snap-start flex-col gap-y-3 p-1">
+    {/* Author row */}
     <div className="flex items-start gap-x-3">
       {image ? (
         <div className="relative h-10 w-10 shrink-0">
@@ -145,7 +137,15 @@ const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { t
       )}
       <p className="text-sm font-semibold text-white/90 leading-snug">{name}</p>
     </div>
-    <p className="text-sm italic text-white/75 leading-relaxed line-clamp-6 md:line-clamp-none">{text}</p>
+
+    {/*
+      Quote text:
+      - Mobile: fixed height + vertical scroll so long quotes never get cut off
+      - md+: auto height, no scroll needed (wider cards fit more text)
+    */}
+    <div className="overflow-y-auto max-h-40 md:max-h-none no-scrollbar pr-1">
+      <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
+    </div>
   </div>
 ));
 
@@ -204,12 +204,12 @@ const Testimonials: FC = memo(() => {
   }, [resolvedImages]);
 
   const playerTestimonials = useMemo(
-    () => testimonials.filter(t => !isParent(t.name)),
+    () => testimonials.filter(t => t.type === 'player'),
     [testimonials],
   );
 
   const parentTestimonials = useMemo(
-    () => testimonials.filter(t => isParent(t.name)),
+    () => testimonials.filter(t => t.type === 'parent'),
     [testimonials],
   );
 
@@ -240,7 +240,7 @@ const Testimonials: FC = memo(() => {
               autoDelay={8000}
             />
 
-            {/* Divider — visible only on md+ */}
+            {/* Divider — md+ only */}
             <div className="hidden md:block w-px bg-white/10 self-stretch" />
 
             <Carousel
