@@ -9,9 +9,10 @@ import hero4 from '../images/hero/jwong.jpg';
 import hero5 from '../images/hero/orangetutu.jpg';
 import hero6 from '../images/hero/necktattoo.png';
 import hero7 from '../images/hero/sharkref.jpg';
+import hero8 from '../images/hero/jefftutu.jpg';
 
 export const heroData: Hero = {
-  images: [hero1, hero2, hero3, hero4, hero5, hero6, hero7], // 🔁 slideshow images
+  images: [hero1, hero2, hero3, hero4, hero5, hero6, hero7, hero8], // 🔁 slideshow images
 
   name: `Coach Ryan Coslove`,
 
