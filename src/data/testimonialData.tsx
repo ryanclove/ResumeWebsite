@@ -77,7 +77,7 @@ export const testimonial: TestimonialSection = {
       text: "Girls had a great season. Never seen that many tears at the end from any of the teams we've been on.",
     },
     {
-      name: 'Kristen S. (Mother of former 16s Player)',
+      name: 'Sejal T. (Mother of former 16s Player)',
       text: "Awesome season! One of the best! We've never had a coach who recognizes everyone equally, holds himself accountable, very communicative and overall made the season fun for all. So THANK YOU!",
     },
   ],
