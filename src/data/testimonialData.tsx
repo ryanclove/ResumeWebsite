@@ -86,5 +86,15 @@ export const testimonial: TestimonialSection = {
       name: 'Dolores B. (Mother of former 17s Player)',
       text: 'Thank you for being such a good coach and human 😀. Vienna Elite is lucky to have you.',
     },
+    {
+      type: 'parent',
+      name: 'Kristen S. (Mother of former 16s Player)',
+      text: "Girls had a great season. Never seen that many tears at the end from any of the teams we've been on.",
+    },
+    {
+      type: 'parent',
+      name: 'Sejal T. (Mother of former 16s Player)',
+      text: "Awesome season! One of the best! We've never had a coach who recognizes everyone equally, holds himself accountable, very communicative and overall made the season fun for all. So THANK YOU!",
+    },
   ],
 };
