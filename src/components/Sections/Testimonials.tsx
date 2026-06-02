@@ -70,7 +70,6 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
 
       {/* Card */}
       <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1">
-        {/* Slides — fixed height on mobile so long quotes scroll rather than clip */}
         <div
           ref={scrollContainer}
           className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth"
@@ -123,26 +122,25 @@ Carousel.displayName = 'Carousel';
 
 // ─── single slide ────────────────────────────────────────────────────────────
 
-const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image } }) => (
+const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image, year } }) => (
   <div className="flex w-full shrink-0 snap-start flex-col gap-y-3 p-1">
-    {/* Author row */}
-    <div className="flex items-start gap-x-3">
+    {/* Author row — items-center keeps icon, name, and year on the same baseline */}
+    <div className="flex items-center gap-x-2">
       {image ? (
         <div className="relative h-10 w-10 shrink-0">
           <QuoteIcon className="absolute -left-1.5 -top-1.5 h-3.5 w-3.5 stroke-black text-white" />
           <img className="h-full w-full rounded-full object-cover" src={image} alt={name} />
         </div>
       ) : (
-        <QuoteIcon className="h-6 w-6 shrink-0 text-white/60 mt-0.5" />
+        <QuoteIcon className="h-5 w-5 shrink-0 text-white/60" />
       )}
-      <p className="text-sm font-semibold text-white/90 leading-snug">{name}</p>
+      <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
+      {year && (
+        <span className="ml-1 text-xs font-normal text-white/40 leading-none shrink-0">{year}</span>
+      )}
     </div>
 
-    {/*
-      Quote text:
-      - Mobile: fixed height + vertical scroll so long quotes never get cut off
-      - md+: auto height, no scroll needed (wider cards fit more text)
-    */}
+    {/* Quote — scrollable on mobile for long quotes, uncapped on desktop */}
     <div className="overflow-y-auto max-h-40 md:max-h-none no-scrollbar pr-1">
       <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
     </div>

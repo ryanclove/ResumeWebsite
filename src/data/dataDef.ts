@@ -124,6 +124,7 @@ export interface Testimonial {
   name: string;
   text: string;
   type: 'player' | 'parent';
+  year?: string;
 }
 
 /**
