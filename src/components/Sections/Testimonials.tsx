@@ -122,9 +122,8 @@ Carousel.displayName = 'Carousel';
 
 // ─── single slide ────────────────────────────────────────────────────────────
 
-const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image, year } }) => (
+const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image, year, position, age, type } }) => (
   <div className="flex w-full shrink-0 snap-start flex-col gap-y-3 p-1">
-    {/* Author row — items-center keeps icon, name, and year on the same baseline */}
     <div className="flex items-center gap-x-2">
       {image ? (
         <div className="relative h-10 w-10 shrink-0">
@@ -134,10 +133,16 @@ const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { t
       ) : (
         <QuoteIcon className="h-5 w-5 shrink-0 text-white/60" />
       )}
-      <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
-      {year && (
-        <span className="ml-1 text-xs font-normal text-white/40 leading-none shrink-0">{year}</span>
-      )}
+      <div className="flex flex-col gap-y-1">
+        <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
+        {(age || position || year) && (
+          <div className="flex items-center gap-x-2 text-xs leading-none">
+            {position && <span className="text-primary">{position}</span>}
+            {age && (<span className="text-tertiary"> {type === 'parent' ? `Mother of Former ${age}s Player` : `Former ${age}s Player`}</span>)}
+            {year && <span className="text-white/60">{year}</span>}
+          </div>
+        )}
+      </div>
     </div>
 
     {/* Quote — scrollable on mobile for long quotes, uncapped on desktop */}
@@ -146,8 +151,6 @@ const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { t
     </div>
   </div>
 ));
-
-CarouselSlide.displayName = 'CarouselSlide';
 
 // ─── background slideshow ────────────────────────────────────────────────────
 

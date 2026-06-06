@@ -121,10 +121,12 @@ export interface TestimonialSection {
 
 export interface Testimonial {
   image?: string;
-  name: string;
-  text: string;
   type: 'player' | 'parent';
+  name: string;
+  age?: string;
+  text: string;
   year?: string;
+  position?: string;
 }
 
 /**
