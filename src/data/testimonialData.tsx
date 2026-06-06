@@ -174,6 +174,13 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'parent',
+      name: 'Jimmy D.',
+      age: '16',
+      text: "Couldn't be happier for Anna to be coached by you and thank you for a great season. Honestly, I learned a lot from you too, sir. Much respect.",
+      year: '2026',
+    },
+    {
+      type: 'parent',
       name: 'Kristen S.',
       age: '16',
       text: "Girls had a great season. Never seen that many tears at the end from any of the teams we've been on.",

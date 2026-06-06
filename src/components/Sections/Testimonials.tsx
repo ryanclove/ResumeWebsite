@@ -68,11 +68,11 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
         {label}
       </div>
 
-      {/* Card */}
-      <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1">
+      {/* Card — min-h-0 lets flexbox shrink the scroll area so controls pin to the bottom */}
+      <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1 min-h-0">
         <div
           ref={scrollContainer}
-          className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth"
+          className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth flex-1 min-h-0"
         >
           {items.map((item, index) => (
             <CarouselSlide key={`${item.name}-${index}`} testimonial={item} />
@@ -138,7 +138,7 @@ const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { t
         {(age || position || year) && (
           <div className="flex items-center gap-x-2 text-xs leading-none">
             {position && <span className="text-primary">{position}</span>}
-            {age && (<span className="text-tertiary"> {type === 'parent' ? `Mother of Former ${age}s Player` : `Former ${age}s Player`}</span>)}
+            {age && (<span className="text-tertiary"> {type === 'parent' ? `Parent of Former ${age}s Player` : `Former ${age}s Player`}</span>)}
             {year && <span className="text-white/60">{year}</span>}
           </div>
         )}
@@ -151,6 +151,8 @@ const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { t
     </div>
   </div>
 ));
+
+CarouselSlide.displayName = 'CarouselSlide';
 
 // ─── background slideshow ────────────────────────────────────────────────────
 
@@ -232,8 +234,8 @@ const Testimonials: FC = memo(() => {
             </h2>
           </div>
 
-          {/* Side-by-side carousels */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
+          {/* Side-by-side carousels — fixed height on desktop so both cards are equal and controls pin to bottom */}
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:h-100 items-stretch">
             <Carousel
               label="🏐 From Players"
               accent="text-primary"
