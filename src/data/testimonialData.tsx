@@ -319,6 +319,14 @@ export const testimonial: TestimonialSection = {
     // ── 2023 ───────────────────────────────────────────────────────────
     {
       type: 'player',
+      name: "Caelen G.",
+      age: "16",
+      text: "Thanks for a great season! It was really fun and I will miss it.",
+      position: "DS/L",
+      year: "2023",
+    },
+    {
+      type: 'player',
       name: 'Clara A.',
       age: '16',
       text: "Thank you for making this season fun and full of surprises and helping us all get better. This season was the best and I don't know what we will do with a " +
@@ -330,9 +338,17 @@ export const testimonial: TestimonialSection = {
       type: 'player',
       name: 'Claudia A. ',
       age: '16',
-      text: "Thank you so much for this season and everything you've done for us this season! I had so much fun and learned so much from you.",
+      text: "Thank you so much for this season and everything you've done for us this season! I had so so much fun and learned so much from you. Thanks for EVERYTHING",
       position: 'S',
       year: '2023',
+    },
+    {
+      type: 'player',
+      name: "Faith W.",
+      age: "16",
+      text: "Thanks for putting up with me, I know I'm a handful. Though we didn't always get along, I'm going to miss you.",
+      position: "OH/RS",
+      year: "2023",
     },
     {
       type: 'player',
