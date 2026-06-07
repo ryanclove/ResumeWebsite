@@ -18,6 +18,17 @@ export const testimonial: TestimonialSection = {
     // ────────────────────────────────────────────────── Players ───────────────────────────────────────────────────────────
     // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
+    /* Template
+    {
+      type: 'player',
+      name: "",
+      age: "",
+      text: "",
+      position: "",
+      year: "",
+    },
+    */
+
     // ── 2026 ───────────────────────────────────────────────────────────
     {
       type: 'player',
@@ -99,7 +110,7 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'player',
-      name: 'Nora B. ',
+      name: 'Nora B.',
       age: '16',
       text: "Thanks for being the funniest coach I've ever had. You have helped me grow so much as a player and chose a team full of the best friends I could ask for. " +
         "This was my favorite club season and I loved this team! Thank you!",
@@ -108,7 +119,7 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'player',
-      name: 'Riyana T  ',
+      name: 'Riyana T',
       age: '16',
       text: "Thank you so much for being a great coach and trusting me on the court. You have taught me so much that I know will be helpful to me in the future. " +
         "I have really enjoyed getting to know you and play for you and I'm going to miss this season so much. Even when we were down, you still found a way to make it fun..." +
@@ -211,9 +222,66 @@ export const testimonial: TestimonialSection = {
     // ── 2024 ───────────────────────────────────────────────────────────
     {
       type: 'player',
+      name: "Abby A.",
+      age: "17",
+      text: "Thank you for a fun season!",
+      position: "MB",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Alexis E.",
+      age: "17",
+      text: "Thanks for the past 2 seasons!",
+      position: "S",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Caelen G.",
+      age: "17",
+      text: "Thanks for being my coach the past 2 years. I know it hasn't been easy. Also, Adalyn wants more mic'd up moments. <3",
+      position: "DS/L",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Emily F.",
+      age: "17",
+      text: "Thanks for being a great coach, especially for my senior year! I had so much fun and laughed a lot! Thank you!",
+      position: "OH/RS",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Grace S.",
+      age: "17",
+      text: "Thanks you for being a great coach this season... this was probably my last year but I had such a blast thanks to you!",
+      position: "OH/RS",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Kaila I.",
+      age: "17",
+      text: "Thanks for a good season!",
+      position: "DS/L, OH/RS",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Kennedy K.",
+      age: "17",
+      text: "Thanks for helping and being my coach for the past 2 years. It's definitely been a fun season. Thanks for all you've taught me and helped me accomplish.",
+      position: "MB",
+      year: "2024",
+    },
+    {
+      type: 'player',
       name: 'Leah W.',
       age: '17',
-      text: "Since day one when I met you at tryouts you made the space so welcoming and sweet. I wasn't afraid to make mistakes and was ready to learn. Thank you for everything!",
+      text: "Since day one when I met you at tryouts you made the space so welcoming and sweet. I wasn't afraid to make mistakes and was ready to learn.  " +
+      "Thanks for being funny (at times) and for making a team that we can have fun with for our last season. Thank you for everything!",
       position: 'DS/L',
       year: '2024',
     },
@@ -224,6 +292,22 @@ export const testimonial: TestimonialSection = {
       text: 'Thank you for being an awesome coach. You made me feel like I was heard. Thank you for having a positive impact on my life and for being so understanding.',
       position: 'S',
       year: '2024',
+    },
+    {
+      type: 'player',
+      name: "Rithee P.",
+      age: "17",
+      text: "Thanks for being a good coach... I had a lot of fun being one of your players! Thank you for a great season! I loved this team!",
+      position: "OH/RS",
+      year: "2024",
+    },
+    {
+      type: 'player',
+      name: "Vynavi T.",
+      age: "17",
+      text: "Thank you so much for coaching me this season. I hope I can play with you again... ",
+      position: "OH/RS, DS",
+      year: "2024",
     },
     {
       type: 'player',

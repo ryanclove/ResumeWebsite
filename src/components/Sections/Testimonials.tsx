@@ -18,22 +18,37 @@ import Section from '../Layout/Section';
  * Sort by text length descending, then chunk into slides:
  * - ≥ soloThreshold chars → solo slide
  * - < soloThreshold chars → paired (2 per slide)
+ * - < tripleThreshold chars → triple (3 per slide)
  */
-function lengthAwareSlides(items: Testimonial[], soloThreshold = 300): Testimonial[][] {
+function lengthAwareSlides(
+  items: Testimonial[],
+  soloThreshold = 300,
+  tripleThreshold = 120,
+): Testimonial[][] {
   const sorted = [...items].sort((a, b) => b.text.length - a.text.length);
+
   const slides: Testimonial[][] = [];
+  const mediumQueue: Testimonial[] = [];
   const shortQueue: Testimonial[] = [];
 
   for (const item of sorted) {
     if (item.text.length >= soloThreshold) {
-      slides.push([item]);
+      slides.push([item]); // long quote gets its own slide
+    } else if (item.text.length < tripleThreshold) {
+      shortQueue.push(item); // very short quotes
     } else {
-      shortQueue.push(item);
+      mediumQueue.push(item); // medium quotes
     }
   }
 
-  for (let i = 0; i < shortQueue.length; i += 2) {
-    slides.push(shortQueue.slice(i, i + 2));
+  // Medium quotes: 2 per slide
+  for (let i = 0; i < mediumQueue.length; i += 2) {
+    slides.push(mediumQueue.slice(i, i + 2));
+  }
+
+  // Short quotes: 3 per slide
+  for (let i = 0; i < shortQueue.length; i += 3) {
+    slides.push(shortQueue.slice(i, i + 3));
   }
 
   return slides;
@@ -169,9 +184,19 @@ Carousel.displayName = 'Carousel';
 // ─── single slide (1 or 2 testimonials stacked) ──────────────────────────────
 
 const CarouselSlide: FC<{ testimonials: Testimonial[] }> = memo(({ testimonials }) => (
-  <div className="flex w-full shrink-0 snap-start flex-col gap-y-4 p-1">
+  <div
+    className={classNames(
+      'flex w-full shrink-0 snap-start flex-col p-1',
+      testimonials.length === 2 && 'justify-center gap-y-4',
+      testimonials.length === 3 && 'justify-center gap-y-2',
+    )}
+  >
     {testimonials.map((t, i) => (
-      <TestimonialCard key={`${t.name}-${i}`} testimonial={t} compact={testimonials.length > 1} />
+      <TestimonialCard
+        key={`${t.name}-${i}`}
+        testimonial={t}
+        compact={testimonials.length > 1}
+      />
     ))}
   </div>
 ));
@@ -180,47 +205,50 @@ CarouselSlide.displayName = 'CarouselSlide';
 
 // ─── individual testimonial card ─────────────────────────────────────────────
 
-const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean }> = memo(
-  ({ testimonial: { text, name, image, year, position, age, type }, compact }) => (
-    <div className={classNames(
-      'flex flex-col gap-y-2',
-      compact && 'border-b border-white/10 pb-4 last:border-0 last:pb-0',
-    )}>
-      <div className="flex items-center gap-x-2">
-        {image ? (
-          <div className="relative h-9 w-9 shrink-0">
-            <QuoteIcon className="absolute -left-1.5 -top-1.5 h-3 w-3 stroke-black text-white" />
-            <img className="h-full w-full rounded-full object-cover" src={image} alt={name} />
-          </div>
-        ) : (
-          <QuoteIcon className="h-4 w-4 shrink-0 text-white/60" />
+const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean; }> =
+  memo(
+    ({ testimonial: { text, name, image, year, position, age, type }, compact }) => (
+      <div
+        className={classNames(
+          'flex flex-col gap-y-2',
+          compact && 'border-b border-white/10 pb-3 last:border-0 last:pb-0',
         )}
-        <div className="flex flex-col gap-y-0.5">
-          <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
-          {(age || position || year) && (
-            <div className="flex flex-wrap items-center gap-x-2 text-xs leading-none">
-              {position && <span className="text-primary">{position}</span>}
-              {age && (
-                <span className="text-tertiary">
-                  {type === 'parent' ? `Parent of Former ${age}s Player` : `Former ${age}s Player`}
-                </span>
-              )}
-              {year && <span className="text-white/60">{year}</span>}
+      >
+        <div className="flex items-center gap-x-2">
+          {image ? (
+            <div className="relative h-9 w-9 shrink-0">
+              <QuoteIcon className="absolute -left-1.5 -top-1.5 h-3 w-3 stroke-black text-white" />
+              <img className="h-full w-full rounded-full object-cover" src={image} alt={name} />
             </div>
+          ) : (
+            <QuoteIcon className="h-4 w-4 shrink-0 text-white/60" />
           )}
+          <div className="flex flex-col gap-y-0.5">
+            <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
+            {(age || position || year) && (
+              <div className="flex flex-wrap items-center gap-x-2 text-xs leading-none">
+                {position && <span className="text-primary">{position}</span>}
+                {age && (
+                  <span className="text-tertiary">
+                    {type === 'parent' ? `Parent of Former ${age}s Player` : `Former ${age}s Player`}
+                  </span>
+                )}
+                {year && <span className="text-white/60">{year}</span>}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Quote — generous height for pairs, uncapped for solos */}
+        <div className={classNames(
+          'overflow-y-auto no-scrollbar pr-1',
+          compact ? 'max-h-24 md:max-h-32' : 'max-h-60 md:max-h-none'
+        )}>
+          <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
         </div>
       </div>
-
-      {/* Quote — generous height for pairs, uncapped for solos */}
-      <div className={classNames(
-        'overflow-y-auto no-scrollbar pr-1',
-        compact ? 'max-h-32 md:max-h-40' : 'max-h-60 md:max-h-none',
-      )}>
-        <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
-      </div>
-    </div>
-  ),
-);
+    ),
+  );
 
 TestimonialCard.displayName = 'TestimonialCard';
 
