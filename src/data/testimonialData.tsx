@@ -281,7 +281,7 @@ export const testimonial: TestimonialSection = {
       name: 'Leah W.',
       age: '17',
       text: "Since day one when I met you at tryouts you made the space so welcoming and sweet. I wasn't afraid to make mistakes and was ready to learn.  " +
-      "Thanks for being funny (at times) and for making a team that we can have fun with for our last season. Thank you for everything!",
+        "Thanks for being funny (at times) and for making a team that we can have fun with for our last season. Thank you for everything!",
       position: 'DS/L',
       year: '2024',
     },
@@ -358,6 +358,83 @@ export const testimonial: TestimonialSection = {
         "Also thank you for being someone who we can talk to and confide in.",
       position: 'MB',
       year: '2023',
+    },
+
+    // ── 2022 ───────────────────────────────────────────────────────────
+    {
+      type: 'player',
+      name: "Alyssa H.",
+      age: "15",
+      text: "Thank you for pushing me to learn more and more with you... I hope you keep coaching here. Thank you for everything you did when everyone was ready " +
+        "to give up. I hope I still see you around the gym.",
+      position: "DS/L",
+      year: "2022",
+    },
+    {
+      type: 'player',
+      name: "Bhoomi S.",
+      age: "15",
+      text: "Thank you for being an amazing coach and for believing in us and my foot faults. Thank you for a great season.",
+      position: "OH/RS",
+      year: "2022",
+    },
+    {
+      type: 'player',
+      name: "Devika P.",
+      age: "15",
+      text: "Thank you so much for a great club season! You made my first club seaosn so enjoyable and made me love volleyball that much more! I really enjoyed " +
+        "our practices, the laughs we had as a team and to be honest, even the punishments. I really appreciate all the work you have put into making me a better " +
+        "player and dealing with my anger on the corut! Thank you once again, I had a great time this season!",
+      position: "OH/RS",
+      year: "2022",
+    },
+    {
+      type: 'player',
+      name: "Jaslene R.",
+      age: "15",
+      text: "Thank you for believing in me and my team. I know it's now easy teaching new players so I appreciate you never giving up on us. The progression that you can " +
+        "see with this team is more than I could have imagined coming in here in November. We've all learned so much this year and are thankful to have had you as a coach!",
+      position: "OH/RS",
+      year: "2022",
+    },
+    {
+      type: 'player',
+      name: "Katie C.",
+      age: "15",
+      text: "Thank you for being out coach for this volleyball season. I've learned so much from being a better teammate and of course a better player. With your encouragement " +
+        "(and good coahcing skills too obviously), I've been able to improve so much. I've learned how to serve over (somewhat consistently), how to be a good middle who can actually " +
+        "get kills, and just to be a better volleyball player in general. Again, thanks so much for being my coach this season!",
+      position: "MB",
+      year: "2022",
+    },
+    {
+      type: 'player',
+      name: "Meher P.",
+      age: "15",
+      text: "Thank you for being an amazing coach. I loved playing volleyball this season. I learned so much and I am so grateful for all that you did. Thank you! All the best!",
+      position: "DS/L",
+      year: "2022",
+    },
+    /*{
+      type: 'player',
+      name: "Riley C.",
+      age: "15",
+      text: "Thank you for being my coach this seaosn. I could not have asked for anyone better as my coach. You taught me a lot and I have improved a lot. I know that I have a " +
+        "very very small attitude problem, but you dealt with it surprisingly well, so thank you for that. I am really excited to know what I know now, and am very grateful to know that I " +
+        "have learned frmo someone that really helped my skills grow. I am so glad for not only what you have done for me, but for the team. I know I have gotten so much better because of all " +
+        "the work that you helped us do!! So thank you for being my coach this year!! :)",
+      position: "MB",
+      year: "2022",
+    },*/
+    {
+      type: 'player',
+      name: "Shivani P.",
+      age: "15",
+      text: "Thank you so much for all of the work you put into our team to make us better players, as well as never giving up when we were \"difficult\". Thank you for tirelessly " +
+        "working to improve my skills and always believing in me. I appreciate your patience and motivation to bring out the best in me. Thank you for making my club season " +
+        "so fun. I know that without your guidance, I wouldn't have come as far as I have. Thank you!!",
+      position: "S",
+      year: "2022",
     },
 
     // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
