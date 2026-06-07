@@ -12,16 +12,46 @@ import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
 import Section from '../Layout/Section';
 
-// ─── single carousel ────────────────────────────────────────────────────────
+// ─── helpers ─────────────────────────────────────────────────────────────────
+
+/**
+ * Sort by text length descending, then chunk into slides:
+ * - ≥ soloThreshold chars → solo slide
+ * - < soloThreshold chars → paired (2 per slide)
+ */
+function lengthAwareSlides(items: Testimonial[], soloThreshold = 300): Testimonial[][] {
+  const sorted = [...items].sort((a, b) => b.text.length - a.text.length);
+  const slides: Testimonial[][] = [];
+  const shortQueue: Testimonial[] = [];
+
+  for (const item of sorted) {
+    if (item.text.length >= soloThreshold) {
+      slides.push([item]);
+    } else {
+      shortQueue.push(item);
+    }
+  }
+
+  for (let i = 0; i < shortQueue.length; i += 2) {
+    slides.push(shortQueue.slice(i, i + 2));
+  }
+
+  return slides;
+}
+
+/** Wrap each item in its own slide (for the parents carousel). */
+const singleSlides = (items: Testimonial[]): Testimonial[][] => items.map(t => [t]);
+
+// ─── single carousel ─────────────────────────────────────────────────────────
 
 interface CarouselProps {
   label: string;
   accent: string;
-  items: Testimonial[];
+  slides: Testimonial[][];
   autoDelay: number;
 }
 
-const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) => {
+const Carousel: FC<CarouselProps> = memo(({ label, accent, slides, autoDelay }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollContainer = useRef<HTMLDivElement>(null);
@@ -38,13 +68,8 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
     setActiveIndex(index);
   }, []);
 
-  const next = useCallback(() => {
-    goTo((activeIndex + 1) % items.length);
-  }, [activeIndex, items.length, goTo]);
-
-  const prev = useCallback(() => {
-    goTo((activeIndex - 1 + items.length) % items.length);
-  }, [activeIndex, items.length, goTo]);
+  const next = useCallback(() => goTo((activeIndex + 1) % slides.length), [activeIndex, slides.length, goTo]);
+  const prev = useCallback(() => goTo((activeIndex - 1 + slides.length) % slides.length), [activeIndex, slides.length, goTo]);
 
   const handleManual = useCallback(
     (action: 'prev' | 'next' | number) => {
@@ -59,7 +84,16 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
 
   useInterval(next, isPaused ? null : autoDelay);
 
-  if (!items.length) return null;
+  if (!slides.length) return null;
+
+  // "X–Y of Z" count badge
+  const totalTestimonials = slides.reduce((sum, s) => sum + s.length, 0);
+  const firstOnSlide = slides.slice(0, activeIndex).reduce((sum, s) => sum + s.length, 0) + 1;
+  const lastOnSlide = firstOnSlide + slides[activeIndex].length - 1;
+  const countLabel =
+    firstOnSlide === lastOnSlide
+      ? `${firstOnSlide} of ${totalTestimonials}`
+      : `${firstOnSlide}–${lastOnSlide} of ${totalTestimonials}`;
 
   return (
     <div className="flex flex-col gap-3 flex-1 min-w-0">
@@ -68,19 +102,19 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
         {label}
       </div>
 
-      {/* Card — min-h-0 lets flexbox shrink the scroll area so controls pin to the bottom */}
+      {/* Card */}
       <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1 min-h-0">
         <div
           ref={scrollContainer}
           className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth flex-1 min-h-0"
         >
-          {items.map((item, index) => (
-            <CarouselSlide key={`${item.name}-${index}`} testimonial={item} />
+          {slides.map((chunk, slideIndex) => (
+            <CarouselSlide key={slideIndex} testimonials={chunk} />
           ))}
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-x-3 pt-3 mt-3 border-t border-white/10">
+        <div className="flex items-center justify-between gap-x-2 pt-3 mt-3 border-t border-white/10">
           <button
             aria-label="Previous"
             className="rounded-full p-1 text-gray-400 hover:bg-white/10 hover:text-white transition focus:outline-none"
@@ -89,21 +123,33 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
             <ChevronLeftIcon className="h-4 w-4" />
           </button>
 
-          <div className="flex gap-x-2 items-center">
-            {items.map((_, index) => (
-              <button
-                key={index}
-                aria-label={`Go to ${index + 1}`}
-                onClick={() => handleManual(index)}
-                className={classNames(
-                  'rounded-full transition-all duration-300',
-                  index === activeIndex
-                    ? 'h-2 w-4 bg-white opacity-100'
-                    : 'h-2 w-2 bg-gray-500 opacity-60 hover:opacity-80',
-                )}
-              />
-            ))}
-          </div>
+          {/* Dots — collapse to text counter if there are too many slides */}
+          {slides.length <= 12 ? (
+            <div className="flex gap-x-1.5 items-center flex-wrap justify-center">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => handleManual(index)}
+                  className={classNames(
+                    'rounded-full transition-all duration-300',
+                    index === activeIndex
+                      ? 'h-2 w-4 bg-white opacity-100'
+                      : 'h-2 w-2 bg-gray-500 opacity-60 hover:opacity-80',
+                  )}
+                />
+              ))}
+            </div>
+          ) : (
+            <span className="text-xs text-gray-400 tabular-nums">
+              slide {activeIndex + 1} / {slides.length}
+            </span>
+          )}
+
+          {/* Count badge */}
+          <span className="text-xs text-gray-500 tabular-nums whitespace-nowrap">
+            {countLabel}
+          </span>
 
           <button
             aria-label="Next"
@@ -120,39 +166,63 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, items, autoDelay }) =
 
 Carousel.displayName = 'Carousel';
 
-// ─── single slide ────────────────────────────────────────────────────────────
+// ─── single slide (1 or 2 testimonials stacked) ──────────────────────────────
 
-const CarouselSlide: FC<{ testimonial: Testimonial }> = memo(({ testimonial: { text, name, image, year, position, age, type } }) => (
-  <div className="flex w-full shrink-0 snap-start flex-col gap-y-3 p-1">
-    <div className="flex items-center gap-x-2">
-      {image ? (
-        <div className="relative h-10 w-10 shrink-0">
-          <QuoteIcon className="absolute -left-1.5 -top-1.5 h-3.5 w-3.5 stroke-black text-white" />
-          <img className="h-full w-full rounded-full object-cover" src={image} alt={name} />
-        </div>
-      ) : (
-        <QuoteIcon className="h-5 w-5 shrink-0 text-white/60" />
-      )}
-      <div className="flex flex-col gap-y-1">
-        <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
-        {(age || position || year) && (
-          <div className="flex items-center gap-x-2 text-xs leading-none">
-            {position && <span className="text-primary">{position}</span>}
-            {age && (<span className="text-tertiary"> {type === 'parent' ? `Parent of Former ${age}s Player` : `Former ${age}s Player`}</span>)}
-            {year && <span className="text-white/60">{year}</span>}
-          </div>
-        )}
-      </div>
-    </div>
-
-    {/* Quote — scrollable on mobile for long quotes, uncapped on desktop */}
-    <div className="overflow-y-auto max-h-40 md:max-h-none no-scrollbar pr-1">
-      <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
-    </div>
+const CarouselSlide: FC<{ testimonials: Testimonial[] }> = memo(({ testimonials }) => (
+  <div className="flex w-full shrink-0 snap-start flex-col gap-y-4 p-1">
+    {testimonials.map((t, i) => (
+      <TestimonialCard key={`${t.name}-${i}`} testimonial={t} compact={testimonials.length > 1} />
+    ))}
   </div>
 ));
 
 CarouselSlide.displayName = 'CarouselSlide';
+
+// ─── individual testimonial card ─────────────────────────────────────────────
+
+const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean }> = memo(
+  ({ testimonial: { text, name, image, year, position, age, type }, compact }) => (
+    <div className={classNames(
+      'flex flex-col gap-y-2',
+      compact && 'border-b border-white/10 pb-4 last:border-0 last:pb-0',
+    )}>
+      <div className="flex items-center gap-x-2">
+        {image ? (
+          <div className="relative h-9 w-9 shrink-0">
+            <QuoteIcon className="absolute -left-1.5 -top-1.5 h-3 w-3 stroke-black text-white" />
+            <img className="h-full w-full rounded-full object-cover" src={image} alt={name} />
+          </div>
+        ) : (
+          <QuoteIcon className="h-4 w-4 shrink-0 text-white/60" />
+        )}
+        <div className="flex flex-col gap-y-0.5">
+          <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
+          {(age || position || year) && (
+            <div className="flex flex-wrap items-center gap-x-2 text-xs leading-none">
+              {position && <span className="text-primary">{position}</span>}
+              {age && (
+                <span className="text-tertiary">
+                  {type === 'parent' ? `Parent of Former ${age}s Player` : `Former ${age}s Player`}
+                </span>
+              )}
+              {year && <span className="text-white/60">{year}</span>}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Quote — generous height for pairs, uncapped for solos */}
+      <div className={classNames(
+        'overflow-y-auto no-scrollbar pr-1',
+        compact ? 'max-h-32 md:max-h-40' : 'max-h-60 md:max-h-none',
+      )}>
+        <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
+      </div>
+    </div>
+  ),
+);
+
+TestimonialCard.displayName = 'TestimonialCard';
 
 // ─── background slideshow ────────────────────────────────────────────────────
 
@@ -206,15 +276,12 @@ const Testimonials: FC = memo(() => {
     setShuffledImages(shuffled);
   }, [resolvedImages]);
 
-  const playerTestimonials = useMemo(
-    () => testimonials.filter(t => t.type === 'player'),
-    [testimonials],
-  );
+  const playerTestimonials = useMemo(() => testimonials.filter(t => t.type === 'player'), [testimonials]);
+  const parentTestimonials = useMemo(() => testimonials.filter(t => t.type === 'parent'), [testimonials]);
 
-  const parentTestimonials = useMemo(
-    () => testimonials.filter(t => t.type === 'parent'),
-    [testimonials],
-  );
+  // Players: long quotes solo, short quotes paired. Parents: always solo.
+  const playerSlides = useMemo(() => lengthAwareSlides(playerTestimonials, 300), [playerTestimonials]);
+  const parentSlides = useMemo(() => singleSlides(parentTestimonials), [parentTestimonials]);
 
   if (!testimonials.length) return null;
 
@@ -234,22 +301,21 @@ const Testimonials: FC = memo(() => {
             </h2>
           </div>
 
-          {/* Side-by-side carousels — fixed height on desktop so both cards are equal and controls pin to bottom */}
+          {/* Side-by-side carousels */}
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:h-100 items-stretch">
             <Carousel
               label="🏐 From Players"
               accent="text-primary"
-              items={playerTestimonials}
+              slides={playerSlides}
               autoDelay={8000}
             />
 
-            {/* Divider — md+ only */}
             <div className="hidden md:block w-px bg-white/10 self-stretch" />
 
             <Carousel
               label="👨‍👩‍👧 From Parents"
               accent="text-secondary"
-              items={parentTestimonials}
+              slides={parentSlides}
               autoDelay={8000}
             />
           </div>
