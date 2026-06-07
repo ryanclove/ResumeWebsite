@@ -14,7 +14,11 @@ import testimonial9 from '../images/testimonials/ecc2026.jpg';
 export const testimonial: TestimonialSection = {
   images: [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6, testimonial7, testimonial8, testimonial9],
   testimonials: [
-    // ── Players ───────────────────────────────────────────────────────────
+    // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    // ────────────────────────────────────────────────── Players ───────────────────────────────────────────────────────────
+    // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+    // ── 2026 ───────────────────────────────────────────────────────────
     {
       type: 'player',
       name: 'Addie B.',
@@ -112,6 +116,99 @@ export const testimonial: TestimonialSection = {
       position: 'S',
       year: '2026',
     },
+
+    // ── 2025 ───────────────────────────────────────────────────────────
+    {
+      type: 'player',
+      name: 'Alex B.',
+      age: '17',
+      text: 'Thank you for the support and belief in all of us this season <3',
+      position: 'OH/RS',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Alyssa S.',
+      age: '17',
+      text: "Thank you for your support all season! You've helped me grow as both a player and a person.",
+      position: 'OH/RS',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Bridget M.',
+      age: '17',
+      text: 'Thank you for always bringing energy to the court, practice, and ourselves.',
+      position: 'DS/L',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Caitlin M. ',
+      age: '17',
+      text: "Thank you for being the REALEST. Couldn't have grown as a player without you!",
+      position: 'OH/RS',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Denaria J.',
+      age: '17',
+      text: 'Thank you for your funny prescence on and off the court and thank you for being an amazing coach.',
+      position: 'OH/RS',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Kaylin R.',
+      age: '17',
+      text: 'Thank you for the best season. I have enjoyed you being my coach this year!',
+      position: 'DS/L',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Kiki M.',
+      age: '17',
+      text: "Thank you for always being understanding, being chill and positive at practices and games. This season's been so fun. :) ",
+      position: 'MB',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Mansi K.',
+      age: '17',
+      text: 'This season was really fun. Thank you for being so positive!',
+      position: 'Utility',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Nathalia S.',
+      age: '17',
+      text: 'Thank you for always having my back & supporting me on and off the court!',
+      position: 'S',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Tabi E. ',
+      age: '17',
+      text: "Thank you so much for the opportunity to play for you this season! Every week I felt like I was becoming a better player while getting to have fun. " +
+        "This was an amazing season! Thank you for always encouraging us an keeping us hype. You're the best!",
+      position: 'DS, RS',
+      year: '2025',
+    },
+    {
+      type: 'player',
+      name: 'Wale N.',
+      age: '17',
+      text: 'Thank you for your support throughout the whole season',
+      position: 'S',
+      year: '2025',
+    },
+
+    // ── 2024 ───────────────────────────────────────────────────────────
     {
       type: 'player',
       name: 'Leah W.',
@@ -128,6 +225,14 @@ export const testimonial: TestimonialSection = {
       position: 'S',
       year: '2024',
     },
+    {
+      type: 'player',
+      name: "Washington DC Thunder Women's Teams",
+      text: "Thank you for all the time and energy you put into Thunder Women's! We are grateful for your unwavering support and spirit wear :). We enjoyed spending time with you on and off the court.",
+      year: 'Summer 2024',
+    },
+
+    // ── 2023 ───────────────────────────────────────────────────────────
     {
       type: 'player',
       name: 'Clara A.',
@@ -154,22 +259,17 @@ export const testimonial: TestimonialSection = {
       position: 'MB',
       year: '2023',
     },
-    // ── Parents ───────────────────────────────────────────────────────────
+
+    // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    // ────────────────────────────────────────────────── Parents ───────────────────────────────────────────────────────────
+    // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+    // ── 2026 ───────────────────────────────────────────────────────────
     {
       type: 'parent',
-      name: 'Lora Ann H.',
+      name: 'Jennie B.',
       age: '16',
-      text: "You're the best coach Lily Mae has ever had. She's improved more since November than she has in any other full season... You've given her confidence in herself and her abilities, " +
-        " which allows her to try more things on the court- which can lead to mistakes. But, you've given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). " +
-        "I've talked to pretty much every parent and all of us have the same feeling about you and this team. We're happy the girls are getting along, happy that you have a better understanding of teenagers " +
-        "than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.",
-      year: '2026',
-    },
-    {
-      type: 'parent',
-      name: 'Stacie B.',
-      age: '16',
-      text: "I've seen such a positive change in Addie in just a short time... [You've shown] a deep level of self awareness and maturity beyond your years. One team one fight!",
+      text: "You are incredibly tactical... You're a great coach and communicator.",
       year: '2026',
     },
     {
@@ -188,6 +288,16 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'parent',
+      name: 'Lora Ann H.',
+      age: '16',
+      text: "You're the best coach Lily Mae has ever had. She's improved more since November than she has in any other full season... You've given her confidence in herself and her abilities, " +
+        " which allows her to try more things on the court- which can lead to mistakes. But, you've given her the confidence to be able to make mistakes, which is one of your most important roles (IMO). " +
+        "I've talked to pretty much every parent and all of us have the same feeling about you and this team. We're happy the girls are getting along, happy that you have a better understanding of teenagers " +
+        "than many adults, happy with your positivity, happy with you setting high expectations of their behavior and just all around happy with the team.",
+      year: '2026',
+    },
+    {
+      type: 'parent',
       name: 'Sejal T.',
       age: '16',
       text: "Awesome season! One of the best! We've never had a coach who recognizes everyone equally, holds himself accountable, very communicative and overall made the season fun for all. So THANK YOU!",
@@ -195,11 +305,13 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'parent',
-      name: 'Jennie B.',
+      name: 'Stacie B.',
       age: '16',
-      text: "You are incredibly tactical... You're a great coach and communicator.",
+      text: "I've seen such a positive change in Addie in just a short time... [You've shown] a deep level of self awareness and maturity beyond your years. One team one fight!",
       year: '2026',
     },
+
+    // ── 2025 ───────────────────────────────────────────────────────────
     {
       type: 'parent',
       name: 'Dolores B.',
@@ -207,6 +319,15 @@ export const testimonial: TestimonialSection = {
       text: 'Thank you for being such a good coach and human 😀. Vienna Elite is lucky to have you.',
       year: '2025',
     },
+    {
+      type: 'parent',
+      name: 'Stacy E.',
+      age: '17',
+      text: 'Thank you for a wonderful season, coach!',
+      year: '2025',
+    },
+
+    // ── 2024 ───────────────────────────────────────────────────────────
     {
       type: 'parent',
       name: 'Sherry F.',
