@@ -15,7 +15,8 @@ import Section from '../Layout/Section';
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
 /**
- * Sort by text length descending, then chunk into slides:
+ * Sort 1st by Year
+ * Then Sort by text length descending, then chunk into slides:
  * - ≥ soloThreshold chars → solo slide
  * - < soloThreshold chars → paired (2 per slide)
  * - < tripleThreshold chars → triple (3 per slide)
@@ -23,37 +24,64 @@ import Section from '../Layout/Section';
 function lengthAwareSlides(
   items: Testimonial[],
   soloThreshold = 300,
-  tripleThreshold = 120,
 ): Testimonial[][] {
-  const sorted = [...items].sort((a, b) => b.text.length - a.text.length);
+  const getYear = (t: Testimonial) =>
+    typeof t.year === 'number' ? t.year : parseInt(t.year ?? '0', 10);
+
+  // 1. Group by year
+  const byYear = new Map<number, Testimonial[]>();
+
+  for (const item of items) {
+    const year = getYear(item);
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year)!.push(item);
+  }
+
+  // 2. Process years newest → oldest
+  const years = [...byYear.keys()].sort((a, b) => b - a);
 
   const slides: Testimonial[][] = [];
-  const mediumQueue: Testimonial[] = [];
-  const shortQueue: Testimonial[] = [];
 
-  for (const item of sorted) {
-    if (item.text.length >= soloThreshold) {
-      slides.push([item]); // long quote gets its own slide
-    } else if (item.text.length < tripleThreshold) {
-      shortQueue.push(item); // very short quotes
-    } else {
-      mediumQueue.push(item); // medium quotes
+  for (const year of years) {
+    const yearItems = [...byYear.get(year)!];
+
+    // 3. Sort within year:
+    //    longest → shortest, but stable enough for grouping
+    yearItems.sort((a, b) => b.text.length - a.text.length);
+
+    const buffer: Testimonial[] = [];
+
+    const flush = () => {
+      if (buffer.length) {
+        slides.push([...buffer]);
+        buffer.length = 0;
+      }
+    };
+
+    for (const item of yearItems) {
+      const isLong = item.text.length >= soloThreshold;
+
+      // Long testimonials are always solo slides
+      if (isLong) {
+        flush();
+        slides.push([item]);
+        continue;
+      }
+
+      // Try to fit into current buffer (max 3)
+      buffer.push(item);
+
+      if (buffer.length === 3) {
+        flush();
+      }
     }
-  }
 
-  // Medium quotes: 2 per slide
-  for (let i = 0; i < mediumQueue.length; i += 2) {
-    slides.push(mediumQueue.slice(i, i + 2));
-  }
-
-  // Short quotes: 3 per slide
-  for (let i = 0; i < shortQueue.length; i += 3) {
-    slides.push(shortQueue.slice(i, i + 3));
+    // flush remainder for the year
+    flush();
   }
 
   return slides;
 }
-
 /** Wrap each item in its own slide (for the parents carousel). */
 const singleSlides = (items: Testimonial[]): Testimonial[][] => items.map(t => [t]);
 
@@ -186,7 +214,7 @@ Carousel.displayName = 'Carousel';
 const CarouselSlide: FC<{ testimonials: Testimonial[] }> = memo(({ testimonials }) => (
   <div
     className={classNames(
-      'flex w-full shrink-0 snap-start flex-col p-1',
+      '<div className="flex w-full shrink-0 snap-start flex-col p-1 justify-start gap-y-3">',
       testimonials.length === 2 && 'justify-center gap-y-4',
       testimonials.length === 3 && 'justify-center gap-y-2',
     )}
