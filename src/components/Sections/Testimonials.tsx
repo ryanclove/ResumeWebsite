@@ -28,7 +28,7 @@ function lengthAwareSlides(
   const getYear = (t: Testimonial) =>
     typeof t.year === 'number' ? t.year : parseInt(t.year ?? '0', 10);
 
-  // 1. Group by year
+  // Group by year
   const byYear = new Map<number, Testimonial[]>();
 
   for (const item of items) {
@@ -37,7 +37,6 @@ function lengthAwareSlides(
     byYear.get(year)!.push(item);
   }
 
-  // 2. Process years newest → oldest
   const years = [...byYear.keys()].sort((a, b) => b - a);
 
   const slides: Testimonial[][] = [];
@@ -45,39 +44,44 @@ function lengthAwareSlides(
   for (const year of years) {
     const yearItems = [...byYear.get(year)!];
 
-    // 3. Sort within year:
-    //    longest → shortest, but stable enough for grouping
-    yearItems.sort((a, b) => b.text.length - a.text.length);
-
-    const buffer: Testimonial[] = [];
-
-    const flush = () => {
-      if (buffer.length) {
-        slides.push([...buffer]);
-        buffer.length = 0;
-      }
-    };
+    // Keep your “long = solo” rule
+    const long: Testimonial[] = [];
+    const normal: Testimonial[] = [];
 
     for (const item of yearItems) {
-      const isLong = item.text.length >= soloThreshold;
-
-      // Long testimonials are always solo slides
-      if (isLong) {
-        flush();
-        slides.push([item]);
-        continue;
-      }
-
-      // Try to fit into current buffer (max 3)
-      buffer.push(item);
-
-      if (buffer.length === 3) {
-        flush();
+      if (item.text.length >= soloThreshold) {
+        long.push(item);
+      } else {
+        normal.push(item);
       }
     }
 
-    // flush remainder for the year
-    flush();
+    // Optional: keep stable ordering (longest first within each group)
+    long.sort((a, b) => b.text.length - a.text.length);
+    normal.sort((a, b) => b.text.length - a.text.length);
+
+    // Long testimonials → solo slides
+    for (const item of long) {
+      slides.push([item]);
+    }
+
+    // Normal testimonials → pairs, last remainder → triple if needed
+    let i = 0;
+    const n = normal.length;
+
+    while (i < n) {
+      const remaining = n - i;
+
+      // If exactly 3 left, make one triple slide
+      if (remaining === 3) {
+        slides.push(normal.slice(i, i + 3));
+        break;
+      }
+
+      // Otherwise use pairs
+      slides.push(normal.slice(i, i + 2));
+      i += 2;
+    }
   }
 
   return slides;
@@ -214,9 +218,10 @@ Carousel.displayName = 'Carousel';
 const CarouselSlide: FC<{ testimonials: Testimonial[] }> = memo(({ testimonials }) => (
   <div
     className={classNames(
-      '<div className="flex w-full shrink-0 snap-start flex-col p-1 justify-start gap-y-3">',
-      testimonials.length === 2 && 'justify-center gap-y-4',
-      testimonials.length === 3 && 'justify-center gap-y-2',
+      'flex w-full shrink-0 snap-start flex-col p-1 gap-y-3',
+      testimonials.length === 2 ? 'justify-center' : 'justify-start',
+      //testimonials.length === 2 && 'gap-y-3',
+      //testimonials.length === 3 && 'gap-y-2',
     )}
   >
     {testimonials.map((t, i) => (
