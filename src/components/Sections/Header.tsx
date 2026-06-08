@@ -152,16 +152,27 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
                 </Link>
 
                 <nav className="flex flex-col gap-4 items-end text-right">
-                  {navSections.map(section => (
-                    <NavItem
-                      key={section}
-                      section={section}
-                      current={section === currentSection}
-                      onClick={closeMenu}
-                      activeClass="text-white font-bold"
-                      inactiveClass="text-slate-300"
-                    />
-                  ))}
+                  {navSections
+                    .filter(section => section !== SectionId.Contact)
+                    .map(section => (
+                      <NavItem
+                        key={section}
+                        section={section}
+                        current={section === currentSection}
+                        onClick={closeMenu}
+                        activeClass="text-white font-bold"
+                        inactiveClass="text-slate-300"
+                      />
+                    ))}
+
+                  {/* Contact CTA — styled separately */}
+                  <Link
+                    href={`/#${SectionId.Contact}`}
+                    onClick={closeMenu}
+                    className="mt-2 bg-primary text-on-primary px-6 py-2 rounded-md font-bold tracking-normal hover:bg-primary-fixed transition-all active:scale-95 duration-200"
+                  >
+                    Contact
+                  </Link>
                 </nav>
 
               </Dialog.Panel>
