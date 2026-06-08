@@ -313,6 +313,7 @@ export const testimonial: TestimonialSection = {
       type: 'player',
       name: "Washington DC Thunder Women's Teams",
       text: "Thank you for all the time and energy you put into Thunder Women's! We are grateful for your unwavering support and spirit wear :). We enjoyed spending time with you on and off the court.",
+      position: "Adult Women ages 21+",
       year: 'Summer 2024',
     },
 

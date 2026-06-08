@@ -150,7 +150,7 @@ const Carousel: FC<CarouselProps> = memo(({ label, accent, slides, autoDelay }) 
       </div>
 
       {/* Card */}
-      <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1 min-h-0">
+      <div className="flex flex-col rounded-xl bg-gray-900/70 backdrop-blur-sm p-5 shadow-lg flex-1 min-h-0 max-h-90">
         <div
           ref={scrollContainer}
           className="no-scrollbar flex w-full snap-x snap-mandatory overflow-x-hidden scroll-smooth flex-1 min-h-0"
@@ -217,12 +217,7 @@ Carousel.displayName = 'Carousel';
 
 const CarouselSlide: FC<{ testimonials: Testimonial[] }> = memo(({ testimonials }) => (
   <div
-    className={classNames(
-      'flex w-full shrink-0 snap-start flex-col p-1 gap-y-3',
-      testimonials.length === 2 ? 'justify-center' : 'justify-start',
-      //testimonials.length === 2 && 'gap-y-3',
-      //testimonials.length === 3 && 'gap-y-2',
-    )}
+    className="flex w-full shrink-0 snap-start flex-col p-1 gap-y-3 justify-center"
   >
     {testimonials.map((t, i) => (
       <TestimonialCard
@@ -238,7 +233,7 @@ CarouselSlide.displayName = 'CarouselSlide';
 
 // ─── individual testimonial card ─────────────────────────────────────────────
 
-const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean; }> =
+const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean }> =
   memo(
     ({ testimonial: { text, name, image, year, position, age, type }, compact }) => (
       <div
@@ -256,7 +251,7 @@ const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean; }> =
           ) : (
             <QuoteIcon className="h-4 w-4 shrink-0 text-white/60" />
           )}
-          <div className="flex flex-col gap-y-0.5">
+          <div className="flex flex-col gap-y-1.5">
             <p className="text-sm font-semibold text-white/90 leading-none">{name}</p>
             {(age || position || year) && (
               <div className="flex flex-wrap items-center gap-x-2 text-xs leading-none">
@@ -275,7 +270,7 @@ const TestimonialCard: FC<{ testimonial: Testimonial; compact: boolean; }> =
         {/* Quote — generous height for pairs, uncapped for solos */}
         <div className={classNames(
           'overflow-y-auto no-scrollbar pr-1',
-          compact ? 'max-h-24 md:max-h-32' : 'max-h-60 md:max-h-none'
+          compact ? 'max-h-32 md:max-h-40' : 'max-h-60 md:max-h-none'
         )}>
           <p className="text-sm italic text-white/75 leading-relaxed">{text}</p>
         </div>
