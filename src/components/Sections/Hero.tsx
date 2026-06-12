@@ -7,7 +7,7 @@ import { FC, memo, useEffect, useState } from 'react';
 
 import { heroData, SectionId } from '../../data/index';
 import Section from '../Layout/Section';
-import Socials from '../Socials';
+//import Socials from '../Socials';
 import instaprofile from '../../images/instaprofile.png';
 import instaviral1 from '../../images/instaviral1.png';
 import instaviral2 from '../../images/instaviral2.png';
