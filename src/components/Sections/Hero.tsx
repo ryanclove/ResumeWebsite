@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-sort-props */
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -7,6 +8,9 @@ import { FC, memo, useEffect, useState } from 'react';
 import { heroData, SectionId } from '../../data/index';
 import Section from '../Layout/Section';
 import Socials from '../Socials';
+import instaprofile from '../../images/instaprofile.png';
+import instaviral1 from '../../images/instaviral1.png';
+import instaviral2 from '../../images/instaviral2.png';
 
 const Hero: FC = memo(() => {
   const { images, name, description } = heroData;
@@ -14,30 +18,22 @@ const Hero: FC = memo(() => {
   const [shuffledImages, setShuffledImages] = useState<typeof images>(images);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 🔀 Shuffle once on mount (keep first image fixed)
   useEffect(() => {
     if (!images.length) return;
-
     const first = images[0];
     const rest = [...images.slice(1)];
-
-    // Fisher-Yates shuffle
     for (let i = rest.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [rest[i], rest[j]] = [rest[j], rest[i]];
     }
-
     setShuffledImages([first, ...rest]);
   }, [images]);
 
-  // 🔁 Slideshow uses shuffled images
   useEffect(() => {
     if (!shuffledImages.length) return;
-
     const interval = setInterval(() => {
       setCurrentImage(prev => (prev + 1) % shuffledImages.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, [shuffledImages]);
 
@@ -45,7 +41,7 @@ const Hero: FC = memo(() => {
     <Section noPadding sectionId={SectionId.Hero}>
       <div className="relative min-h-screen flex items-end pt-32 pb-24 overflow-hidden isolate">
 
-        {/* 🔥 Background Images */}
+        {/* Background Images */}
         <div className="absolute inset-0 -z-10">
           {shuffledImages.map((img, index) => (
             <Image
@@ -55,14 +51,11 @@ const Hero: FC = memo(() => {
               fill
               priority={index === 0}
               sizes="100vw"
-              className={`object-cover transition-all duration-[4000ms] ${index === currentImage
-                  ? 'opacity-90 scale-105'
-                  : 'opacity-0 scale-100'
-                }`}
+              className={`object-cover transition-all duration-[4000ms] ${
+                index === currentImage ? 'opacity-90 scale-105' : 'opacity-0 scale-100'
+              }`}
             />
           ))}
-
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-background/30 to-transparent" />
         </div>
 
@@ -85,22 +78,96 @@ const Hero: FC = memo(() => {
               {description}
             </div>
 
-            {/* Socials */}
-            <div className="mt-8 flex gap-x-4 text-on-surface">
-              <Socials />
-            </div>
-
             {/* CTA */}
-            <div className="mt-12 flex flex-wrap gap-6 items-center">
+            <div className="mt-4 flex flex-wrap gap-6 items-center">
               <a
                 href={`/#${SectionId.Contact}`}
                 className="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-md font-bold text-lg shadow-xl hover:shadow-primary/20 transition-all active:scale-95">
                 Contact Me
               </a>
-
-              <div className="flex items-center gap-4 text-on-surface font-label uppercase tracking-widest text-sm">
+              {/*<div className="flex items-center gap-4 text-on-surface font-label uppercase tracking-widest text-sm">
                 <span className="w-12 h-[1px] bg-primary"></span>
                 Scroll to Explore
+              </div>*/}
+            </div>
+
+            {/* Socials */}
+            {/*<div className="mt-8 flex gap-x-4 text-on-surface">
+              <Socials />
+            </div>*/}
+
+            {/* Instagram Strip */}
+            <div className="mt-8 flex flex-col gap-2">
+              <span className="font-label text-xs uppercase tracking-[0.3em] text-on-surface-variant">
+                📸 Follow @CoachRyanTutu
+                <br />
+                Over 4 Million Views!
+              </span>
+              <div className="flex gap-3 h-56 w-full md:max-w-lg">
+
+                {/* Profile Banner */}
+                <a
+                  className="relative block flex-shrink-0 w-36 md:w-44 overflow-hidden rounded-xl group"
+                  href="https://www.instagram.com/coachryantutu/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt="Instagram Profile"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="176px"
+                    src={instaprofile}
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-300" />
+                  <span className="absolute bottom-2 left-2 text-xs font-bold text-white bg-black/50 font-label drop-shadow">
+                    @CoachRyanTutu
+                  </span>
+                  <span className="absolute top-2 right-2 text-[10px] font-bold text-white bg-black/50 px-1.5 py-0.5 rounded-full">
+                    Click to Open
+                  </span>
+                </a>
+
+                {/* Viral Post 1 */}
+                <a
+                  className="relative block flex-1 overflow-hidden rounded-xl group"
+                  href="https://www.instagram.com/reel/DOBnuJ4DaJY/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt="Viral Instagram post 1"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="200px"
+                    src={instaviral1}
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-300" />
+                  <span className="absolute top-2 right-2 text-[10px] font-bold text-white bg-black/50 px-1.5 py-0.5 rounded-full">
+                    🔥 Viral
+                  </span>
+                </a>
+
+                {/* Viral Post 2 */}
+                <a
+                  className="relative block flex-1 overflow-hidden rounded-xl group"
+                  href="https://www.instagram.com/reel/DOUOqEgDpZ3/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt="Viral Instagram post 2"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="200px"
+                    src={instaviral2}
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-300" />
+                  <span className="absolute top-2 right-2 text-[10px] font-bold text-white bg-black/50 px-1.5 py-0.5 rounded-full">
+                    🔥 Viral
+                  </span>
+                </a>
+
               </div>
             </div>
 
