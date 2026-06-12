@@ -1,3 +1,6 @@
+/* eslint-disable simple-import-sort/imports */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable react/jsx-sort-props */
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';

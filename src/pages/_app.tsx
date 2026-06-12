@@ -8,6 +8,8 @@ import { memo, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 
+import { Analytics } from '@vercel/analytics/next';
+
 const GA_ID = 'G-97D20ESGE5';
 
 // Tell TypeScript that window.gtag exists
@@ -87,6 +89,8 @@ const MyApp = memo(({ Component, pageProps }: AppProps) => {
           </Script>
         </>
       )}
+
+      <Analytics />
 
       <div className="w-full min-h-screen bg-gray-800 dark:bg-black text-white">
         <Component {...pageProps} />
