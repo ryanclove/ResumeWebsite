@@ -51,9 +51,8 @@ const Hero: FC = memo(() => {
               fill
               priority={index === 0}
               sizes="100vw"
-              className={`object-cover transition-all duration-[4000ms] ${
-                index === currentImage ? 'opacity-90 scale-105' : 'opacity-0 scale-100'
-              }`}
+              className={`object-cover transition-all duration-[4000ms] ${index === currentImage ? 'opacity-90 scale-105' : 'opacity-0 scale-100'
+                }`}
             />
           ))}
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-background/30 to-transparent" />

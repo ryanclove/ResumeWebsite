@@ -11,7 +11,43 @@ import { useNavObserver } from '../../hooks/useNavObserver';
 
 export const headerID = 'headerNav';
 
-const Header: FC = memo(() => {
+// ─── Music Toggle ─────────────────────────────────────────────────────────────
+interface MusicToggleProps {
+  compact?: boolean;
+  topBar?: boolean;
+  playing: boolean;
+  onToggle: () => void;
+}
+
+const MusicToggle: FC<MusicToggleProps> = memo(({ compact = false, topBar = false, playing, onToggle }) => {
+  return (
+    <button
+      aria-label={playing ? 'Mute music' : 'Play music'}
+      onClick={onToggle}
+      title={playing ? 'Mute music' : 'Play background music'}
+      className={classNames(
+        'flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-label uppercase tracking-widest transition-all',
+        topBar
+          ? 'bg-slate-900/60 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80'
+          : 'text-slate-400 hover:text-white hover:bg-white/10',
+        compact ? 'w-full justify-end' : '',
+      )}
+    >
+      <span className={classNames('text-base leading-none transition-all', playing && 'animate-pulse')}>
+        {playing ? '🎵' : '🔇'}
+      </span>
+      {(compact || topBar) && <span>{playing ? 'Music' : 'Mute'}</span>}
+    </button>
+  );
+});
+MusicToggle.displayName = 'MusicToggle';
+
+interface HeaderProps {
+  playing: boolean;
+  onToggleMusic: () => void;
+}
+
+const Header: FC<HeaderProps> = memo(({ playing, onToggleMusic }) => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
 
   const navSections = useMemo(
@@ -36,8 +72,8 @@ const Header: FC = memo(() => {
 
   return (
     <>
-      <MobileNav currentSection={currentSection} navSections={navSections} />
-      <DesktopNav currentSection={currentSection} navSections={navSections} />
+      <MobileNav currentSection={currentSection} navSections={navSections} playing={playing} onToggleMusic={onToggleMusic} />
+      <DesktopNav currentSection={currentSection} navSections={navSections} playing={playing} onToggleMusic={onToggleMusic} />
     </>
   );
 });
@@ -45,8 +81,8 @@ const Header: FC = memo(() => {
 //
 // ✅ DESKTOP NAV
 //
-const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null }> = memo(
-  ({ navSections, currentSection }) => {
+const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null; playing: boolean; onToggleMusic: () => void }> = memo(
+  ({ navSections, currentSection, playing, onToggleMusic }) => {
     return (
       <header
         id={headerID}
@@ -72,6 +108,8 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
               />
             ))}
 
+            <MusicToggle playing={playing} onToggle={onToggleMusic} />
+
             <Link
               href={`/#${SectionId.Contact}`}
               className="bg-primary text-on-primary px-6 py-2 rounded-md font-bold tracking-normal hover:bg-primary-fixed transition-all active:scale-95 duration-200"
@@ -88,8 +126,8 @@ const DesktopNav: FC<{ navSections: SectionId[]; currentSection: SectionId | nul
 //
 // ✅ MOBILE NAV (FIXED)
 //
-const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null }> = memo(
-  ({ navSections, currentSection }) => {
+const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null; playing: boolean; onToggleMusic: () => void }> = memo(
+  ({ navSections, currentSection, playing, onToggleMusic }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
@@ -102,14 +140,18 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
 
     return (
       <>
-        {/* Hamburger */}
-        <button
-          aria-label="Menu Button"
-          className="fixed right-4 top-4 z-[9999] rounded-md bg-slate-900 p-2 text-white md:hidden"
-          onClick={toggleOpen}
-        >
-          <Bars3BottomRightIcon className="h-8 w-8" />
-        </button>
+        {/* Mobile top-bar: music toggle + hamburger */}
+        <div className="fixed right-4 top-4 z-[9999] flex items-center gap-2 md:hidden">
+          <MusicToggle playing={playing} onToggle={onToggleMusic} topBar />
+
+          <button
+            aria-label="Menu Button"
+            className="rounded-md bg-slate-900 p-2 text-white"
+            onClick={toggleOpen}
+          >
+            <Bars3BottomRightIcon className="h-8 w-8" />
+          </button>
+        </div>
 
         <Transition.Root show={isOpen} as={Fragment}>
           <Dialog
@@ -164,6 +206,8 @@ const MobileNav: FC<{ navSections: SectionId[]; currentSection: SectionId | null
                         inactiveClass="text-slate-300"
                       />
                     ))}
+
+                  <MusicToggle compact playing={playing} onToggle={onToggleMusic} />
 
                   {/* Contact CTA — styled separately */}
                   <Link
