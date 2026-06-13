@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
-import { BoltIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { FC, memo, useEffect, useState } from 'react';
 import { SectionId } from '../../data/index';
 
@@ -28,9 +29,9 @@ const Footer: FC = memo(() => {
       </div>
 
       <div className="flex flex-col items-center gap-y-6">
-        <div className="flex gap-x-4 text-neutral-500">{/* <Socials /> */}</div>
+        {/*<div className="flex gap-x-4 text-neutral-500"> <Socials /> </div>*/}
 
-        <a
+        {/*<a
           className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2"
           href="https://reactresume.com"
         >
@@ -40,22 +41,26 @@ const Footer: FC = memo(() => {
             <span className="italic text-yellow">Resume</span>
           </span>
         </a>
-
-        <span className="text-sm text-neutral-700">© Copyright {currentYear} Tim Baker | © Copyright {currentYear} Ryan Coslove</span>
+          */}
+        <span className="text-sm text-neutral-400">© Copyright {currentYear} Ryan Coslove</span>
       </div>
 
-     <br/>
+      <br />
+
+      <div className="text-xs text-neutral-800 absolute bottom-4 left-4 group">
+        © Copyright {currentYear} Tim Baker
+      </div>
 
       {/* Visitor Counter Badge */}
       {visitors !== null && (
-        <div className="absolute bottom-4 right-4 group">
+        <div className="absolute bottom-3 right-4 group">
           <div className="
             opacity-20 
             group-hover:opacity-100 
             transition-opacity duration-300 
             rounded-md bg-neutral-800 
             px-3 py-1 
-            text-sm text-neutral-400 
+            text-xs text-neutral-400 
             shadow-md 
             cursor-default
           ">
