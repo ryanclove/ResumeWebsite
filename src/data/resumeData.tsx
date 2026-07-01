@@ -48,7 +48,7 @@ export const experience: TimelineItem[] = [
           Vienna Elite is a girls travel volleyball club focusing on the development of volleyball players in middle and high school.
         </p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>2026-2027 club season: I will be the Head Coach for <strong>15 Travel or 17 Travel</strong> (National). TBD.<br /></li>
+          <li>2026-2027 club season: I will be the Head Coach for Vienna Elite <strong>15 Travel</strong> (National).<br /></li>
           <li className="pt-4"> 2025-2026 club season: I was the Head Coach for{' '} <a className="text-blue-300 underline hover:text-purple-300" href="https://www.viennaelite.org/team/158529" rel="noopener noreferrer" target="_blank"> Vienna Elite 16 Black</a>{' '}(National)</li>
           <li>2024-2025 club season: I was the head coach for Vienna Elite 17 Blue (National).</li>
           <li>2023-2024 club season: I was the head coach for Vienna Elite 17 Blue (National).</li>
