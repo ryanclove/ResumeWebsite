@@ -308,7 +308,7 @@ export const testimonial: TestimonialSection = {
       type: 'player',
       name: "Vynavi T.",
       age: "17",
-      text: "Thank you so much for coaching me this season. I hope I can play with you again... ",
+      text: "Thank you so much for coaching me this season. I hope I can play with you again.",
       position: "OH/RS, DS",
       year: "2024",
     },
@@ -398,7 +398,7 @@ export const testimonial: TestimonialSection = {
       type: 'player',
       name: "Jaslene R.",
       age: "15",
-      text: "Thank you for believing in me and my team. I know it's now easy teaching new players so I appreciate you never giving up on us. The progression that you can " +
+      text: "Thank you for believing in me and my team. I know it's not easy teaching new players so I appreciate you never giving up on us. The progression that you can " +
         "see with this team is more than I could have imagined coming in here in November. We've all learned so much this year and are thankful to have had you as a coach!",
       position: "OH/RS",
       year: "2022",
