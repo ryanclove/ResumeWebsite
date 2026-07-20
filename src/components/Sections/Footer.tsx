@@ -51,6 +51,10 @@ const Footer: FC = memo(() => {
         © Copyright {currentYear} Tim Baker
       </div>
 
+      <div className="absolute bottom-4 inset-x-0 flex justify-center">
+        <span className="text-xs text-neutral-600 group">Version 2.3.2</span>
+      </div>
+
       {/* Visitor Counter Badge */}
       {visitors !== null && (
         <div className="absolute bottom-3 right-4 group">
@@ -64,7 +68,7 @@ const Footer: FC = memo(() => {
             shadow-md 
             cursor-default
           ">
-            👀 {visitors.toLocaleString()} visitors
+            {visitors.toLocaleString()} visitors
           </div>
         </div>
       )}
