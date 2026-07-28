@@ -9,7 +9,7 @@ import { memo, PropsWithChildren } from 'react';
 import { HomepageMeta } from '../../data/dataDef';
 
 const SITE_URL = 'https://coachryantutu.vercel.app';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/previewimage.jpg`;
 
 const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({ children, title, description, ogImageUrl }) => {
   const { asPath: pathname } = useRouter();
