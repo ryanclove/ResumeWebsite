@@ -513,6 +513,13 @@ export const testimonial: TestimonialSection = {
     },
     {
       type: 'parent',
+      name: 'Krista M.',
+      age: '17',
+      text: "Thank you again for everything. It's not easy being a coach managing not only the kids various personalities but the parents as well.",
+      year: '2025',
+    },
+    {
+      type: 'parent',
       name: 'Stacy E.',
       age: '17',
       text: 'Thank you for a wonderful season, coach!',
