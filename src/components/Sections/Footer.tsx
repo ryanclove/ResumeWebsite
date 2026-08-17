@@ -52,7 +52,7 @@ const Footer: FC = memo(() => {
       </div>
 
       <div className="absolute bottom-4 inset-x-0 flex justify-center">
-        <span className="text-xs text-neutral-600 group">Version 2.3.2</span>
+        <span className="text-xs text-neutral-600 group">Version 2.3.3</span>
       </div>
 
       {/* Visitor Counter Badge */}
