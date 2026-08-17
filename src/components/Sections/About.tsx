@@ -12,6 +12,7 @@ const quotes = [
   "Screw the ball, watch people.",
   "Volleyball wasn't built in a day",
   "Free balls are boring and stupid",
+  "Nobody came out of the womb knowing how to play volleyball",
 ];
 
 const QuoteSlideshow: FC = memo(() => {
