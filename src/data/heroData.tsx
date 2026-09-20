@@ -24,8 +24,8 @@ export const heroData: Hero = {
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         I'm a DMV based <strong className="text-stone-100">Volleyball Coach</strong>, currently working at{' '}
         <strong className="text-stone-100">Vienna Elite Volleyball Club</strong>. <br />
-        In the <strong className="text-stone-100">upcoming 2026-2027</strong> club season, I will be the head coach for the 
-        <strong className="text-stone-100"> Vienna Elite 15 Travel</strong> team.
+        In the <strong className="text-stone-100">upcoming 2026-2027</strong> club season, I am the head coach for the <br />
+        <a className="text-blue-300 underline hover:text-purple-300" href="https://www.viennaelite.org/u15-travel" rel="noopener noreferrer" target="_blank"><strong>Vienna Elite 15 Travel</strong></a> team.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         Explore my site to learn more about me, my coaching background, and feats.
