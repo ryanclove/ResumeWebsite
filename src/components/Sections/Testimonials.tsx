@@ -2,6 +2,7 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-sort-props */
 import classNames from 'classnames';
+import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -297,11 +298,12 @@ const BackgroundSlideshow: FC<{ images: string[] }> = memo(({ images }) => {
         <div
           key={index}
           className={classNames(
-            'absolute inset-0 bg-cover bg-center transition-all duration-[4000ms]',
+            'absolute inset-0 transition-all duration-[4000ms]',
             index === bgIndex ? 'opacity-70 scale-105' : 'opacity-0 scale-100',
           )}
-          style={{ backgroundImage: `url(${img})` }}
-        />
+        >
+          <Image alt="" className="object-cover object-center" fill sizes="100vw" src={img} />
+        </div>
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
     </div>

@@ -2,7 +2,7 @@
 /* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 import classNames from 'classnames';
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
 import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { medalsItems, SectionId } from '../../data/index';
@@ -15,6 +15,21 @@ const typeColor: Record<'gold' | 'goldrunnerup' | 'silver' | 'bronze', string> =
   goldrunnerup: 'text-amber-400',
   silver: 'text-gray-300',
   bronze: 'text-orange-400',
+};
+
+const MODAL_IMAGE_SIZES = '90vw';
+
+// Warm the browser cache with the exact srcset variant the modal will request,
+// so tapping a medal shows the full image without a network round trip
+const preloadModalImages = () => {
+  medalsItems.forEach(({ image }) => {
+    if (!image) return;
+    const { props } = getImageProps({ alt: '', sizes: MODAL_IMAGE_SIZES, src: image });
+    const img = new window.Image();
+    img.sizes = MODAL_IMAGE_SIZES;
+    if (props.srcSet) img.srcset = props.srcSet;
+    img.src = props.src;
+  });
 };
 
 // ------------------- Medals Component -------------------
@@ -50,6 +65,7 @@ const Medals: FC = memo(() => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
           setShowHelper(true);
+          preloadModalImages();
 
           let current = 0;
           const duration = 3600;
@@ -137,7 +153,7 @@ const Medals: FC = memo(() => {
             onClick={() => setSelectedItem(null)}
           >
             <motion.div
-              className="relative max-h-[90vh] max-w-[90vw]"
+              className="relative max-h-[90vh] w-[90vw]"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -173,6 +189,9 @@ const Medals: FC = memo(() => {
               <Image
                 alt="Expanded medal"
                 className="rounded-lg object-contain w-full h-auto max-h-[90vh]"
+                loading="eager"
+                placeholder="blur"
+                sizes={MODAL_IMAGE_SIZES}
                 src={selectedItem.image || '/placeholder.png'}
               />
             </motion.div>
@@ -235,6 +254,7 @@ const MedalImage: FC<MedalImageProps> = memo(({ item, onClick }) => {
           className="w-full max-h-40 sm:max-h-64 md:max-h-80 cursor-pointer transition hover:scale-[1.02] object-contain"
           onClick={handleClick}
           placeholder="blur"
+          sizes="(max-width: 768px) 50vw, 33vw"
           src={item.image || '/placeholder.png'}
         />
       </div>
