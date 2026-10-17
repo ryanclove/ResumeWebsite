@@ -461,7 +461,7 @@ export const testimonial: TestimonialSection = {
       type: 'parent',
       name: 'Jennie B.',
       age: '16',
-      text: "You are incredibly tactical... You're a great coach and communicator.",
+      text: "You are incredibly tactical... You're a great coach and communicator... You are AMAZING thank you!!!!! Thank you for the support you have given her, you've helped her grow and mature and I know your support means a lot!! You're a blessing. You've given her so much [confidence] that's why I tell you how grateful I am for you.",
       year: '2026',
     },
     {
