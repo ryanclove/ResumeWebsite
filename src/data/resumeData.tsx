@@ -207,6 +207,26 @@ export const playing: TimelineItem[] = [
               Kills: 7 | Digs: 130 | Assists: 825 | Service Aces: 55
             </a>
           </li>
+          <li>
+            <a
+              href="https://youtu.be/_vP2Z9V-zi4"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#1a73e8', textDecoration: 'underline' }}
+            >
+              Sophomore/Junior Year Highlight Reel
+            </a>{' '}
+          </li>
+          <li>
+            <a
+              href="https://youtu.be/KGZi7lagaR0"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#1a73e8', textDecoration: 'underline' }}
+            >
+              Senior Year Highlight Reel
+            </a>{' '}
+          </li>
         </ul>
       </div>
     ),
