@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable react-memo/require-memo */
+/* eslint-disable simple-import-sort/imports */
+/* eslint-disable object-curly-spacing */
 import { FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { TimelineItem } from '../../../data/dataDef';

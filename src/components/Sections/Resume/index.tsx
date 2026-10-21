@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-sort-props */
+/* eslint-disable react-memo/require-memo */
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 import { FC, memo } from 'react';
 

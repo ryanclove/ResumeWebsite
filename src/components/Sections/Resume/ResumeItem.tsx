@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-sort-props */
+/* eslint-disable react-memo/require-memo */
+/* eslint-disable simple-import-sort/imports */
 /* eslint-disable object-curly-spacing */
 import Image from 'next/image';
 import { FC, memo } from 'react';
